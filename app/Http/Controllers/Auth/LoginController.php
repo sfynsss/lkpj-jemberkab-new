@@ -40,6 +40,7 @@ class LoginController extends Controller
         // } else if (Auth::user()->hak_akses == 'OPD') {
         //     return RouteServiceProvider::OPD;
         // }
+        // test brooo
         return RouteServiceProvider::HOME;
     }
 
