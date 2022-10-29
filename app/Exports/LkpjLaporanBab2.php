@@ -6,9 +6,8 @@ use App\Skpd;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class LkpjLaporanBab2 extends Controller implements FromView, ShouldAutoSize
+class LkpjLaporanBab2 extends Controller implements FromView
 {
     
     public function view(): View
