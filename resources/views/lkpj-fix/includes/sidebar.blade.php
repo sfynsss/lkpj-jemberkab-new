@@ -137,7 +137,7 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a href="{{ route('bab2-total') }}" class="sidebar-link">
+                <a href="{{ route('bab2-excel') }}" class="sidebar-link">
                   <span class="hide-menu">Bab II Excel</span>
                 </a>
               </li>
