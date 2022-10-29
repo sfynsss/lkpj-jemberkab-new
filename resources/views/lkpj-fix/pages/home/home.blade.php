@@ -65,6 +65,7 @@
   <div class="col-12">
       <div class="card">
           <div class="card-body">
+            <p>{{ Cookie::get('tahun_aktif') }}</p>
               <h4 class="card-title">Data SKPD Kabupaten Jember</h4>
               <div class="table-responsive">
                   <table id="zero_config" class="table table-striped table-bordered no-wrap">
