@@ -326,6 +326,7 @@ Route::get('laporan/katapengantar/{id}', 'LKPJ\LaporanOPDController@kataPenganta
 Route::get('laporan/bab1/{id}', 'LKPJ\LaporanOPDController@bab1')->name('bab1');
 Route::get('laporan/bab2/{id}', 'LKPJ\LaporanOPDController@bab2')->name('bab2');
 Route::get('laporan/bab2-total', 'LKPJ\LaporanOPDController@bab2_total')->name('bab2-total');
+Route::get('laporan/bab2-excel', 'LKPJ\LaporanOPDController@bab2_excel')->name('bab2-excel');
 Route::get('laporan/bab3/{id}', 'LKPJ\LaporanOPDController@bab3')->name('bab3');
 Route::get('laporan/bab4/{id}', 'LKPJ\LaporanOPDController@bab4')->name('bab4');
 Route::get('laporan/printcover/{id}', 'LKPJ\LaporanOPDController@printCover')->name('printcover');

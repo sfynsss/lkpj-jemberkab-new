@@ -136,6 +136,11 @@
                   <span class="hide-menu">Bab II Total</span>
                 </a>
               </li>
+              <li class="sidebar-item">
+                <a href="{{ route('bab2-total') }}" class="sidebar-link">
+                  <span class="hide-menu">Bab II Excel</span>
+                </a>
+              </li>
               @endif
               <li class="sidebar-item">
                 <a href="{{ route('opd', 'bab3') }}" class="sidebar-link">

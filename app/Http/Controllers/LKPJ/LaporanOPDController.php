@@ -17,6 +17,8 @@ use App\IndikatorUtamaDetail;
 use App\PenutupOPD;
 use App\StsUpdate;
 use PDF;
+use App\Exports\LkpjLaporanBab2;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanOPDController extends Controller
 {
@@ -111,6 +113,11 @@ class LaporanOPDController extends Controller
         // print_r($data);
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2_total', compact('data'));
         return $pdf->stream();
+    }
+
+    public function bab2_excel()
+    {
+        return Excel::download(new LkpjLaporanBab2, 'Laporan Total-'.date('d_F_Y').'.xlsx');
     }
     
     public function bab3($id)
