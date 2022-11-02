@@ -29,7 +29,7 @@
               <h2 class="fw-bold text-white">LKPJ 2022</h2>
             </div>
             <!-- Image -->
-            <img class="w-100 h-100" src="{{ route('img_login/daniel-korpai-vHVfpi3h5xk-unsplash.jpg') }}" alt="admin dashboard in laptop" style="object-fit: cover" />
+            <img class="w-100 h-100" src="{{ asset('img_login/daniel-korpai-vHVfpi3h5xk-unsplash.jpg') }}" alt="admin dashboard in laptop" style="object-fit: cover" />
           </div>
 
           <!-- Side 2 (Form) -->
