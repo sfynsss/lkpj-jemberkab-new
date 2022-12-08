@@ -2,6 +2,74 @@
 
 @section('content')
 
+@if (substr(Cookie::get('tahun_aktif'), 3) == 2)
+
+<div class="row">
+  <div class="col-12">
+    <div class="box">
+      <div class="box-body bg-img" style="background-image: url(../images/bg-5.png);" data-overlay-light="9">
+        <div class="d-lg-flex align-items-center justify-content-between">
+          <div class="d-md-flex align-items-center mb-30 mb-lg-0 w-p100">
+            <img src="{{ asset('LKPJ/images/svg-icon/color-svg/custom-14.svg') }}" class="img-fluid max-w-150" alt="" />
+            <div class="ms-30">
+              <h3 class="mb-10"><b>Bab. II Kegiatan</b></h3>
+            </div>
+          </div>
+        </div>							
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="box">
+      <div class="box-header with-border">						
+        <h4 class="box-title"><b>Data Kegiatan</b></h4>
+        <h6 class="box-subtitle">Nama Program : {{ $nama_program->nama_program }}</h6>
+        <h6 class="box-subtitle">SKPD : {{ $data[0]->Skpd->nama_skpd }}</h6>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Kode</th>
+                    <th>Nama Kegiatan</th>
+                    <th>Indikator</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($data as $i => $data)
+                  <tr>
+                    <td class="text-center">{{ $i+1 }}</td>
+                    <td>{{ $data->kode_kegiatan }}</td>
+                    <td>{{ $data->nama_kegiatan }}</td>                      
+                    <td>{{ $data->indikator_kegiatan }}</td>                      
+                    <td class="text-center">
+                      @if (Auth::user()->hak_akses != 'BIDANG')
+                      <a type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_kegiatan }}', '{{ $data->indikator_kegiatan }}');">Ubah</a>
+                      @endif
+                      <a href="{{ route('subkegiatan-pks', $data->id) }}" class="btn btn-primary">Lihat</a>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@else
+
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -44,6 +112,8 @@
     </div>
   </div>
 </div>
+
+@endif
 
 <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambah" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

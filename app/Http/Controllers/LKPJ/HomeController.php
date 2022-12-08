@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         } else if(Auth::user()->hak_akses == 'OPD') {
             $data = Program::where('id_skpd', Auth::user()->id_skpd)->get();
-            return view('lkpj-fix.pages.home.program', compact('data')); 
+            return view('lkpj-fix.pages.home', compact('data')); 
 
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             // $data = Skpd::rightJoin('users', 'skpd.id', 'users.id_skpd')->where('skpd.id_bidang', Auth::user()->id)->get();
