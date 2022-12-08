@@ -29,8 +29,8 @@
                 </a>
                 <ul class="dropdown-menu animated flipInX">
                    <li class="user-body">
-                      <a class="dropdown-item" href="#"><i class="ti-calendar text-muted me-2"></i> 2021</a>
-                      <a class="dropdown-item" href="#"><i class="ti-calendar text-muted me-2"></i> 2022</a>
+                      <a class="dropdown-item" onclick="setCookieTahun('2021')"><i class="ti-calendar text-muted me-2"></i> 2021</a>
+                      <a class="dropdown-item" onclick="setCookieTahun('2022')"><i class="ti-calendar text-muted me-2"></i> 2022</a>
                    </li>
                 </ul>
              </li>
@@ -82,9 +82,8 @@
        </div>
     </nav>
     <script>
-      function setCookieTahun() {
-          var test = $("#set_tahun").val();
-          getSKU(test);
+      function setCookieTahun(tahun) {
+          getSKU(tahun);
       }
       
       function getSKU($test) {

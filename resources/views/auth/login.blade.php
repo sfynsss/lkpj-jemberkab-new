@@ -34,9 +34,9 @@
 
           <!-- Side 2 (Form) -->
           <div class="col-md-6 card-body">
-            <div class="container" style="max-width: 400px">
+            <div class="container pt-3" style="max-width: 400px">
               <!-- Title -->
-              <h3 class="fw-bold">Login</h3>
+              <h3 class="fw-bold">Login LKPJ</h3>
               <h5 class="fw-normal text-secondary">Silahkan masuk untuk melanjutkan</h5>
 
               <!-- From -->
@@ -49,18 +49,16 @@
                 <div class="form-floating position-relative">
                   <input type="password" class="form-control rounded-0 pe-5" id="password" name="password" placeholder="Masukkan kata sandi pengguna" />
                   <label for="password"><span class="bi-key"></span> Password</label>
-                  <button type="button" class="position-absolute h-100 btn btn-lg rounded-0" style="right: 0; top: 0" onclick="toggleShowPass()"><span class="bi-eye" id="btnIcon"></span></button>
                   @error('password')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
+                  <div class="mt-2"><small><h6 class="text-danger fw-bold"><i>{{ $message }}</i></h6></small></div>
                   @enderror
+                  <button type="button" class="position-absolute h-100 btn btn-lg rounded-0" style="right: 0; top: 0" onclick="toggleShowPass()"><span class="bi-eye" id="btnIcon"></span></button>
                 </div>
-                <button type="submit" class="btn rounded-0" style="background-color: rgb(255, 200, 0)">Login</button>
+                <button type="submit" class="btn rounded-0 btn-lg" style="background-color: rgb(255, 200, 0)"><b>Login</b></button>
               </form>
 
               <!-- Text -->
-              <p class="text-center">>Badan Perencanaan dan Pembangundan Daerah Kabupaten Jember &copy; 2022</p>
+              <p class="text-center">Badan Perencanaan dan Pembangundan Daerah Kabupaten Jember &copy; 2022</p>
             </div>
           </div>
         </div>

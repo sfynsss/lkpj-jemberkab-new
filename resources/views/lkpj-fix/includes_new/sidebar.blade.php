@@ -6,11 +6,11 @@
             <!-- sidebar menu-->
             <ul class="sidebar-menu" data-widget="tree">
                <li class="header">Menu</li>
-               <li><a href="{{ route('home-lkpj') }}"><i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
+               <li><a href="{{ route('home-lkpj') }}"><i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
                <li class="header">Pengelolaan Laporan</li>
                <li class="treeview">
                   <a href="#">
-                  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+                  <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
                   <span>Bab. I</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
@@ -23,7 +23,7 @@
                </li>
                <li class="treeview">
                   <a href="#">
-                  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+                  <i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>
                   <span>Bab. II</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
@@ -35,7 +35,7 @@
                </li>
                <li class="treeview">
                   <a href="#">
-                  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+                  <i span class="fa fa-inbox"><span class="path1"></span><span class="path2"></span></i>
                   <span>Bab. III</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
@@ -49,7 +49,7 @@
                </li>
                <li class="treeview">
                   <a href="#">
-                  <i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+                  <i span class="fa fa-pencil-square"><span class="path1"></span><span class="path2"></span></i>
                   <span>Bab. IV</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
@@ -62,7 +62,7 @@
                <li class="header">Laporan</li>
                <li class="treeview">
                   <a href="#">
-                  <i span class="fa fa-file-text"><span class="path1"></span><span class="path2"></span></i>
+                  <i span class="fa fa-book"><span class="path1"></span><span class="path2"></span></i>
                   <span>Laporan</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
