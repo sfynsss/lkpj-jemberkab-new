@@ -16,7 +16,7 @@
          <div id="loader"></div>
          @include('lkpj-fix.includes_new.navbar')
          @include('lkpj-fix.includes_new.sidebar')
-         <div class="content-wrapper">
+         <div class="content-wrapper bg-temple-white">
             <div class="container-full">
                <section class="content">
                   @yield('content')

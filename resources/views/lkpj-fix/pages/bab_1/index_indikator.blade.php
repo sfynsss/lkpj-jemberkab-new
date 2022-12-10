@@ -136,7 +136,7 @@
   <div class="box-body">
     <div class="table-responsive">
       <table class="table table-bordered">
-        <thead class="bg-success">
+        <thead class="bg-gradient-primary-dark text-white text-center">
           <tr class="text-center">
             <th style="width: 25px">No</th>
             <th style="width: 600px">Indikator</th>

@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="zero_config" class="table table-bordered no-wrap">
-                <thead class="bg-primary text-center">
+                <thead class="bg-gradient-primary-dark text-white text-center">
                   <tr>
                       <th>No</th>
                       <th>Kode</th>
