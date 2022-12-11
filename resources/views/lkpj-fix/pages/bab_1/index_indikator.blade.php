@@ -4,6 +4,7 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -129,10 +130,20 @@
 </div>
 
 <div class="box">
-  <div class="box-header with-border">						
-    <h4 class="box-title"><b>Indikator Utama</b></h4>
-    <h6 class="box-subtitle">SKPD : {{ $nama_skpd->nama_skpd }}</h6>
+  <div class="box-header with-border">  
+    <div class="row">
+      <div class="col">
+        <h4 class="box-title"><b>Indikator Kinerja</b></h4>
+        <h6 class="box-subtitle">SKPD : {{ $nama_skpd->nama_skpd }}</h6>
+      </div>
+      <div class="col-auto">
+        @if (Auth::user()->hak_akses == 'ADMIN')
+        <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#modalTambah" onclick="tambahData();">Tambah Data Indikator</button>
+        @endif
+      </div>
+    </div>
   </div>
+
   <div class="box-body">
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -152,8 +163,8 @@
             <td style="width: 600px">{{ $indikator->indikator }}</td>
             @if (Auth::user()->hak_akses == 'ADMIN')
             <td class="text-center">
-              <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#modalTambah" onclick="ubahData('{{ $indikator->id }}', '{{ $indikator->indikator }}', '{{ $indikator->id_urusan }}')">Ubah</button>
-              <a href="{{ route('hapus-indikator', $indikator->id) }}" class="btn btn-danger" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Hapus</a>
+              <button type="button" class="waves-effect waves-light btn btn-primary-light btn-circle" data-toggle="modal" data-target="#modalTambah" onclick="ubahData('{{ $indikator->id }}', '{{ $indikator->indikator }}', '{{ $indikator->id_urusan }}')"><span class="fa fa-edit fs-18"><span class="path1"></span><span class="path2"></span></span></button>
+              <a href="{{ route('hapus-indikator', $indikator->id) }}" class="waves-effect waves-light btn btn-danger-light btn-circle" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"><span class="path1"></span><span class="path2"></span></span></a>
             </td>
             @endif
           </tr>
