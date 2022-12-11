@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                <thead>
+                <thead class="bg-gradient-primary-dark text-white text-center">
                   <tr>
                     <th>No</th>
                     <th>Kode</th>
@@ -51,9 +51,9 @@
                     <td>{{ $data->indikator_program }}</td>                      
                     <td class="text-center">
                       @if (Auth::user()->hak_akses != 'BIDANG')
-                      <a type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_program }}', '{{ $data->indikator_program }}');">Ubah Indikator</a>
+                      <a type="button" class="btn bg-gradient-success mb-2" data-toggle="modal" data-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_program }}', '{{ $data->indikator_program }}');">Ubah Indikator</a>
                       @endif
-                      <a href="{{ route('kegiatan-pks', $data->id) }}" class="btn btn-primary">Lihat Kegiatan</a>
+                      <a href="{{ route('kegiatan-pks', $data->id) }}" class="btn bg-gradient-primary">Lihat Kegiatan</a>
                     </td>
                   </tr>
                   @endforeach

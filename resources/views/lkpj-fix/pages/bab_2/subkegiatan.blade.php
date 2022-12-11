@@ -21,7 +21,6 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -48,7 +47,7 @@
                     <td>{{ $data->kode_sub_keg }}</td>
                     <td>{{ $data->nama_sub_keg }}</td>                      
                     <td class="text-center">
-                      <a href="{{ route('detail-pks', $data->id) }}" class="btn bg-gradient-warning"><i class="typcn typcn-edit"></i> Lihat Data</a>
+                      <a href="{{ route('detail-pks', $data->id) }}" class="btn bg-gradient-primary"><i class="typcn typcn-edit"></i> Lihat Data</a>
                     </td>
                   </tr>
                   @endforeach

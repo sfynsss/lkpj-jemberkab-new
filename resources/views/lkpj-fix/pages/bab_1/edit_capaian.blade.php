@@ -10,7 +10,7 @@
                <small class="subtitle">Isikan data berikut dengan lengkap dan sesuai</small>
             </h4>
          </div>
-         <form class="form" method="POST" action="{{ route('edit-indikator-detail') }}">
+         <form method="POST" action="{{ route('edit-indikator-detail') }}">
             @csrf
             <input type="text" id="id" name="id" value="{{ $data->id }}" hidden>
             <input type="text" id="id_skpd" name="id_skpd" value="{{ $data->id_skpd }}" hidden>

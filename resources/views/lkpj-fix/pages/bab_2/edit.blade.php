@@ -1,6 +1,7 @@
 @extends('lkpj-fix.layouts.app')
 @section('content')
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
+@include('lkpj-fix.includes_new.alert')
 <div class="row">
     <div class="col-12">
       <div class="box">
@@ -23,7 +24,7 @@
          <div class="box-header with-border">
             <h4 class="box-title"><b>Data Rincian Sub-Kegiatan</b></h4>
          </div>
-         <form class="forms-sample" method="POST" action="{{ route('update-sub-kegiatan') }}">
+         <form method="POST" action="{{ route('update-sub-kegiatan') }}">
             @csrf
             <input type="number" name="id" value="{{ $data[0]->id }}" hidden>
             <div class="box-body">

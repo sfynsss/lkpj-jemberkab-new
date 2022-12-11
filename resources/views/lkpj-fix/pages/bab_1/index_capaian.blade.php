@@ -4,6 +4,7 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -140,7 +141,7 @@
           <div class="col-12">
             <div class="table-responsive">
               <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                <thead>
+                <thead class="bg-gradient-primary-dark text-white text-center">
                   <tr class="text-center">
                     <th>No</th>
                     <th class="text-left">Uraian</th>
@@ -168,8 +169,8 @@
                     <td class="text-center">{{ $indikator->capaian_5 }}</td>
                     @if (Auth::user()->hak_akses != 'BIDANG')
                     <td class="text-center">
-                      <a href="{{ route('edit-capaian', $indikator->id) }}" class="btn btn-warning text-white">Ubah</a>
-                      <a href="{{ route('hapus-capaian', $indikator->id) }}" class="btn btn-danger" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Hapus</a>
+                      <a href="{{ route('edit-capaian', $indikator->id) }}" class="waves-effect waves-light btn btn-primary-light btn-circle" title="Ubah"><span class="fa fa-edit fs-18"><span class="path1"></span><span class="path2"></span></span></a>
+                      <a href="{{ route('hapus-capaian', $indikator->id) }}" class="waves-effect waves-light btn btn-danger-light btn-circle" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"><span class="path1"></span><span class="path2"></span></span></a>
                     </td>
                     @endif
                   </tr>

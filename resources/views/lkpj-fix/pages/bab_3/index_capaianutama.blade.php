@@ -4,6 +4,8 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
+
 <div class="row">
   <div class="col-12">
     <div class="box">

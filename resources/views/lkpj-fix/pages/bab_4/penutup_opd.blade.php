@@ -4,6 +4,8 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
+
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -48,7 +50,7 @@
                         <td>{{ $skpd->kode_skpd }}</td>
                         <td class="text-center">{{ $skpd->nama_skpd }}</td>
                         <td class="text-center">
-                          <a href="{{ route('indikatorutama', $skpd->id) }}" class="btn bg-gradient-primary">Lihat</a>
+                          <a href="{{ route('penutup', $skpd->id) }}" class="btn bg-gradient-primary">Lihat</a>
                         </td>
                       </tr>
                   @endforeach
