@@ -4,6 +4,7 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -152,8 +153,8 @@
             <td style="width: 600px">{{ $indikator->indikator }}</td>
             @if (Auth::user()->hak_akses == 'ADMIN')
             <td class="text-center">
-              <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#modalTambah" onclick="ubahData('{{ $indikator->id }}', '{{ $indikator->indikator }}', '{{ $indikator->id_urusan }}')">Ubah</button>
-              <a href="{{ route('hapus-indikator', $indikator->id) }}" class="btn btn-danger" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Hapus</a>
+              <button type="button" class="waves-effect waves-light btn btn-primary-light btn-circle" data-bs-toggle="modal" data-bs-target="#modalTambah" onclick="ubahData('{{ $indikator->id }}', '{{ $indikator->indikator }}', '{{ $indikator->id_urusan }}')"><span class="fa fa-plus-circle fs-18"><span class="path1"></span><span class="path2"></span></span></button>
+              <a href="{{ route('hapus-indikator', $indikator->id) }}" class="waves-effect waves-light btn btn-danger-light btn-circle" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"><span class="path1"></span><span class="path2"></span></span></a>
             </td>
             @endif
           </tr>
@@ -161,6 +162,84 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+{{-- <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambah" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Indikator</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ route('tambah-indikator') }}" method="POST">
+          @csrf
+          <input type="text" hidden id="id" name="id" value="">
+          <input type="text" hidden name="id_skpd" value="{{ $nama_skpd->id }}">
+          <div class="form-group">
+            <label for="nama_indikator">Nama SKPD</label>
+            <input type="text" class="form-control" disabled placeholder="Isikan nama indikator" value="{{ $nama_skpd->nama_skpd }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Urusan</label>
+            <select class="form-control" id="urusan" name="urusan"required>
+              <option  selected="true" disabled="disabled">Pilih Urusan</option>
+              @foreach ($urusan as $urusan)
+              <option value="{{ $urusan->id }}">{{ $urusan->nama_urusan }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nama_indikator">Nama Indikator</label>
+            <input type="text" class="form-control" name="nama_indikator" id="nama_indikator" placeholder="Isikan nama indikator" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> --}}
+
+<div class="modal modal-left fade" id="modalTambah" tabindex="-1">
+  <div class="modal-dialog">
+     <form class="modal-content" action="{{ route('tambah-indikator') }}" method="POST">
+        @csrf
+        <div class="modal-header">
+           <h5 class="modal-title">Tambah Indikator</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" hidden id="id" name="id" value="">
+          <input type="text" hidden name="id_skpd" value="{{ $nama_skpd->id }}">
+          <div class="form-group">
+            <label for="nama_indikator">Nama SKPD</label>
+            <input type="text" class="form-control" disabled placeholder="Isikan nama indikator" value="{{ $nama_skpd->nama_skpd }}">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Urusan</label>
+            <select class="form-control" id="urusan" name="urusan"required>
+              <option  selected="true" disabled="disabled">Pilih Urusan</option>
+              @foreach ($urusan as $urusan)
+              <option value="{{ $urusan->id }}">{{ $urusan->nama_urusan }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nama_indikator">Nama Indikator</label>
+            <textarea type="text" class="form-control" name="nama_indikator" id="nama_indikator" placeholder="Isikan nama indikator" rows="8" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer modal-footer-uniform">
+           <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tutup</button>
+           <button type="submit" class="btn btn-primary float-end"><i class="ti-save-alt"></i> Simpan</button>
+        </div>
+     </form>
   </div>
 </div>
 

@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <table id="zero_config" class="table table-bordered no-wrap">
+              <table id="tickets" class="table mt-0 table-bordered table-hover no-wrap" data-page-size="10">
                 <thead class="bg-gradient-primary-dark text-white text-center">
                   <tr>
                       <th>No</th>

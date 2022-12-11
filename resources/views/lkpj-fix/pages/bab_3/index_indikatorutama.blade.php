@@ -28,7 +28,7 @@
         <h4 class="box-title"><b>Indikator Utama</b></h4>
         <h6 class="box-subtitle">SKPD : {{ ucwords(strtolower($nama_skpd->nama_skpd)) }}</h6>
         @if (Auth::user()->hak_akses == 'ADMIN')
-        <a type="button" class="btn bg-gradient-success mt-2" data-toggle="modal" data-target="#modalTambah" onclick="tambahData();">Tambah Data</a>
+        <a type="button" class="btn bg-gradient-success mt-2" data-bs-toggle="modal" data-bs-target="#modalTambah" onclick="tambahData();">Tambah Data</a>
         @endif
       </div>
       <div class="box-body">

@@ -57,6 +57,9 @@
                   </a>
                   <ul class="treeview-menu">
                      <li><a href="{{ route('penutup-opd') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Penutup OPD</a></li>
+                     @if (Auth::user()->hak_akses == 'ADMIN')
+                     <li><a href="{{ route('penutup-admin') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Penutup Admin</a></li>
+                     @endif
                   </ul>
                </li>
                <li class="header">Laporan</li>
@@ -73,10 +76,18 @@
                      <li><a href="{{ route('opd', 'katapengantar') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Kata Pengantar</a></li>
                      <li><a href="{{ route('opd', 'bab1') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab I</a></li>
                      <li><a href="{{ route('opd', 'bab2') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II</a></li>
+                     @if(Auth::user()->hak_akses == "ADMIN")
+                     <li><a href="{{ route('bab2-total') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II Total</a></li>
+                     <li><a href="{{ route('bab2-excel') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II Excel</a></li>
+                     @endif
                      <li><a href="{{ route('opd', 'bab3') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab III</a></li>
                      <li><a href="{{ route('opd', 'bab4') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab IV</a></li>
                   </ul>
                </li>
+               @if (Auth::user()->hak_akses == 'ADMIN')
+               <li class="header">Pengaturan</li>
+               <li><a href="{{ route('setting-bab3') }}"><i class="fa fa-cog"><span class="path1"></span><span class="path2"></span></i>Pengaturan LKPJ</a></li>
+               @endif
             </ul>
          </div>
       </div>

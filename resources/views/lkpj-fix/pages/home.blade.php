@@ -89,7 +89,7 @@
                             </div>
                             <div class="d-flex flex-column fw-500">
                                 <a href="#" class="text-dark hover-primary mb-1 fs-16">Program</a>
-                                <span class="text-fade">Terdapat sebanyak (n) data program</span>
+                                {{-- <span class="text-fade">Terdapat sebanyak (n) data program</span> --}}
                             </div>
                         </div>
                         <a href="#">
@@ -107,7 +107,7 @@
                             </div>
                             <div class="d-flex flex-column fw-500">
                                 <a href="#" class="text-dark hover-primary mb-1 fs-16">Kegiatan</a>
-                                <span class="text-fade">Terdapat sebanyak (n) data kegiatan</span>
+                                {{-- <span class="text-fade">Terdapat sebanyak (n) data kegiatan</span> --}}
                             </div>
                         </div>
                         <a href="#">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="d-flex flex-column fw-500">
                                 <a href="#" class="text-dark hover-info mb-1 fs-16">Sub Kegiatan</a>
-                                <span class="text-fade">Terdapat sebanyak (n) data sub-kegiatan</span>
+                                {{-- <span class="text-fade">Terdapat sebanyak (n) data sub-kegiatan</span> --}}
                             </div>
                         </div>
                         <a href="#">

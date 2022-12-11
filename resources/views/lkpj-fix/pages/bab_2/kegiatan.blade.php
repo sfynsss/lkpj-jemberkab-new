@@ -52,7 +52,7 @@
                     <td>{{ $data->indikator_kegiatan }}</td>                      
                     <td class="text-center">
                       @if (Auth::user()->hak_akses != 'BIDANG')
-                      <a type="button" class="btn bg-gradient-success mb-2" data-toggle="modal" data-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_kegiatan }}', '{{ $data->indikator_kegiatan }}');">Ubah Indikator</a>
+                      <a type="button" class="btn bg-gradient-success mb-2" data-bs-toggle="modal" data-bs-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_kegiatan }}', '{{ $data->indikator_kegiatan }}');">Ubah Indikator</a>
                       @endif
                       <a href="{{ route('subkegiatan-pks', $data->id) }}" class="btn bg-gradient-primary">Lihat Subkeg</a>
                     </td>
@@ -65,6 +65,33 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal modal-left fade" id="modalTambah" tabindex="-1">
+  <div class="modal-dialog">
+     <form class="modal-content" action="{{ route('ubah-indikator-kegiatan') }}" method="POST">
+        @csrf
+        <div class="modal-header">
+           <h5 class="modal-title">Ubah Data</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <input type="text" hidden name="id_kegiatan" id="id_kegiatan" value="">
+           <div class="form-group">
+              <label for="nama_indikator">Nama Program</label>
+              <textarea type="text" class="form-control" id="nama_kegiatan" disabled value=""></textarea>
+           </div>
+           <div class="form-group">
+              <label for="nama_indikator">Nama Indikator</label>
+              <textarea class="form-control" name="nama_indikator" id="nama_indikator" rows="8" placeholder="Isikan nama indikator" required></textarea>
+           </div>
+        </div>
+        <div class="modal-footer modal-footer-uniform">
+           <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Tutup</button>
+           <button type="submit" class="btn btn-primary float-end"><i class="ti-save-alt"></i> Simpan</button>
+        </div>
+     </form>
   </div>
 </div>
 
@@ -113,8 +140,6 @@
   </div>
 </div>
 
-@endif
-
 <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambah" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -145,6 +170,8 @@
     </div>
   </div>
 </div>
+
+@endif
 
 @endsection
 @section('script')

@@ -76,6 +76,7 @@ class Bab1Controller extends Controller
     
     public function tambahIndikator(Request $request)
     {
+        dd($request->urusan);
         DB::beginTransaction();
         try {
             $insert = IndikatorDetail::insert([
