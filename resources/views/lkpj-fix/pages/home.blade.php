@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-md-12">
             <div class="box">
                 <div class="box-header with-border">
                     <h4 class="box-title">Keterangan Menu Pelaporan</h4>
@@ -74,7 +74,7 @@
                 </div>
             </div>
           </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-md-12">
             <div class="box mb-15">
                 <div class="box-header with-border">
                     <h4 class="box-title">Navigasi Program/Kegiatan/Subkegiatan</h4>
