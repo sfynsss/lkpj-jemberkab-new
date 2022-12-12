@@ -1,4 +1,4 @@
-<link rel="icon" href="{{ asset('LKPJ/images/logo-lkpj.png') }}">
+<link rel="icon" href="{{ asset('LKPJ/backend/assets/images/logo-icon2.png') }}">
 <!-- Vendors Style-->
 <link rel="stylesheet" href="{{ asset('LKPJ/admin/css/vendors_css.css') }}">
 <!-- Style-->  
