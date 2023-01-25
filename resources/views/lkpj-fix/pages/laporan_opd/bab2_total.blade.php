@@ -320,8 +320,8 @@
             <th class="text-left" width="10%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>kode</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Program/Kegiatan/SubKegiatan</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Indikator Kinerja Program/Kegiatan/SubKegiatan</b></span></th>
-            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Target Tahun 2021</b></span></th>
-            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Realisasi Tahun 2021</b></span></th>
+            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Target Tahun test</b></span></th>
+            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Realisasi Tahun test</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Permasalahan</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Solusi</b></span></th>
           </tr>
