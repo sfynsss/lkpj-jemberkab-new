@@ -294,21 +294,21 @@
     text-transform: capitalize; 
   }
   .pagenum:before {
-        content: counter(page);
-    }
-    footer {
-        position: fixed; 
-        bottom: -30px; 
-        left: 0px; 
-        right: 0px;
-        height: 50px; 
-        
-        /** Extra personal styles **/
-        /* line-height: 35px; */
-        border-top-width: 1px;
-        border-top-style: solid;
-        border-top-color: rgb(115, 115, 115);
-    }
+    content: counter(page);
+  }
+  footer {
+    position: fixed; 
+    bottom: -30px; 
+    left: 0px; 
+    right: 0px;
+    height: 50px; 
+    
+    /** Extra personal styles **/
+    /* line-height: 35px; */
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(115, 115, 115);
+  }
 </style>
 <body>
   <div class="print">
@@ -347,29 +347,85 @@
           </tr>
           @foreach ($kegiatan->SubKegiatan as $sub_kegiatan)
           @php
+          $realisasi = 0;
+          $serapan = 0;
+          
+          if (substr(Cookie::get('tahun_aktif'), 3) == 1) {
             $realisasi = $sub_kegiatan->realisasi_sub_keg_1_1+$sub_kegiatan->realisasi_sub_keg_1_2+$sub_kegiatan->realisasi_sub_keg_1_3+$sub_kegiatan->realisasi_sub_keg_1_4;
             $serapan = $sub_kegiatan->serapan_sub_keg_1_1+$sub_kegiatan->serapan_sub_keg_1_2+$sub_kegiatan->serapan_sub_keg_1_3+$sub_kegiatan->serapan_sub_keg_1_4;
+          } else if (substr(Cookie::get('tahun_aktif'), 3) == 2) {
+            $realisasi = $sub_kegiatan->realisasi_sub_keg_2_1+$sub_kegiatan->realisasi_sub_keg_2_2+$sub_kegiatan->realisasi_sub_keg_2_3+$sub_kegiatan->realisasi_sub_keg_2_4;
+            $serapan = $sub_kegiatan->serapan_sub_keg_2_1+$sub_kegiatan->serapan_sub_keg_2_2+$sub_kegiatan->serapan_sub_keg_2_3+$sub_kegiatan->serapan_sub_keg_2_4;
+          } else if (substr(Cookie::get('tahun_aktif'), 3) == 3) {
+            $realisasi = $sub_kegiatan->realisasi_sub_keg_3_1+$sub_kegiatan->realisasi_sub_keg_3_2+$sub_kegiatan->realisasi_sub_keg_3_3+$sub_kegiatan->realisasi_sub_keg_3_4;
+            $serapan = $sub_kegiatan->serapan_sub_keg_3_1+$sub_kegiatan->serapan_sub_keg_3_2+$sub_kegiatan->serapan_sub_keg_3_3+$sub_kegiatan->serapan_sub_keg_3_4;
+          } else if (substr(Cookie::get('tahun_aktif'), 3) == 4) {
+            $realisasi = $sub_kegiatan->realisasi_sub_keg_4_1+$sub_kegiatan->realisasi_sub_keg_4_2+$sub_kegiatan->realisasi_sub_keg_4_3+$sub_kegiatan->realisasi_sub_keg_4_4;
+            $serapan = $sub_kegiatan->serapan_sub_keg_4_1+$sub_kegiatan->serapan_sub_keg_4_2+$sub_kegiatan->serapan_sub_keg_4_3+$sub_kegiatan->serapan_sub_keg_4_4;
+          } else if (substr(Cookie::get('tahun_aktif'), 3) == 5) {
+            $realisasi = $sub_kegiatan->realisasi_sub_keg_5_1+$sub_kegiatan->realisasi_sub_keg_5_2+$sub_kegiatan->realisasi_sub_keg_5_3+$sub_kegiatan->realisasi_sub_keg_5_4;
+            $serapan = $sub_kegiatan->serapan_sub_keg_5_1+$sub_kegiatan->serapan_sub_keg_5_2+$sub_kegiatan->serapan_sub_keg_5_3+$sub_kegiatan->serapan_sub_keg_5_4;
+          } else if (substr(Cookie::get('tahun_aktif'), 3) == 6) {
+            $realisasi = $sub_kegiatan->realisasi_sub_keg_6_1+$sub_kegiatan->realisasi_sub_keg_6_2+$sub_kegiatan->realisasi_sub_keg_6_3+$sub_kegiatan->realisasi_sub_keg_6_4;
+            $serapan = $sub_kegiatan->serapan_sub_keg_6_1+$sub_kegiatan->serapan_sub_keg_6_2+$sub_kegiatan->serapan_sub_keg_6_3+$sub_kegiatan->serapan_sub_keg_6_4;
+          }
+          
           @endphp
           <tr>
             <td class="text-left text-top"><span style="font-size: 6pt; margin-left:7px;font-family: Arial;">{{ $sub_kegiatan->kode_sub_keg }}</td>
-            <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->nama_sub_keg }}</td>
-            <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->indikator_sub_keg }}</td>
-            <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_1 }}</td>
-            <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_1)</td>
-            <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
-            <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
-            <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_1_4 }}</td>
-            <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_1_4 }}</td>
-          </tr>
-          @endforeach
-          @endforeach
-          @endif
-          @endforeach
-          @endforeach
-        </tbody>
-      </table>
-    {{-- </div> --}}
-
-  </div>
-</body>
-</html>
+              <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->nama_sub_keg }}</td>
+                <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->indikator_sub_keg }}</td>
+                  @if (substr(Cookie::get('tahun_aktif'), 3) == 1)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_1 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_1)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_1_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_1_4 }}</td>
+                  @elseif (substr(Cookie::get('tahun_aktif'), 3) == 2)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_2 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_2)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_2_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_2_4 }}</td>
+                  @elseif (substr(Cookie::get('tahun_aktif'), 3) == 3)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_3 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_3)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_3_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_3_4 }}</td>
+                  @elseif (substr(Cookie::get('tahun_aktif'), 3) == 4)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_4 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_4)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_4_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_4_4 }}</td>
+                  @elseif (substr(Cookie::get('tahun_aktif'), 3) == 5)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_5 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_5)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_5_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_5_4 }}</td>
+                  @elseif (substr(Cookie::get('tahun_aktif'), 3) == 6)
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $sub_kegiatan->target_sub_keg_6 }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($sub_kegiatan->pagu_indikatif_sub_keg_6)</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">{{ $realisasi }}</td>
+                    <td><span style="font-size: 6pt; font-weight:bold;font-family: Arial;">@currency($serapan)</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->masalah_sub_keg_6_4 }}</td>
+                    <td class="text-left text-top"><span style="font-size: 6pt;font-family: Arial;">{{ $sub_kegiatan->solusi_sub_keg_6_4 }}</td>
+                  @endif
+            </tr>
+            @endforeach
+            @endforeach
+            @endif
+            @endforeach
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </body>
+    </html>
