@@ -42,7 +42,9 @@
                   </span>
                   </a>
                   <ul class="treeview-menu">
+                     @if (Auth::user()->hak_akses == 'ADMIN')
                      <li><a href="{{ route('urusan') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Master Urusan</a></li>
+                     @endif
                      <li><a href="{{ route('opd-indikatorutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Indikator Utama</a></li>
                      <li><a href="{{ route('opd-capaianutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja Utama</a></li>
                   </ul>

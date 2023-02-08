@@ -45,7 +45,7 @@
                             <div class="col-md-2">
                             <div class="form-group">
                                 <label class="form-label">Satuan</label>
-                                <input type="text" class="form-control" name="satuan" id="satuan" value="{{ $data->satuan }}" placeholder="Tulis satuan capaian">
+                                <input type="text" class="form-control" name="satuan" id="satuan" value="{{ $data->satuan }}" placeholder="Tulis satuan capaian" @if (Auth::user()->hak_akses != 'ADMIN') readonly @endif>
                             </div>
                             </div>
                             <div class="col-md-2">

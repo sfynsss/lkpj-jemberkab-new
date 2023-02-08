@@ -4,6 +4,8 @@
 
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 
+@include('lkpj-fix.includes_new.alert')
+
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -79,11 +81,11 @@
         <div class="modal-body">
            <input type="text" hidden name="id_kegiatan" id="id_kegiatan" value="">
            <div class="form-group">
-              <label for="nama_indikator">Nama Program</label>
+              <label for="nama_indikator">Nama Kegiatan</label>
               <textarea type="text" class="form-control" id="nama_kegiatan" disabled value=""></textarea>
            </div>
            <div class="form-group">
-              <label for="nama_indikator">Nama Indikator</label>
+              <label for="nama_indikator">Indikator Kegiatan</label>
               <textarea class="form-control" name="nama_indikator" id="nama_indikator" rows="8" placeholder="Isikan nama indikator" required></textarea>
            </div>
         </div>

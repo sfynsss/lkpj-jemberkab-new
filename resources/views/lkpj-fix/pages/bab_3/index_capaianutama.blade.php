@@ -33,10 +33,10 @@
             <h6 class="box-subtitle">SKPD : {{ ucwords(strtolower($nama_skpd->nama_skpd)) }}</h6>
           </div>
           <div class="col-auto">
-            @if (Auth::user()->hak_akses != 'BIDANG')
+            @if (Auth::user()->hak_akses == 'ADMIN')
               @if (App\StsUpdate::where('id', 3)->pluck('kode_sts')->first() == 0)
-                <button class="btn bg-gradient-secondary">Tambah Data</button>
-              @else
+                <button class="btn btn-secondary" disabled>Tambah Data</button>
+                @else
                 <a href="{{ route('create-capaianutama', $nama_skpd->id) }}" class="btn bg-gradient-info">Tambah Data</a>
               @endif
             @endif

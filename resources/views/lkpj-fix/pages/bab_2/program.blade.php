@@ -1,6 +1,7 @@
 @extends('lkpj-fix.layouts.app')
 @section('content')
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
+@include('lkpj-fix.includes_new.alert')
 <div class="row">
    <div class="col-12">
       <div class="box">
@@ -43,10 +44,10 @@
                            <tr>
                               <td class="text-center">{{ $i+1 }}</td>
                               <td>{{ $data->kode_program }}</td>
-                              <td>{{ $data->nama_program }}</td>
+                              <td>@if($data->unggulan == 1) <i class="fa fa-check-circle-o text-success me-2" aria-hidden="true"></i> @endif {{ $data->nama_program }}</td>
                               <td>{{ $data->indikator_program }}</td>
                               <td class="text-center">
-                                 @if (Auth::user()->hak_akses != 'BIDANG')
+                                 @if (Auth::user()->hak_akses == 'ADMIN')
                                  <a type="button" class="btn bg-gradient-success mb-2"  data-bs-toggle="modal" data-bs-target="#modalTambah" onclick="tambahData('{{ $data->id }}', '{{ $data->nama_program }}', '{{ $data->indikator_program }}');">Ubah Indikator</a>
                                  @endif
                                  <a href="{{ route('kegiatan-pks', $data->id) }}" class="btn bg-gradient-primary">Lihat Kegiatan</a>
@@ -77,7 +78,7 @@
               <textarea type="text" class="form-control" id="nama_program" disabled value=""></textarea>
            </div>
            <div class="form-group">
-              <label for="nama_indikator">Nama Indikator</label>
+              <label for="nama_indikator">Indikator Kegiatan</label>
               <textarea class="form-control" name="nama_indikator" id="nama_indikator" rows="8" placeholder="Isikan nama indikator" required></textarea>
            </div>
         </div>
