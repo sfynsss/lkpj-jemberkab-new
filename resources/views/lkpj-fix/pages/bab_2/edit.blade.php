@@ -124,13 +124,13 @@
                   </div>
                   <div class="box-body">
                      <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                            <div class="form-group">
                               <label class="form-label">Status</label>
-                              <div class="checkbox checkbox-success">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" name="unggulan" value="1" @if ($data[0]->unggulan == 1) checked @endif>
-                                <label class="custom-control-label" for="customCheck1">Iya</label>
-                              </div>
+                              <select class="form-select" name="unggulan">
+                                 <option value="0">Tidak</option>
+                                 <option value="1" @if ($data[0]->unggulan == 1) selected @endif>Ya</option>
+                              </select>
                            </div>
                         </div>
                         <div class="col-3">
@@ -139,7 +139,7 @@
                               <input type="text" class="form-control" name="lokasi" value="@if (isset($data[0]->lokasi)){{ $data[0]->lokasi }}@endif">
                            </div>
                         </div>
-                        <div class="col-8">
+                        <div class="col-7">
                            <div class="form-group">
                               <label class="form-label">Keterangan</label>
                               <input type="text" class="form-control" name="keterangan" value="@if (isset($data[0]->keterangan)){{ $data[0]->keterangan }}@endif">
@@ -271,11 +271,11 @@
                </div>
                <div class="form-group">
                   <label><b>Lokasi</b></label>
-                  <input type="text" class="form-control" name="lokasi" value="@if (isset($data[0]->lokasi)){{ $data[0]->lokasi }}@endif">
+                  <input type="text" class="form-control" name="lokasi" placeholder="Biarkan kosong apabila tidak termasuk program unggulan" value="@if (isset($data[0]->lokasi)){{ $data[0]->lokasi }}@endif">
                </div>
                <div class="form-group">
                   <label><b>Uraian</b></label>
-                  <input type="text" class="form-control" name="keterangan" value="@if (isset($data[0]->keterangan)){{ $data[0]->keterangan }}@endif">
+                  <input type="text" class="form-control" name="keterangan" placeholder="Biarkan kosong apabila tidak termasuk program unggulan" value="@if (isset($data[0]->keterangan)){{ $data[0]->keterangan }}@endif">
                </div>
                <br>
                <br>

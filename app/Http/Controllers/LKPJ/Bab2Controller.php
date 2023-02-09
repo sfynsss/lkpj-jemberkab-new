@@ -103,16 +103,14 @@ class Bab2Controller extends Controller
             $tmp_unggulan = $request->unggulan;
         }
 
-        $data = SubKegiatan::where('id', $request->id)->update([
+        $data = SubKegiatan::find($request->id);
+        $update = $data->update([
             'lokasi'        => $request->lokasi,
             'unggulan'      => $tmp_unggulan,
             'keterangan'    => $request->keterangan
         ]);
 
-        if($data) {
-            return back()->with('success','Data Berhasil di Diubah');
-        } else {
-            return back()->with('error','Data Gagal di Diubah');
-        }
+        return redirect()->route('subkegiatan-pks', $data->id_kegiatan)->with('success', 'Dat Sub-Kegiatan berhasil diubah');
+
     }
 }
