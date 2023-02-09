@@ -49,6 +49,7 @@
                      <li><a href="{{ route('opd-capaianutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja Utama</a></li>
                   </ul>
                </li>
+               @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-pencil-square"><span class="path1"></span><span class="path2"></span></i>
@@ -64,6 +65,7 @@
                      @endif
                   </ul>
                </li>
+               @endif
                <li class="header">Laporan</li>
                <li class="treeview">
                   <a href="#">
@@ -83,7 +85,9 @@
                      <li><a href="{{ route('bab2-excel') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran II Excel</a></li>
                      @endif
                      <li><a href="{{ route('opd', 'bab3') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran III</a></li>
+                     @if(Auth::user()->hak_akses == "ADMIN")
                      <li><a href="{{ route('opd', 'bab4') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran IV</a></li>
+                     @endif
                   </ul>
                </li>
                @if (Auth::user()->hak_akses == 'ADMIN')
