@@ -11,7 +11,7 @@
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Bab. I</span>
+                  <span>Lampiran. I</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
@@ -24,7 +24,7 @@
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Bab. II</span>
+                  <span>Lampiran. II</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
@@ -36,7 +36,7 @@
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-inbox"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Bab. III</span>
+                  <span>Lampiran. III</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
@@ -52,7 +52,7 @@
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-pencil-square"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Bab. IV</span>
+                  <span>Lampiran. IV</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
@@ -76,14 +76,14 @@
                   <ul class="treeview-menu">
                      <li><a href="{{ route('opd', 'printcover') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cover</a></li>
                      <li><a href="{{ route('opd', 'katapengantar') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Kata Pengantar</a></li>
-                     <li><a href="{{ route('opd', 'bab1') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab I</a></li>
-                     <li><a href="{{ route('opd', 'bab2') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II</a></li>
+                     <li><a href="{{ route('opd', 'bab1') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran I</a></li>
+                     <li><a href="{{ route('opd', 'bab2') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran II</a></li>
                      @if(Auth::user()->hak_akses == "ADMIN")
-                     <li><a href="{{ route('bab2-total') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II Total</a></li>
-                     <li><a href="{{ route('bab2-excel') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab II Excel</a></li>
+                     <li><a href="{{ route('bab2-total') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran II Total</a></li>
+                     <li><a href="{{ route('bab2-excel') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran II Excel</a></li>
                      @endif
-                     <li><a href="{{ route('opd', 'bab3') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab III</a></li>
-                     <li><a href="{{ route('opd', 'bab4') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bab IV</a></li>
+                     <li><a href="{{ route('opd', 'bab3') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran III</a></li>
+                     <li><a href="{{ route('opd', 'bab4') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran IV</a></li>
                   </ul>
                </li>
                @if (Auth::user()->hak_akses == 'ADMIN')

@@ -34,7 +34,7 @@
                       <span class="avatar avatar-lg bg-primary-light rounded"><i class="fa fa-user"></i></span>
                       <div class="media-body fw-500">
                         <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Bab I. Capaian dan Indikator</strong></a>
+                          <a class="hover-success" href="#"><strong>Lampiran I. Capaian dan Indikator</strong></a>
                         </p>
                         <p class="text-fade">Halaman untuk melihat data capaian dan indikator kinerja yang telah diinputkan di SIPPD</p>
                       </div>
@@ -44,7 +44,7 @@
                         <span class="avatar avatar-lg bg-danger-light rounded"><i class="fa fa-money"></i></span>
                         <div class="media-body">
                           <p class="d-flex align-items-center justify-content-between">
-                            <a class="hover-success" href="#"><strong> Bab II. Program/Kegiatan/SubKegiatan</strong></a>
+                            <a class="hover-success" href="#"><strong> Lampiran II. Program/Kegiatan/SubKegiatan</strong></a>
                           </p>
                           <p class="text-fade">Halaman review data P/K/S di OPD masing-masing untuk pelaporan LKPJ</p>
                         </div>
@@ -54,7 +54,7 @@
                      <span class="avatar avatar-lg bg-success-light rounded"><i class="fa fa-book"></i></span>
                       <div class="media-body">
                         <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Bab. III Capaian Indikator Kinerja Utama</strong></a>
+                          <a class="hover-success" href="#"><strong>Lampiran. III Capaian Indikator Kinerja Utama</strong></a>
                         </p>
                         <p class="text-fade">Halaman data urusan dan penglolaan informasi indikator utama dan capaian kinerja utama</p>
                       </div>
@@ -64,7 +64,7 @@
                       <span class="avatar avatar-lg bg-info-light rounded"><i class="fa fa-graduation-cap"></i></span>
                       <div class="media-body">
                         <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Bab. IV</strong></a>
+                          <a class="hover-success" href="#"><strong>Lampiran. IV</strong></a>
                         </p>
                         <p class="text-fade">Halaman pembuatan/perubahan paragraf kalimat penutup untuk laporan LKPJ</p>
                       </div>
