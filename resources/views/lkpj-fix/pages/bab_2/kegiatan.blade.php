@@ -41,7 +41,7 @@
                     <th>No</th>
                     <th>Kode</th>
                     <th>Nama Kegiatan</th>
-                    <th>Indikator</th>
+                    <th>Indikator Kegiatan Disesuaikan Dengan RENJA</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
