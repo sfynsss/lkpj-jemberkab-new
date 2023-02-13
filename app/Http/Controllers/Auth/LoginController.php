@@ -34,7 +34,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         // Session()->put('tahun_aktif', date('Y'));
-        Cookie::queue('tahun_aktif', date('Y'), 60 * 60 * 60 * 60 * 2);
+        Cookie::queue('tahun_aktif', '2022', 60 * 60 * 60 * 60 * 2);
         // if (Auth::user()->hak_akses == 'BIDANG') {
         //     return RouteServiceProvider::BIDANG;
         // } else if (Auth::user()->hak_akses == 'OPD') {
