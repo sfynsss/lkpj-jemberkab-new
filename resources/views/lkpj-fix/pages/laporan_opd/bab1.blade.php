@@ -299,6 +299,7 @@
         <br>
         <br>
         
+        @if(Auth::user()->hak_akses == "ADMIN")
         <div class="wrapper">
             <div class="col-12 text-justify">
                 <h5 style="font-size: 10pt; margin-bottom: 5; padding: 0; font-weight:700;">A. Latar Belakang</h5>
@@ -335,6 +336,7 @@
                 </p>
             </div>
         </div>
+        @endif
         <br>
         @if (count($indikator) > 0)
         <div class="wrapper">

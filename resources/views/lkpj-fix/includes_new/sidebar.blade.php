@@ -76,8 +76,10 @@
                   </span>
                   </a>
                   <ul class="treeview-menu">
+                     @if(Auth::user()->hak_akses == "ADMIN")
                      <li><a href="{{ route('opd', 'printcover') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cover</a></li>
                      <li><a href="{{ route('opd', 'katapengantar') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Kata Pengantar</a></li>
+                     @endif
                      <li><a href="{{ route('opd', 'bab1') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran I</a></li>
                      <li><a href="{{ route('opd', 'bab2') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Lampiran II</a></li>
                      @if(Auth::user()->hak_akses == "ADMIN")
