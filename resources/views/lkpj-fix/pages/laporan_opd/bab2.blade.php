@@ -316,7 +316,7 @@
       <div class="col-12 text-center nopadding">
         <p style="font-size: 14pt; margin: 0; padding: 0; font-weight:700;">BAB II</p>
         <p style="font-size: 14pt; margin: 0; padding: 0; font-weight:700;">PENYELENGGARAAN PROGRAM DAN KEGIATAN</p>
-        <p style="font-size: 14pt; margin: 0; padding: 0; font-weight:700;">{{ $data->nama_skpd }} TAHUN 2021</p>
+        <p style="font-size: 14pt; margin: 0; padding: 0; font-weight:700;">{{ $data->nama_skpd }} TAHUN {{ Cookie::get('tahun_aktif') }}</p>
       </div>
     </div>
     <br>
