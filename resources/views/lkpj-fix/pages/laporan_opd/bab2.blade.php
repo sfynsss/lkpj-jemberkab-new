@@ -328,8 +328,8 @@
     <br>
     <div class="wrapper">
       <div class="col-12 text-justify">
-        <p style="font-size: 10pt; margin: 0; padding: 0; font-weight:700;">{{ $alphabet[$i] }}. &nbsp;&nbsp;Penyelenggaraan Program dan Kegiatan Urusan {{ $urusan->nama_urusan }} 2021</p>
-        <p style="font-size: 10pt; margin: 0; padding: 0; ">Berikut disampaikan Penyelenggaraan Program dan Kegiatan Urusan {{ $urusan->nama_urusan }} Tahun 2021 sebagai berikut:</p>
+        <p style="font-size: 10pt; margin: 0; padding: 0; font-weight:700;">{{ $alphabet[$i] }}. &nbsp;&nbsp;Penyelenggaraan Program dan Kegiatan Urusan {{ $urusan->nama_urusan }} {{ Cookie::get('tahun_aktif') }}</p>
+        <p style="font-size: 10pt; margin: 0; padding: 0; ">Berikut disampaikan Penyelenggaraan Program dan Kegiatan Urusan {{ $urusan->nama_urusan }} Tahun {{ Cookie::get('tahun_aktif') }} sebagai berikut:</p>
       </div>
     </div>
     <br>
@@ -340,8 +340,8 @@
             <th class="text-left" width="10%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>kode</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Program/Kegiatan/SubKegiatan</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Indikator Kinerja Program/Kegiatan/SubKegiatan</b></span></th>
-            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Target Tahun 2021</b></span></th>
-            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Realisasi Tahun 2021</b></span></th>
+            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Target Tahun {{ Cookie::get('tahun_aktif') }}</b></span></th>
+            <th width="15%" rowspan="1" colspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Realisasi Tahun {{ Cookie::get('tahun_aktif') }}</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Permasalahan</b></span></th>
             <th width="15%" rowspan="2" align="center"><span style="font-size: 7pt;font-family:Tahoma;font-weight: normal;"><b>Solusi</b></span></th>
           </tr>
