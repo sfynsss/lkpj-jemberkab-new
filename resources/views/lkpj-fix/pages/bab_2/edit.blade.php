@@ -3,20 +3,20 @@
 @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
 @include('lkpj-fix.includes_new.alert')
 <div class="row">
-    <div class="col-12">
+   <div class="col-12">
       <div class="box">
-        <div class="box-body bg-img" style="background-image: url(../images/bg-5.png);" data-overlay-light="9">
-          <div class="d-lg-flex align-items-center justify-content-between">
-            <div class="d-md-flex align-items-center mb-30 mb-lg-0 w-p100">
-              <img src="{{ asset('LKPJ/images/svg-icon/color-svg/custom-14.svg') }}" class="img-fluid max-w-150" alt="" />
-              <div class="ms-30">
-                <h3 class="mb-10"><b>Bab. II Detail Sub-Kegiatan</b></h3>
-              </div>
+         <div class="box-body bg-img" style="background-image: url(../images/bg-5.png);" data-overlay-light="9">
+            <div class="d-lg-flex align-items-center justify-content-between">
+               <div class="d-md-flex align-items-center mb-30 mb-lg-0 w-p100">
+                  <img src="{{ asset('LKPJ/images/svg-icon/color-svg/custom-14.svg') }}" class="img-fluid max-w-150" alt="" />
+                  <div class="ms-30">
+                     <h3 class="mb-10"><b>Bab. II Detail Sub-Kegiatan</b></h3>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
+   </div>
 </div>
 <div class="row">
    <div class="col-12">
@@ -56,19 +56,70 @@
                         <div class="col-md-4">
                            <div class="form-group">
                               <label class="form-label">Target Kinerja</label>
-                              <input type="text" class="form-control" value="{{ $data[0]->target_sub_keg_1 }}"  name="target" placeholder="Isikan target" readonly>
+                              @php
+                              $target = 0;
+                              $satuan = 0;
+                              $pagu = 0;
+
+                              $capaian = 0;
+                              $serapan = 0;
+                              if (substr(Cookie::get('tahun_aktif'), 3) == 1) {
+                                 $target = $data[0]->target_sub_keg_1;
+                                 $satuan = $data[0]->satuan_target_sub_keg_1;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_1;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_1_1+$data[0]->realisasi_sub_keg_1_2+$data[0]->realisasi_sub_keg_1_3+$data[0]->realisasi_sub_keg_1_4;
+                                 $serapan = $data[0]->serapan_sub_keg_1_1+$data[0]->serapan_sub_keg_1_2+$data[0]->serapan_sub_keg_1_3+$data[0]->serapan_sub_keg_1_4;
+                              } else if (substr(Cookie::get('tahun_aktif'), 3) == 2) {
+                                 $target = $data[0]->target_sub_keg_2;
+                                 $satuan = $data[0]->satuan_target_sub_keg_2;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_2;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_2_1+$data[0]->realisasi_sub_keg_2_2+$data[0]->realisasi_sub_keg_2_3+$data[0]->realisasi_sub_keg_2_4;
+                                 $serapan = $data[0]->serapan_sub_keg_2_1+$data[0]->serapan_sub_keg_2_2+$data[0]->serapan_sub_keg_2_3+$data[0]->serapan_sub_keg_2_4;
+                              } else if (substr(Cookie::get('tahun_aktif'), 3) == 3) {
+                                 $target = $data[0]->target_sub_keg_3;
+                                 $satuan = $data[0]->satuan_target_sub_keg_3;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_3;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_3_1+$data[0]->realisasi_sub_keg_3_2+$data[0]->realisasi_sub_keg_3_3+$data[0]->realisasi_sub_keg_3_4;
+                                 $serapan = $data[0]->serapan_sub_keg_3_1+$data[0]->serapan_sub_keg_3_2+$data[0]->serapan_sub_keg_3_3+$data[0]->serapan_sub_keg_3_4;
+                              } else if (substr(Cookie::get('tahun_aktif'), 3) == 4) {
+                                 $target = $data[0]->target_sub_keg_4;
+                                 $satuan = $data[0]->satuan_target_sub_keg_4;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_4;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_4_1+$data[0]->realisasi_sub_keg_4_2+$data[0]->realisasi_sub_keg_4_3+$data[0]->realisasi_sub_keg_4_4;
+                                 $serapan = $data[0]->serapan_sub_keg_4_1+$data[0]->serapan_sub_keg_4_2+$data[0]->serapan_sub_keg_4_3+$data[0]->serapan_sub_keg_4_4;
+                              } else if (substr(Cookie::get('tahun_aktif'), 3) == 5) {
+                                 $target = $data[0]->target_sub_keg_5;
+                                 $satuan = $data[0]->satuan_target_sub_keg_5;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_5;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_5_1+$data[0]->realisasi_sub_keg_5_2+$data[0]->realisasi_sub_keg_5_3+$data[0]->realisasi_sub_keg_5_4;
+                                 $serapan = $data[0]->serapan_sub_keg_5_1+$data[0]->serapan_sub_keg_5_2+$data[0]->serapan_sub_keg_5_3+$data[0]->serapan_sub_keg_5_4;
+                              } else if (substr(Cookie::get('tahun_aktif'), 3) == 6) {
+                                 $target = $data[0]->target_sub_keg_6;
+                                 $satuan = $data[0]->satuan_target_sub_keg_6;
+                                 $pagu = $data[0]->pagu_indikatif_sub_keg_6;
+
+                                 $capaian = $data[0]->realisasi_sub_keg_6_1+$data[0]->realisasi_sub_keg_6_2+$data[0]->realisasi_sub_keg_6_3+$data[0]->realisasi_sub_keg_6_4;
+                                 $serapan = $data[0]->serapan_sub_keg_6_1+$data[0]->serapan_sub_keg_6_2+$data[0]->serapan_sub_keg_6_3+$data[0]->serapan_sub_keg_6_4;
+                              }
+                              @endphp
+                              <input type="text" class="form-control" value="{{ $target }}"  name="target" placeholder="Isikan target" readonly>
                            </div>
                         </div>
                         <div class="col-md-2">
                            <div class="form-group">
                               <label class="form-label">Satuan</label>
-                              <input type="text" class="form-control" value="{{ $data[0]->satuan_target_sub_keg_1 }}" name="satuan" placeholder="Tulis satuan kinerja" readonly>
+                              <input type="text" class="form-control" value="{{ $satuan }}" name="satuan" placeholder="Tulis satuan kinerja" readonly>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
                               <label class="form-label">Target Anggaran</label>
-                              <input type="text" class="form-control" value="{{ $data[0]->pagu_indikatif_sub_keg_1 }}" name="target_anggaran" placeholder="Tulis target anggaran" readonly>
+                              <input type="text" class="form-control" value="{{ $pagu }}" name="target_anggaran" placeholder="Tulis target anggaran" readonly>
                            </div>
                         </div>
                      </div>
@@ -80,19 +131,19 @@
                         <div class="col-md-4">
                            <div class="form-group">
                               <label class="form-label">Capaian Kinerja</label>
-                              <input type="text" class="form-control" value="{{ ($data[0]->realisasi_sub_keg_1_1+$data[0]->realisasi_sub_keg_1_2+$data[0]->realisasi_sub_keg_1_3+$data[0]->realisasi_sub_keg_1_4) }}"  name="capaian" placeholder="Isikan capaian" readonly>
+                              <input type="text" class="form-control" value="{{ $capaian }}"  name="capaian" placeholder="Isikan capaian" readonly>
                            </div>
                         </div>
                         <div class="col-md-2">
                            <div class="form-group">
                               <label class="form-label">Satuan</label>
-                              <input type="text" class="form-control" value="{{ $data[0]->satuan_target_sub_keg_1 }}"  name="target_capaian" placeholder="Tulis target capaian" readonly>
+                              <input type="text" class="form-control" value="{{ $satuan }}"  name="target_capaian" placeholder="Tulis target capaian" readonly>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
                               <label class="form-label">Capaian Anggaran</label>
-                              <input type="text" class="form-control" value="{{ ($data[0]->serapan_sub_keg_1_1+$data[0]->serapan_sub_keg_1_2+$data[0]->serapan_sub_keg_1_3+$data[0]->serapan_sub_keg_1_4) }}"  name="capaian" placeholder="Isikan capaian" readonly>
+                              <input type="text" class="form-control" value="{{ $serapan }}"  name="capaian" placeholder="Isikan capaian" readonly>
                            </div>
                         </div>
                      </div>
@@ -152,12 +203,12 @@
             <!-- /.box-body -->
             <div class="box-footer">
                <a href="{{ url()->previous() }}" class="btn btn-warning me-1">
-               <i class="ti-trash"></i> Kembali
+                  <i class="ti-trash"></i> Kembali
                </a>
                @if (Auth::user()->hak_akses != 'BIDANG')
                <button type="submit" class="btn btn-primary">
-                <i class="ti-save-alt"></i> Simpan
-                </button>
+                  <i class="ti-save-alt"></i> Simpan
+               </button>
                @endif
             </div>
          </form>
@@ -235,29 +286,29 @@
                <div class="form-group">
                   <label><b>Masalah</b></label>
                   <textarea class="form-control" name="masalah" placeholder="Tulis masalah" readonly>
-                  @if (isset($data[0]->masalah_sub_keg_1_4))
-                  {{ $data[0]->masalah_sub_keg_1_4 }}
-                  @elseif (isset($data[0]->masalah_sub_keg_1_3))
-                  {{ $data[0]->masalah_sub_keg_1_3 }}
-                  @elseif (isset($data[0]->masalah_sub_keg_1_2))
-                  {{ $data[0]->masalah_sub_keg_1_2 }}
-                  @elseif (isset($data[0]->masalah_sub_keg_1_1))
-                  {{ $data[0]->masalah_sub_keg_1_1 }}
-                  @endif
+                     @if (isset($data[0]->masalah_sub_keg_1_4))
+                     {{ $data[0]->masalah_sub_keg_1_4 }}
+                     @elseif (isset($data[0]->masalah_sub_keg_1_3))
+                     {{ $data[0]->masalah_sub_keg_1_3 }}
+                     @elseif (isset($data[0]->masalah_sub_keg_1_2))
+                     {{ $data[0]->masalah_sub_keg_1_2 }}
+                     @elseif (isset($data[0]->masalah_sub_keg_1_1))
+                     {{ $data[0]->masalah_sub_keg_1_1 }}
+                     @endif
                   </textarea>
                </div>
                <div class="form-group">
                   <label><b>Solusi</b></label>
                   <textarea class="form-control" name="solusi" placeholder="Tulis solusi" readonly>
-                  @if (isset($data[0]->solusi_sub_keg_1_4))
-                  {{ $data[0]->solusi_sub_keg_1_4 }}
-                  @elseif (isset($data[0]->solusi_sub_keg_1_3))
-                  {{ $data[0]->solusi_sub_keg_1_3 }}
-                  @elseif (isset($data[0]->solusi_sub_keg_1_3))
-                  {{ $data[0]->solusi_sub_keg_1_3 }}
-                  @elseif (isset($data[0]->solusi_sub_keg_1_1))
-                  {{ $data[0]->solusi_sub_keg_1_1 }}
-                  @endif
+                     @if (isset($data[0]->solusi_sub_keg_1_4))
+                     {{ $data[0]->solusi_sub_keg_1_4 }}
+                     @elseif (isset($data[0]->solusi_sub_keg_1_3))
+                     {{ $data[0]->solusi_sub_keg_1_3 }}
+                     @elseif (isset($data[0]->solusi_sub_keg_1_3))
+                     {{ $data[0]->solusi_sub_keg_1_3 }}
+                     @elseif (isset($data[0]->solusi_sub_keg_1_1))
+                     {{ $data[0]->solusi_sub_keg_1_1 }}
+                     @endif
                   </textarea>
                </div>
                <h4 class="card-title">D. Program Unggulan dan Inovasi</h4>
