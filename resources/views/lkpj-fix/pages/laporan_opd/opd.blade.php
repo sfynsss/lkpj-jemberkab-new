@@ -53,11 +53,11 @@
                           @if (Auth::user()->hak_akses != "OPD")
                           <a href="{{ route(''.$judul.'', $skpd->id) }}" class="btn bg-gradient-secondary">Print</a>
                           @else
-                            {{-- @if ($sts == 1) --}}
+                            @if ($sts == 1)
                             <a href="{{ route(''.$judul.'', $skpd->id) }}" class="btn bg-gradient-secondary">Print</a>
-                            {{-- @else --}}
-                            {{-- <button type="button" class="btn bg-gradient-danger" data-toggle="modal" data-target="#info-alert-modal">Print</button>
-                            @endif --}}
+                            @else
+                            <button type="button" class="btn bg-gradient-danger" data-toggle="modal" data-target="#info-alert-modal">Print</button>
+                            @endif
                           @endif
                         </td>
                       </tr>
