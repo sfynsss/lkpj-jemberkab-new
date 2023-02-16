@@ -50,7 +50,7 @@
                         <td class="text-center">{{ $skpd->kode_skpd }}</td>
                         <td>{{ $skpd->nama_skpd }}</td>
                         <td class="text-center">
-                          @if (Auth::user()->hak_akses != "OPD")
+                          @if (Auth::user()->hak_akses != "OPD" || Auth::user()->username == "501501")
                           <a href="{{ route(''.$judul.'', $skpd->id) }}" class="btn bg-gradient-secondary">Print</a>
                           @else
                             @if ($sts == 1)
