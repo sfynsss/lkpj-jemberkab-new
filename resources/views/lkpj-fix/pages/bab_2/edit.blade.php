@@ -63,6 +63,8 @@
 
                               $capaian = 0;
                               $serapan = 0;
+                              $masalah = "";
+                              $solusi = "";
                               if (substr(Cookie::get('tahun_aktif'), 3) == 1) {
                                  $target = $data[0]->target_sub_keg_1;
                                  $satuan = $data[0]->satuan_target_sub_keg_1;
@@ -70,6 +72,25 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_1_1+$data[0]->realisasi_sub_keg_1_2+$data[0]->realisasi_sub_keg_1_3+$data[0]->realisasi_sub_keg_1_4;
                                  $serapan = $data[0]->serapan_sub_keg_1_1+$data[0]->serapan_sub_keg_1_2+$data[0]->serapan_sub_keg_1_3+$data[0]->serapan_sub_keg_1_4;
+                                 if (isset($data[0]->masalah_sub_keg_1_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_1_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_1_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_1_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_1_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_1_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_1_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_1_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_1_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_1_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_1_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_1_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_1_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_1_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_1_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_1_1;
+                                 }
                               } else if (substr(Cookie::get('tahun_aktif'), 3) == 2) {
                                  $target = $data[0]->target_sub_keg_2;
                                  $satuan = $data[0]->satuan_target_sub_keg_2;
@@ -77,6 +98,26 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_2_1+$data[0]->realisasi_sub_keg_2_2+$data[0]->realisasi_sub_keg_2_3+$data[0]->realisasi_sub_keg_2_4;
                                  $serapan = $data[0]->serapan_sub_keg_2_1+$data[0]->serapan_sub_keg_2_2+$data[0]->serapan_sub_keg_2_3+$data[0]->serapan_sub_keg_2_4;
+
+                                 if (isset($data[0]->masalah_sub_keg_2_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_2_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_2_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_2_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_2_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_2_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_2_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_2_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_2_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_2_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_2_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_2_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_2_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_2_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_2_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_2_1;
+                                 }
                               } else if (substr(Cookie::get('tahun_aktif'), 3) == 3) {
                                  $target = $data[0]->target_sub_keg_3;
                                  $satuan = $data[0]->satuan_target_sub_keg_3;
@@ -84,6 +125,26 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_3_1+$data[0]->realisasi_sub_keg_3_2+$data[0]->realisasi_sub_keg_3_3+$data[0]->realisasi_sub_keg_3_4;
                                  $serapan = $data[0]->serapan_sub_keg_3_1+$data[0]->serapan_sub_keg_3_2+$data[0]->serapan_sub_keg_3_3+$data[0]->serapan_sub_keg_3_4;
+
+                                 if (isset($data[0]->masalah_sub_keg_3_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_3_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_3_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_3_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_3_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_3_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_3_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_3_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_3_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_3_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_3_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_3_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_3_2)){
+                                    $solusi = $data[0]->solusi_sub_keg_3_2;
+                                 } else if (isset($data[0]->solusi_sub_keg_3_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_3_1;
+                                 }
                               } else if (substr(Cookie::get('tahun_aktif'), 3) == 4) {
                                  $target = $data[0]->target_sub_keg_4;
                                  $satuan = $data[0]->satuan_target_sub_keg_4;
@@ -91,6 +152,26 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_4_1+$data[0]->realisasi_sub_keg_4_2+$data[0]->realisasi_sub_keg_4_3+$data[0]->realisasi_sub_keg_4_4;
                                  $serapan = $data[0]->serapan_sub_keg_4_1+$data[0]->serapan_sub_keg_4_2+$data[0]->serapan_sub_keg_4_3+$data[0]->serapan_sub_keg_4_4;
+
+                                 if (isset($data[0]->masalah_sub_keg_4_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_4_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_4_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_4_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_4_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_4_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_4_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_4_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_4_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_4_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_4_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_4_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_4_2)){
+                                    $solusi = $data[0]->solusi_sub_keg_4_2;
+                                 } else if (isset($data[0]->solusi_sub_keg_4_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_4_1;
+                                 }
                               } else if (substr(Cookie::get('tahun_aktif'), 3) == 5) {
                                  $target = $data[0]->target_sub_keg_5;
                                  $satuan = $data[0]->satuan_target_sub_keg_5;
@@ -98,6 +179,26 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_5_1+$data[0]->realisasi_sub_keg_5_2+$data[0]->realisasi_sub_keg_5_3+$data[0]->realisasi_sub_keg_5_4;
                                  $serapan = $data[0]->serapan_sub_keg_5_1+$data[0]->serapan_sub_keg_5_2+$data[0]->serapan_sub_keg_5_3+$data[0]->serapan_sub_keg_5_4;
+
+                                 if (isset($data[0]->masalah_sub_keg_5_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_5_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_5_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_5_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_5_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_5_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_5_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_5_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_5_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_5_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_5_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_5_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_5_2)){
+                                    $solusi = $data[0]->solusi_sub_keg_5_2;
+                                 } else if (isset($data[0]->solusi_sub_keg_5_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_5_1;
+                                 }
                               } else if (substr(Cookie::get('tahun_aktif'), 3) == 6) {
                                  $target = $data[0]->target_sub_keg_6;
                                  $satuan = $data[0]->satuan_target_sub_keg_6;
@@ -105,6 +206,26 @@
 
                                  $capaian = $data[0]->realisasi_sub_keg_6_1+$data[0]->realisasi_sub_keg_6_2+$data[0]->realisasi_sub_keg_6_3+$data[0]->realisasi_sub_keg_6_4;
                                  $serapan = $data[0]->serapan_sub_keg_6_1+$data[0]->serapan_sub_keg_6_2+$data[0]->serapan_sub_keg_6_3+$data[0]->serapan_sub_keg_6_4;
+
+                                 if (isset($data[0]->masalah_sub_keg_6_4)){
+                                    $masalah = $data[0]->masalah_sub_keg_6_4;
+                                 } else if (isset($data[0]->masalah_sub_keg_6_3)){
+                                    $masalah = $data[0]->masalah_sub_keg_6_3;
+                                 } else if (isset($data[0]->masalah_sub_keg_6_2)){
+                                    $masalah = $data[0]->masalah_sub_keg_6_2;
+                                 } else if (isset($data[0]->masalah_sub_keg_6_1)){
+                                    $masalah = $data[0]->masalah_sub_keg_6_1;
+                                 }
+
+                                 if (isset($data[0]->solusi_sub_keg_6_4)){
+                                    $solusi = $data[0]->solusi_sub_keg_6_4;
+                                 } else if (isset($data[0]->solusi_sub_keg_6_3)){
+                                    $solusi = $data[0]->solusi_sub_keg_6_3;
+                                 } else if (isset($data[0]->solusi_sub_keg_6_2)){
+                                    $solusi = $data[0]->solusi_sub_keg_6_2;
+                                 } else if (isset($data[0]->solusi_sub_keg_6_1)){
+                                    $solusi = $data[0]->solusi_sub_keg_6_1;
+                                 }
                               }
                               @endphp
                               <input type="text" class="form-control" value="{{ $target }}"  name="target" placeholder="Isikan target" readonly>
@@ -155,14 +276,14 @@
                   <div class="col-6">
                      <div class="form-group">
                         <label class="form-label">Masalah</label>
-                        <textarea class="form-control" name="masalah" placeholder="Tulis masalah" readonly>@if (isset($data[0]->masalah_sub_keg_1_4)){{ $data[0]->masalah_sub_keg_1_4 }}@elseif (isset($data[0]->masalah_sub_keg_1_3)){{ $data[0]->masalah_sub_keg_1_3 }}@elseif (isset($data[0]->masalah_sub_keg_1_2)){{ $data[0]->masalah_sub_keg_1_2 }}@elseif (isset($data[0]->masalah_sub_keg_1_1)){{ $data[0]->masalah_sub_keg_1_1 }}@endif
+                        <textarea class="form-control" name="masalah" placeholder="Tulis masalah" readonly>{{ $masalah }}
                         </textarea>
                      </div>
                   </div>
                   <div class="col-6">
                      <div class="form-group">
                         <label class="form-label">Solusi</label>
-                        <textarea class="form-control" name="solusi" placeholder="Tulis solusi" readonly>@if (isset($data[0]->solusi_sub_keg_1_4)){{ $data[0]->solusi_sub_keg_1_4 }}@elseif (isset($data[0]->solusi_sub_keg_1_3)){{ $data[0]->solusi_sub_keg_1_3 }}@elseif (isset($data[0]->solusi_sub_keg_1_3)){{ $data[0]->solusi_sub_keg_1_3 }}@elseif (isset($data[0]->solusi_sub_keg_1_1)){{ $data[0]->solusi_sub_keg_1_1 }}@endif
+                        <textarea class="form-control" name="solusi" placeholder="Tulis solusi" readonly>{{ $solusi }}
                         </textarea>
                      </div>
                   </div>

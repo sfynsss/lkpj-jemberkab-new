@@ -111,7 +111,7 @@ class LaporanOPDController extends Controller
         // $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
         // $data_urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         // print_r($data);
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2_total', compact('data'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2_total_baru', compact('data'));
         return $pdf->stream();
     }
 
