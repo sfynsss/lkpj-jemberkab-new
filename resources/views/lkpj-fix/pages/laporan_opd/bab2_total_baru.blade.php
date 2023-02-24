@@ -354,12 +354,20 @@
             </tr>
 
             @foreach($urusan->BidangUrusan as $bidang)
+            @if(isset($bidang->Program[0]) && $bidang->Program[0]->id_skpd == $skpd->id)
+            <tr>
+              <td class="text-left"><span style="font-size: 6pt; margin-left:7px;font-weight:bold;font-family: Arial;">{{ $bidang->kode_bidang_urusan }}</span></td>
+              <td colspan="11" class="text-left"><span style="font-size: 6pt;font-weight:bold;font-family: Arial;">{{ $bidang->nama_bidang_urusan }}</span></td>
+            </tr>
+            @endif
+
             @foreach($bidang->Program as $program)
             @if($program->id_skpd == $skpd->id)
 
             <tr>
               <td class="text-left"><span style="font-size: 6pt; margin-left:7px;font-weight:bold;font-family: Arial;">{{ $program->kode_program }}</span></td>
-              <td colspan="11" class="text-left"><span style="font-size: 6pt;font-weight:bold;font-family: Arial;">{{ $program->nama_program }}</span></td>
+              <td colspan="2" class="text-left"><span style="font-size: 6pt;font-weight:bold;font-family: Arial;">{{ $program->nama_program }}</span></td>
+              <td colspan="9" class="text-left"><span style="font-size: 6pt;font-weight:bold;font-family: Arial;">@if ($program->id_sasaran != 0) {{ App\SasaranBaru::where('id', $program->id_sasaran)->pluck('nama_sasaran')->first() }} @endif</span></td>
             </tr>
 
             @foreach($program->Kegiatan as $kegiatan)
