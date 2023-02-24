@@ -105,7 +105,7 @@ class LaporanOPDController extends Controller
 
     public function bab2_total()
     {
-        $data = Skpd::where('id', '>=', 61)->where('id', '<=', 73)->get();
+        $data = Skpd::where('id', '>=', 0)->where('id', '<=', 73)->get();
         // $tmp_prog = Program::where('id_skpd', $tmp_id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
         // // $bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->get();
         // $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
