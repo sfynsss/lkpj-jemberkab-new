@@ -375,8 +375,6 @@
                         <td class="text-left"><span style="font-size: 6pt; margin-left:7px;font-family: Arial;">{{ $kegiatan->kode_kegiatan }}</span></td>
                         <td colspan="11" class="text-left"><span style="font-size: 6pt;font-family: Arial;">{{ $kegiatan->nama_kegiatan }}</span></td>
                     </tr>
-                    @endforeach
-                    
                     @foreach ($kegiatan->SubKegiatan as $sub_kegiatan)
                     @php
                     $realisasi = 0;
@@ -472,6 +470,7 @@
                         @endif
                     </tr>
                     @endif
+                    @endforeach
                     @endforeach
                     @endif
                     @endforeach
