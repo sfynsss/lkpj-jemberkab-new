@@ -59,34 +59,45 @@
       <td class="text-left">{{ $kegiatan->kode_kegiatan }}</td>
       <td colspan="11" class="text-left">{{ $kegiatan->nama_kegiatan }}</td>
     </tr>
-    @endforeach
-    
     @foreach ($kegiatan->SubKegiatan as $sub_kegiatan)
     @php
     $realisasi = 0;
     $serapan = 0;
+    $tmp_pagu = 0;
     
     if (substr(Cookie::get('tahun_aktif'), 3) == 1) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_1_1+$sub_kegiatan->realisasi_sub_keg_1_2+$sub_kegiatan->realisasi_sub_keg_1_3+$sub_kegiatan->realisasi_sub_keg_1_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_1_1+$sub_kegiatan->serapan_sub_keg_1_2+$sub_kegiatan->serapan_sub_keg_1_3+$sub_kegiatan->serapan_sub_keg_1_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_1;
     } else if (substr(Cookie::get('tahun_aktif'), 3) == 2) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_2_1+$sub_kegiatan->realisasi_sub_keg_2_2+$sub_kegiatan->realisasi_sub_keg_2_3+$sub_kegiatan->realisasi_sub_keg_2_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_2_1+$sub_kegiatan->serapan_sub_keg_2_2+$sub_kegiatan->serapan_sub_keg_2_3+$sub_kegiatan->serapan_sub_keg_2_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_2;
     } else if (substr(Cookie::get('tahun_aktif'), 3) == 3) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_3_1+$sub_kegiatan->realisasi_sub_keg_3_2+$sub_kegiatan->realisasi_sub_keg_3_3+$sub_kegiatan->realisasi_sub_keg_3_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_3_1+$sub_kegiatan->serapan_sub_keg_3_2+$sub_kegiatan->serapan_sub_keg_3_3+$sub_kegiatan->serapan_sub_keg_3_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_3;
     } else if (substr(Cookie::get('tahun_aktif'), 3) == 4) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_4_1+$sub_kegiatan->realisasi_sub_keg_4_2+$sub_kegiatan->realisasi_sub_keg_4_3+$sub_kegiatan->realisasi_sub_keg_4_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_4_1+$sub_kegiatan->serapan_sub_keg_4_2+$sub_kegiatan->serapan_sub_keg_4_3+$sub_kegiatan->serapan_sub_keg_4_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_4;
     } else if (substr(Cookie::get('tahun_aktif'), 3) == 5) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_5_1+$sub_kegiatan->realisasi_sub_keg_5_2+$sub_kegiatan->realisasi_sub_keg_5_3+$sub_kegiatan->realisasi_sub_keg_5_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_5_1+$sub_kegiatan->serapan_sub_keg_5_2+$sub_kegiatan->serapan_sub_keg_5_3+$sub_kegiatan->serapan_sub_keg_5_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_5;
     } else if (substr(Cookie::get('tahun_aktif'), 3) == 6) {
       $realisasi = $sub_kegiatan->realisasi_sub_keg_6_1+$sub_kegiatan->realisasi_sub_keg_6_2+$sub_kegiatan->realisasi_sub_keg_6_3+$sub_kegiatan->realisasi_sub_keg_6_4;
       $serapan = $sub_kegiatan->serapan_sub_keg_6_1+$sub_kegiatan->serapan_sub_keg_6_2+$sub_kegiatan->serapan_sub_keg_6_3+$sub_kegiatan->serapan_sub_keg_6_4;
+
+      $tmp_pagu = $sub_kegiatan->pagu_indikatif_sub_keg_6;
     }
     @endphp
-    @if($realisasi != 0) 
+    @if($tmp_pagu != 0) 
     <tr>
       <td class="text-left text-top">{{ $sub_kegiatan->kode_sub_keg }}</td>
       <td colspan="2" class="text-left text-top">{{ $sub_kegiatan->nama_sub_keg }}</td>
@@ -143,6 +154,7 @@
       @endif
     </tr>
     @endif
+    @endforeach
     @endforeach
     @endif
     @endforeach
