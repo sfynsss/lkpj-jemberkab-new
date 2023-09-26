@@ -14,6 +14,6 @@ class PenutupOPD extends Model
 
     public function Skpd()
     {
-    	return $this->belongsTo('App\Skpd', 'id_skpd', 'id');
+    	return $this->belongsTo('App\Skpd', 'skpd_id', 'id');
     }
 }

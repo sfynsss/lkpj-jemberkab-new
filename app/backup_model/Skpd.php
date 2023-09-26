@@ -12,6 +12,6 @@ class Skpd extends Model
 
     public function File()
     {
-        return $this->hasMany('App\FileUpload', 'id_skpd', 'id');
+        return $this->hasMany('App\FileUpload', 'skpd_id', 'id');
     }
 }

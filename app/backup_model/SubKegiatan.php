@@ -15,7 +15,7 @@ class SubKegiatan extends Model
 
     public function Kegiatan()
     {
-        return $this->belongsTo('App\Kegiatan', 'id_kegiatan', 'id');
+        return $this->belongsTo('App\Kegiatan', 'kegiatan_id', 'id');
     }
 
 }

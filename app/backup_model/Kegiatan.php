@@ -10,6 +10,6 @@ class Kegiatan extends Model
 
     public function SubKegiatan()
     {
-    	return $this->hasMany('App\SubKegiatan', 'id_kegiatan', 'id');
+    	return $this->hasMany('App\SubKegiatan', 'kegiatan_id', 'id');
     }
 }

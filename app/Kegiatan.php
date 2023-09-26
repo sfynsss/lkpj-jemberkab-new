@@ -10,16 +10,16 @@ class Kegiatan extends Model
 
     public function Program()
     {
-    	return $this->belongsTo('App\Program', 'id_program', 'id');
+    	return $this->belongsTo('App\Program', 'program_id', 'id');
     }
 
     public function SubKegiatan()
     {
-    	return $this->hasMany('App\SubKegiatan', 'id_kegiatan', 'id');
+    	return $this->hasMany('App\SubKegiatan', 'kegiatan_id', 'id');
     }
 
     public function Skpd()
     {
-    	return $this->belongsTo('App\Skpd', 'id_skpd', 'id');
+    	return $this->belongsTo('App\Skpd', 'skpd_id', 'id');
     }
 }

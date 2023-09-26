@@ -35,19 +35,19 @@ class HomeController extends Controller
             return view('lkpj-fix.pages.home.home', compact('data'));
 
         } else if(Auth::user()->hak_akses == 'OPD') {
-            $data = Program::where('id_skpd', Auth::user()->id_skpd)->get();
+            $data = Program::where('skpd_id', Auth::user()->skpd_id)->get();
             return view('lkpj-fix.pages.home', compact('data')); 
 
         } else if (Auth::user()->hak_akses == 'BIDANG') {
-            // $data = Skpd::rightJoin('users', 'skpd.id', 'users.id_skpd')->where('skpd.id_bidang', Auth::user()->id)->get();
-            $data = User::join('skpd', 'users.id_skpd', 'skpd.id')->where('skpd.id_bidang', Auth::user()->id)->get();
+            // $data = Skpd::rightJoin('users', 'skpd.id', 'users.skpd_id')->where('skpd.id_bidang', Auth::user()->id)->get();
+            $data = User::join('skpd', 'users.skpd_id', 'skpd.id')->where('skpd.id_bidang', Auth::user()->id)->get();
             return view('lkpj-fix.pages.home.home', compact('data'));
         }
     }
 
     public function verif($id)
     {
-        $data = User::where('id_skpd', $id)->update([
+        $data = User::where('skpd_id', $id)->update([
             'sts_lkpj' => 1
         ]);
 
@@ -58,23 +58,23 @@ class HomeController extends Controller
         }
     }
 
-    public function program($id_skpd)
+    public function program($skpd_id)
     {
-        $data = Program::where('id_skpd', $id_skpd)->get();
+        $data = Program::where('skpd_id', $skpd_id)->get();
 
         return view('lkpj-fix.pages.home.program', compact('data'));
     }
 
-    public function kegiatan($id_program)
+    public function kegiatan($program_id)
     {
-        $data = Kegiatan::where('id_program', $id_program)->get();
+        $data = Kegiatan::where('program_id', $program_id)->get();
 
         return view('lkpj-fix.pages.home.kegiatan', compact('data'));
     }
 
-    public function sub_kegiatan($id_kegiatan)
+    public function sub_kegiatan($kegiatan_id)
     {
-        $data = SubKegiatan::where('id_kegiatan', $id_kegiatan)->get();
+        $data = SubKegiatan::where('kegiatan_id', $kegiatan_id)->get();
 
         return view('lkpj-fix.pages.home.sub_kegiatan', compact('data'));
     }

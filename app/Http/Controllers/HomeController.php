@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function testPrint()
     {
-        $data = User::join('skpd', 'skpd.id', '=', 'users.id_skpd')->get();
+        $data = User::join('skpd', 'skpd.id', '=', 'users.skpd_id')->get();
 
         //Import Dependencies
         

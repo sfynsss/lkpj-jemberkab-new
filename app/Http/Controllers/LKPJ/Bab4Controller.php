@@ -20,7 +20,7 @@ class Bab4Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -30,7 +30,7 @@ class Bab4Controller extends Controller
 
     public function penutup($id)
     {
-        $data = PenutupOPD::with('Skpd')->where('id_skpd', $id)->first();
+        $data = PenutupOPD::with('Skpd')->where('skpd_id', $id)->first();
         
         return view('lkpj-fix.pages.bab_4.penutup', compact('data'));
     }
@@ -46,7 +46,7 @@ class Bab4Controller extends Controller
 
     public function penutupAdmin()
     {
-        $data = PenutupOPD::with('Skpd')->where('id_skpd', 999)->first();
+        $data = PenutupOPD::with('Skpd')->where('skpd_id', 999)->first();
         return view('lkpj-fix.pages.bab_4.penutup_admin', compact('data'));
     }
 

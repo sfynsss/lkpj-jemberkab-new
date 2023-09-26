@@ -12,16 +12,16 @@ class Skpd extends Model
 
     public function File()
     {
-        return $this->hasMany('App\FileUpload', 'id_skpd', 'id');
+        return $this->hasMany('App\FileUpload', 'skpd_id', 'id');
     }
 
     public function Program()
     {
-        return $this->hasMany('App\Program', 'id_skpd', 'id');
+        return $this->hasMany('App\Program', 'skpd_id', 'id');
     }
 
     public function User()
     {
-        return $this->belongsTo('App\User', 'id', 'id_skpd');
+        return $this->belongsTo('App\User', 'id', 'skpd_id');
     }
 }

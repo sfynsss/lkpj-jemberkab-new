@@ -33,7 +33,7 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
             if(Auth::user()->sts_lkpj == 1) {
                 $sts = 1;    
             } else {
@@ -53,10 +53,10 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         } 
 
-        $data = User::with('Skpd')->where('id_skpd', $tmp_id)->first();
+        $data = User::with('Skpd')->where('skpd_id', $tmp_id)->first();
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.kata_pengantar', compact('data'));
         return $pdf->stream();
     }
@@ -67,18 +67,18 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
 
         $data = Skpd::where('id', $tmp_id)->first();
-        $data_urusan = IndikatorDetail::select('id_urusan')->where('id_skpd', $tmp_id)->groupBy('id_urusan')->get();
-        $indikator = IndikatorDetail::where('id_skpd', $tmp_id)->get();
+        $data_urusan = IndikatorDetail::select('urusan_id')->where('skpd_id', $tmp_id)->groupBy('urusan_id')->get();
+        $indikator = IndikatorDetail::where('skpd_id', $tmp_id)->get();
 
-        $sub_kegiatan = SubKegiatan::where('id_skpd', $tmp_id)->where('unggulan', 1)->get();
-        $id_kegiatan = SubKegiatan::where('id_skpd', $tmp_id)->where('unggulan', 1)->groupBy('id_kegiatan')->pluck('id_kegiatan');
-        $kegiatan = Kegiatan::whereIn('id', $id_kegiatan)->get();
-        $id_program = Kegiatan::whereIn('id', $id_kegiatan)->groupBy('id_program')->pluck('id_program');
-        $program = Program::whereIn('id', $id_program)->get();
+        $sub_kegiatan = SubKegiatan::where('skpd_id', $tmp_id)->where('unggulan', 1)->get();
+        $kegiatan_id = SubKegiatan::where('skpd_id', $tmp_id)->where('unggulan', 1)->groupBy('kegiatan_id')->pluck('kegiatan_id');
+        $kegiatan = Kegiatan::whereIn('id', $kegiatan_id)->get();
+        $program_id = Kegiatan::whereIn('id', $kegiatan_id)->groupBy('program_id')->pluck('program_id');
+        $program = Program::whereIn('id', $program_id)->get();
 
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.bab1', compact('data', 'data_urusan', 'indikator', 'program', 'kegiatan', 'sub_kegiatan'));
         return $pdf->stream();
@@ -90,13 +90,13 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
 
         $data = Skpd::where('id', $tmp_id)->first();
-        $tmp_prog = Program::where('id_skpd', $tmp_id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
+        $tmp_prog = Program::where('skpd_id', $tmp_id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
         // $bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->get();
-        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $data_urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         // print_r($data);
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2', compact('data', 'data_urusan'));
@@ -106,9 +106,9 @@ class LaporanOPDController extends Controller
     public function bab2_total()
     {
         $data = Skpd::where('id', '>=', 0)->where('id', '<=', 73)->get();
-        // $tmp_prog = Program::where('id_skpd', $tmp_id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
+        // $tmp_prog = Program::where('skpd_id', $tmp_id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
         // // $bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->get();
-        // $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        // $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         // $data_urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         // print_r($data);
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2_total_baru', compact('data'));
@@ -126,14 +126,14 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
 
         $data = Skpd::where('id', $tmp_id)->first();
         // $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
-        $urusan = IndikatorUtamaDetail::select('id_urusan')->where('id_skpd', $tmp_id)->groupBy('id_urusan')->get();
-        $bidang = IndikatorUtamaDetail::select('id_bidang_urusan')->where('id_skpd', $tmp_id)->groupBy('id_bidang_urusan')->get();
-        $indikator = IndikatorUtamaDetail::where('id_skpd', $tmp_id)->get();
+        $urusan = IndikatorUtamaDetail::select('urusan_id')->where('skpd_id', $tmp_id)->groupBy('urusan_id')->get();
+        $bidang = IndikatorUtamaDetail::select('bidang_urusan_id')->where('skpd_id', $tmp_id)->groupBy('bidang_urusan_id')->get();
+        $indikator = IndikatorUtamaDetail::where('skpd_id', $tmp_id)->get();
 
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'potrait')->loadview('lkpj-fix.pages.laporan_opd.bab3', compact('urusan', 'data', 'indikator', 'bidang'));
         return $pdf->stream();
@@ -145,11 +145,11 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
 
-        $user = User::with('Skpd')->where('id_skpd', $tmp_id)->first();
-        $data = PenutupOPD::where('id_skpd', $tmp_id)->first();
+        $user = User::with('Skpd')->where('skpd_id', $tmp_id)->first();
+        $data = PenutupOPD::where('skpd_id', $tmp_id)->first();
 
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.bab4', compact('data', 'user'));
         return $pdf->stream();
@@ -161,7 +161,7 @@ class LaporanOPDController extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
 
         $data = Skpd::where('id', $tmp_id)->first();

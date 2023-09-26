@@ -13,9 +13,9 @@ class ProgramController extends Controller
         $this->middleware('auth');
     }
     
-    public function index($id_skpd)
+    public function index($skpd_id)
     {
-        $data = Program::where('id_skpd', $id_skpd)->get();
+        $data = Program::where('skpd_id', $skpd_id)->get();
 
         return view('lkpj-fix.pages.home.program', compact('data'));
     }

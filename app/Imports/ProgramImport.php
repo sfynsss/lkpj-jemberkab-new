@@ -16,7 +16,7 @@ class ProgramImport implements ToCollection
     	foreach ($collection as $i => $value) {
     		$insert = Program::insert([
     			'id_bidang_urusan'			=> $value[1],
-    			'id_skpd'					=> $value[2],
+    			'skpd_id'					=> $value[2],
     			'kode_program'				=> $value[3],
     			'nama_program'				=> $value[4],
     			'tolok_ukur_program'		=> $value[5],

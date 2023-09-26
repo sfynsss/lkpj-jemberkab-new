@@ -27,8 +27,8 @@ class Bab3Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $data = Urusan::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_prog = Program::where('id_skpd', Auth::user()->id_skpd)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
-            $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+            $tmp_prog = Program::where('skpd_id', Auth::user()->skpd_id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
+            $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
             $data = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         }
         
@@ -37,7 +37,7 @@ class Bab3Controller extends Controller
     
     public function subUrusan($id)
     {
-        $data = BidangUrusan::where('id_urusan', $id)->get();
+        $data = BidangUrusan::where('urusan_id', $id)->get();
         
         return view('lkpj-fix.pages.bab_3.opd_suburusan', compact('data'));
     }
@@ -47,7 +47,7 @@ class Bab3Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -60,7 +60,7 @@ class Bab3Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -80,18 +80,18 @@ class Bab3Controller extends Controller
     
     public function indexIndikatorUtama($id)
     {
-        $data = IndikatorUtamaDetail::where('id_skpd', $id)->get();
+        $data = IndikatorUtamaDetail::where('skpd_id', $id)->get();
         $nama_skpd = Skpd::where('id', $id)->first();
-        $tmp_prog = Program::where('id_skpd', $id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
-        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        $tmp_prog = Program::where('skpd_id', $id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
+        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
         return view('lkpj-fix.pages.bab_3.index_indikatorutama', compact('data', 'urusan', 'nama_skpd'));
     }
 
-    public function getBidangUrusan($id_urusan)
+    public function getBidangUrusan($urusan_id)
     {
-        $data = BidangUrusan::where('id_urusan', $id_urusan)->get();
+        $data = BidangUrusan::where('urusan_id', $urusan_id)->get();
         
         return response()->json([
             'data' => $data
@@ -104,9 +104,9 @@ class Bab3Controller extends Controller
         try {
             $insert = IndikatorUtamaDetail::insert([
                 'indikator_utama'       => $request->nama_indikator,
-                'id_skpd'               => $request->id_skpd,
-                'id_urusan'             => $request->urusan,
-                'id_bidang_urusan'      => $request->bidang_urusan
+                'skpd_id'               => $request->skpd_id,
+                'urusan_id'             => $request->urusan,
+                'bidang_urusan_id'      => $request->bidang_urusan
             ]);
             
             DB::commit();
@@ -138,9 +138,9 @@ class Bab3Controller extends Controller
             $insert = IndikatorUtamaDetail::insert([
                 'indikator_utama'       => $request->indikator_utama,
                 'satuan'                => $request->satuan,
-                'id_skpd'               => $request->id_skpd,
-                'id_urusan'             => $request->urusan,
-                'id_bidang_urusan'      => $request->bidang_urusan,
+                'skpd_id'               => $request->skpd_id,
+                'urusan_id'             => $request->urusan,
+                'bidang_urusan_id'      => $request->bidang_urusan,
                 'capaian_1'             => $request->capaian_1,
                 'capaian_2'             => $request->capaian_2,
                 'capaian_3'             => $request->capaian_3,
@@ -150,7 +150,7 @@ class Bab3Controller extends Controller
                 'keterangan'            => $request->keterangan
             ]);
             DB::commit();
-            return redirect('bab3/capaianutama/index/'.$request->id_skpd)->with('success','Data Berhasil di Tambahkan');
+            return redirect('bab3/capaianutama/index/'.$request->skpd_id)->with('success','Data Berhasil di Tambahkan');
 
         } catch (\Exception $e) {
             DB::rollback();
@@ -161,22 +161,22 @@ class Bab3Controller extends Controller
     public function indexCapaianUtama($id)
     {
         if(Auth::user()->hak_akses == "ADMIN" || Auth::user()->hak_akses == 'BIDANG') {
-            $data = IndikatorUtamaDetail::where('id_skpd', $id)->get();
+            $data = IndikatorUtamaDetail::where('skpd_id', $id)->get();
             $nama_skpd = Skpd::where('id', $id)->first();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = IndikatorUtamaDetail::where('id_skpd', Auth::user()->id_skpd)->get();
-            $nama_skpd = Skpd::where('id', Auth::user()->id_skpd)->first();
+            $data = IndikatorUtamaDetail::where('skpd_id', Auth::user()->skpd_id)->get();
+            $nama_skpd = Skpd::where('id', Auth::user()->skpd_id)->first();
         }
 
         return view('lkpj-fix.pages.bab_3.index_capaianutama', compact('data', 'nama_skpd'));
     }
 
-    public function getDataIndikatorUtama($id_urusan, $id_skpd)
+    public function getDataIndikatorUtama($urusan_id, $skpd_id)
     {
         if (Auth::user()->hak_akses == 'ADMIN') {
-            $data = IndikatorUtama::where('id_bidang_urusan', $id_urusan)->where('id_skpd', $id_skpd)->get();
+            $data = IndikatorUtama::where('bidang_urusan_id', $urusan_id)->where('skpd_id', $skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = IndikatorUtama::where('id_bidang_urusan', $id_urusan)->where('id_skpd', Auth::user()->id_skpd)->get();
+            $data = IndikatorUtama::where('bidang_urusan_id', $urusan_id)->where('skpd_id', Auth::user()->skpd_id)->get();
         }
         
         return response()->json([
@@ -187,8 +187,8 @@ class Bab3Controller extends Controller
     public function createCapaianUtama($id)
     {
         $nama_skpd = Skpd::where('id', $id)->first();
-        $tmp_prog = Program::where('id_skpd', $id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
-        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        $tmp_prog = Program::where('skpd_id', $id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
+        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
         return view('lkpj-fix.pages.bab_3.create_capaianutama', compact('urusan', 'nama_skpd'));
@@ -216,7 +216,7 @@ class Bab3Controller extends Controller
             ]);
             
             DB::commit();
-            return redirect('bab3/capaianutama/index/'.$request->id_skpd)->with('success','Data Berhasil di Ubah');
+            return redirect('bab3/capaianutama/index/'.$request->skpd_id)->with('success','Data Berhasil di Ubah');
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error','Data Gagal di Ubah');

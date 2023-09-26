@@ -8,6 +8,9 @@ use App\Skpd;
 use App\Program;
 use App\Kegiatan;
 use App\SubKegiatan;
+use App\SubkegiatanInduk;
+use App\SubkegiatanBulan;
+use App\SubkegiatanTahun;
 use Auth;
 
 class Bab2Controller extends Controller
@@ -22,7 +25,7 @@ class Bab2Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -36,9 +39,9 @@ class Bab2Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
-        $data = Program::where('id_skpd', $tmp_id)->get();
+        $data = Program::where('skpd_id', $tmp_id)->get();
         $nama_skpd = Skpd::where('id', $tmp_id)->first();
 
         return view('lkpj-fix.pages.bab_2.program', compact('data', 'nama_skpd'));
@@ -46,7 +49,7 @@ class Bab2Controller extends Controller
 
     public function updateProgram(Request $request)
     {
-        $data = Program::where('id', $request->id_program)->update([
+        $data = Program::where('id', $request->program_id)->update([
             'indikator_program'    => $request->nama_indikator
         ]);
 
@@ -59,7 +62,7 @@ class Bab2Controller extends Controller
 
     public function kegiatanPKS($id)
     {
-        $data = Kegiatan::where('id_program', $id)->get();
+        $data = Kegiatan::where('program_id', $id)->get();
         $nama_program = Program::where('id', $id)->first();
 
         return view('lkpj-fix.pages.bab_2.kegiatan', compact('data', 'nama_program'));
@@ -67,7 +70,7 @@ class Bab2Controller extends Controller
 
     public function updateKegiatan(Request $request)
     {
-        $data = Kegiatan::where('id', $request->id_kegiatan)->update([
+        $data = Kegiatan::where('id', $request->kegiatan_id)->update([
             'indikator_kegiatan'    => $request->nama_indikator
         ]);
 
@@ -80,7 +83,7 @@ class Bab2Controller extends Controller
 
     public function subkegiatanPKS($id)
     {
-        $data = SubKegiatan::where('id_kegiatan', $id)->get();
+        $data = SubkegiatanInduk::where('kegiatan_id', $id)->get();
 
         if(count($data) > 0) {
             return view('lkpj-fix.pages.bab_2.subkegiatan', compact('data'));
@@ -91,7 +94,7 @@ class Bab2Controller extends Controller
 
     public function detail($id)
     {
-        $data = SubKegiatan::where('id', $id)->get();
+        $data = SubKegiatanInduk::where('id', $id)->get();
 
         return view('lkpj-fix.pages.bab_2.edit', compact('data'));
     }
@@ -110,7 +113,7 @@ class Bab2Controller extends Controller
             'keterangan'    => $request->keterangan
         ]);
 
-        return redirect()->route('subkegiatan-pks', $data->id_kegiatan)->with('success', 'Dat Sub-Kegiatan berhasil diubah');
+        return redirect()->route('subkegiatan-pks', $data->kegiatan_id)->with('success', 'Dat Sub-Kegiatan berhasil diubah');
 
     }
 }

@@ -29,7 +29,7 @@ class Bab1Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -37,20 +37,20 @@ class Bab1Controller extends Controller
         return view('lkpj-fix.pages.bab_1.opd_indikator', compact('data'));
     }
     
-    public function indexIndikator($id_skpd)
+    public function indexIndikator($skpd_id)
     {
-        $tmp_id_skpd;
+        $tmp_skpd_id;
 
         if (Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
-            $tmp_id_skpd = $id_skpd;
+            $tmp_skpd_id = $skpd_id;
         } else if(Auth::user()->hak_akses == 'OPD') {
-            $tmp_id_skpd = Auth::user()->id_skpd;
+            $tmp_skpd_id = Auth::user()->skpd_id;
         }
 
-        $data = IndikatorDetail::where('id_skpd', $tmp_id_skpd)->get();
-        $nama_skpd = Skpd::where('id', $tmp_id_skpd)->first();
-        $tmp_prog = Program::where('id_skpd', $tmp_id_skpd)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
-        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        $data = IndikatorDetail::where('skpd_id', $tmp_skpd_id)->get();
+        $nama_skpd = Skpd::where('id', $tmp_skpd_id)->first();
+        $tmp_prog = Program::where('skpd_id', $tmp_skpd_id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
+        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
         return view('lkpj-fix.pages.bab_1.index_indikator', compact('data', 'nama_skpd', 'urusan'));
@@ -58,7 +58,7 @@ class Bab1Controller extends Controller
     
     public function getKegiatan($id)
     {
-        $data = Kegiatan::where('id_program', $id)->get();
+        $data = Kegiatan::where('program_id', $id)->get();
         
         return response()->json([
             'data' => $data
@@ -67,7 +67,7 @@ class Bab1Controller extends Controller
     
     public function getSubKegiatan($id)
     {
-        $data = SubKegiatan::where('id_kegiatan', $id)->get();
+        $data = SubKegiatan::where('kegiatan_id', $id)->get();
         
         return response()->json([
             'data' => $data
@@ -81,8 +81,8 @@ class Bab1Controller extends Controller
         try {
             $insert = IndikatorDetail::insert([
                 'indikator'         => $request->nama_indikator,
-                'id_skpd'           => $request->id_skpd,
-                'id_urusan'         => $request->urusan
+                'skpd_id'           => $request->skpd_id,
+                'urusan_id'         => $request->urusan
             ]);
 
             DB::commit();
@@ -114,7 +114,7 @@ class Bab1Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Skpd::where('id', Auth::user()->id_skpd)->get();
+            $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
@@ -128,20 +128,20 @@ class Bab1Controller extends Controller
         if (Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
             $tmp_id = $id;
         } else if(Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
-        $data = IndikatorDetail::where('id_skpd', $tmp_id)->get();
+        $data = IndikatorDetail::where('skpd_id', $tmp_id)->get();
         $nama_skpd = Skpd::where('id', $tmp_id)->first();
         
         return view('lkpj-fix.pages.bab_1.index_capaian', compact('data', 'nama_skpd'));
     }
     
-    public function getDataIndikator($id_urusan, $id_skpd)
+    public function getDataIndikator($urusan_id, $skpd_id)
     {
         if (Auth::user()->hak_akses == 'ADMIN') {
-            $data = Indikator::where('id_urusan', $id_urusan)->where('id_skpd', $id_skpd)->get();
+            $data = Indikator::where('urusan_id', $urusan_id)->where('skpd_id', $skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $data = Indikator::where('id_urusan', $id_urusan)->where('id_skpd', Auth::user()->id_skpd)->get();
+            $data = Indikator::where('urusan_id', $urusan_id)->where('skpd_id', Auth::user()->skpd_id)->get();
         }
         
         return response()->json([
@@ -155,14 +155,14 @@ class Bab1Controller extends Controller
         if(Auth::user()->hak_akses == 'ADMIN') {
             $tmp_id = $id;
         } else if (Auth::user()->hak_akses == 'OPD') {
-            $tmp_id = Auth::user()->id_skpd;
+            $tmp_id = Auth::user()->skpd_id;
         }
-        $tmp_prog = Program::where('id_skpd', $tmp_id)->groupBy('id_bidang_urusan')->pluck('id_bidang_urusan');
-        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('id_urusan')->pluck('id_urusan');
+        $tmp_prog = Program::where('skpd_id', $tmp_id)->groupBy('bidang_urusan_id')->pluck('bidang_urusan_id');
+        $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
-        $id_skpd = $tmp_id;
+        $skpd_id = $tmp_id;
         
-        return view('lkpj-fix.pages.bab_1.create_capaian', compact('urusan', 'id_skpd'));
+        return view('lkpj-fix.pages.bab_1.create_capaian', compact('urusan', 'skpd_id'));
     }
     
     public function tambahIndikatorDetail(Request $request)
@@ -171,7 +171,7 @@ class Bab1Controller extends Controller
         try {
             $insert = IndikatorDetail::insert([
                 'id_indikator'      => $request->indikator,
-                'id_skpd'           => $request->id_skpd,
+                'skpd_id'           => $request->skpd_id,
                 'uraian'            => $request->uraian,
                 'satuan'            => $request->satuan,
                 'capaian_1'         => $request->capaian_1,
@@ -183,7 +183,7 @@ class Bab1Controller extends Controller
             ]);
             
             DB::commit();
-            return redirect('bab1/capaian/'.$request->id_skpd)->with('success','Data Berhasil di Tambahkan');
+            return redirect('bab1/capaian/'.$request->skpd_id)->with('success','Data Berhasil di Tambahkan');
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error','Data Gagal di Tambahkan');
@@ -212,7 +212,7 @@ class Bab1Controller extends Controller
             ]);
             
             DB::commit();
-            return redirect('bab1/capaian/'.$request->id_skpd)->with('success','Data Berhasil di Ubah');
+            return redirect('bab1/capaian/'.$request->skpd_id)->with('success','Data Berhasil di Ubah');
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error','Data Gagal di Ubah');

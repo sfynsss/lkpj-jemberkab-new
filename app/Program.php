@@ -10,12 +10,12 @@ class Program extends Model
 
     public function Kegiatan()
     {
-    	return $this->hasMany('App\Kegiatan', 'id_program', 'id');
+    	return $this->hasMany('App\Kegiatan', 'program_id', 'id');
     }
 
     public function Skpd()
     {
-    	return $this->belongsTo('App\Skpd', 'id_skpd', 'id');
+    	return $this->belongsTo('App\Skpd', 'skpd_id', 'id');
     }
 
     public function BidangUrusan()

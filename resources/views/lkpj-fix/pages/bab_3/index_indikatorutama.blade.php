@@ -2,8 +2,6 @@
 
 @section('content')
 
-@if (substr(Cookie::get('tahun_aktif'), 3) == 2)
-
 <div class="row">
   <div class="col-12">
     <div class="box">
@@ -66,61 +64,6 @@
     </div>
   </div>
 </div>
-
-@else
-
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
-          <div class="row">
-            <div class="col">
-              Indikator Utama {{ ucwords(strtolower($nama_skpd->nama_skpd)) }}
-            </div>
-            <div class="col-auto">
-              @if (Auth::user()->hak_akses == 'ADMIN')
-              <a type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#modalTambah" onclick="tambahData();">Tambah Data</a>
-              @endif
-            </div>
-          </div>
-        </h4>
-        <div class="row">
-          <div class="col-12">
-            <div class="table-responsive">
-              <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                <thead>
-                  <tr>
-                    <th class="text-center">No</th>
-                    <th>Indikator Utama</th>
-                    @if (Auth::user()->hak_akses == 'ADMIN')
-                    <th class="text-center">Aksi</th>
-                    @endif
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($data as $i => $data)
-                  <tr>
-                    <td class="text-center">{{ $i+1 }}</td>
-                    <td>{{ $data->indikator_utama }}</td>                      
-                    @if (Auth::user()->hak_akses == 'ADMIN')
-                    <td class="text-center">
-                      <a href="{{ route('hapus-indikator-utama', $data->id) }}" class="btn btn-danger">Hapus</a>
-                    </td>
-                    @endif
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-@endif
 
 <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambah" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

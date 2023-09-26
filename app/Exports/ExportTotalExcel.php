@@ -24,7 +24,7 @@ class ExportTotalExcel extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder 
     public function view(): View
     {
         $skpd = Skpd::where('id', request()->id)->first();
-        $program = Program::where('id_skpd', $skpd->id)->get();
+        $program = Program::where('skpd_id', $skpd->id)->get();
         // $urusan = Urusan::with('BidangUrusan', 'BidangUrusan.Program', 'BidangUrusan.Program.Kegiatan', 'BidangUrusan.Program.Kegiatan.SubKegiatan')->orderBy('id', 'ASC')->get();
         // $sasaran = SasaranBaru::all();
         return view('pages.excel.laporan_total', compact('skpd', 'program'));

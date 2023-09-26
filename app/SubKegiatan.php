@@ -16,12 +16,12 @@ class SubKegiatan extends Model
 
     public function Kegiatan()
     {
-        return $this->belongsTo('App\Kegiatan', 'id_kegiatan', 'id');
+        return $this->belongsTo('App\Kegiatan', 'kegiatan_id', 'id');
     }
 
     public function Skpd()
     {
-    	return $this->belongsTo('App\Skpd', 'id_skpd', 'id');
+    	return $this->belongsTo('App\Skpd', 'skpd_id', 'id');
     }
 
 }

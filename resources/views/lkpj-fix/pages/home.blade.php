@@ -1,8 +1,6 @@
 @extends('lkpj-fix.layouts.app')
 
 @section('content')
-    @if (substr(Cookie::get('tahun_aktif'), 3) == 2)
-
     <div class="row">
         <div class="col-12">
             <div class="box">
@@ -136,9 +134,5 @@
             </div>
         </div>
     </div>	
-
-    @else
-
-    @endif
 
 @endsection

@@ -2,8 +2,6 @@
 
 @section('content')
 
-@if (substr(Cookie::get('tahun_aktif'), 3) == 2)
-
 @include('lkpj-fix.includes_new.alert')
 
 <div class="row">
@@ -63,47 +61,5 @@
     </div>
   </div>
 </div>
-
-@else
-
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Data SKPD Kabupaten Jember</h4>
-        <div class="row">
-          <div class="col-12">
-            <div class="table-responsive">
-              <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                <thead>
-                  <tr>
-                      <th>No</th>
-                      <th>Kode</th>
-                      <th>Nama SKPD</th>
-                      <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($data as $i => $skpd)
-                      <tr>
-                        <td>{{ $i+1 }}</td>
-                        <td>{{ $skpd->kode_skpd }}</td>
-                        <td>{{ $skpd->nama_skpd }}</td>
-                        <td>
-                          <a href="{{ route('penutup', $skpd->id) }}" class="btn btn-outline-success">View</a>
-                        </td>
-                      </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-@endif
 
 @endsection
