@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('alert')
+@include('includes.alert')
 <div class="row">
   <div class="col-12">
     <div class="box">

@@ -28,7 +28,7 @@
                   </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li><a href="{{ route('opd-pks') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Program, Kegiatan, Sub-Kegiatan</a></li>
+                     <li><a href="{{ route('program-unggulan') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
                   </ul>
                </li>
                <li class="treeview">
@@ -47,18 +47,6 @@
                      <li><a href="{{ route('opd-capaianutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja Utama</a></li>
                   </ul>
                </li>
-               {{-- <li class="treeview">
-                  <a href="#">
-                  <i span class="fa fa-inbox"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Data Statistik</span>
-                  <span class="pull-right-container"><i class="fa fa-angle-right pull-right"></i></span>
-                  </a>
-                  <ul class="treeview-menu">
-                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Indikator Kependudukan</a></li>
-                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Jumlah, Luas, Kepadatan Penduduk</a></li>
-                  </ul>
-               </li> --}}
-
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">
                   <a href="#">
@@ -116,7 +104,7 @@
 </aside>
 
 
-Data Statistik :
+{{-- Data Statistik :
 Indikator Kependudukan Kabupaten Jember Tahun 2017-2021
 Jumlah Penduduk, Luas Wilayah dan Kepadatan Penduduk per Kecamatan di Kabupaten Jember Tahun 2021
 PDRB Menurut Lapangan Usaha Kabupaten Jember Atas Dasar Harga Konstan Tahun 2017-2021 (dalam Milliar Rupiah)
@@ -141,6 +129,6 @@ Anggaran dan Realisasi Pendapatan Bagi Hasil Kabupaten Jember Tahun Anggaran 202
 Anggaran dan Realisasi Lain-Lain Pendapatan Daerah yang Sah Kabupaten Jember Tahun Anggaran 2021
 Anggaran dan Realisasi Belanja Daerah Kabupaten Jember Tahun Anggaran 2021
 Anggaran dan Realisasi Pembiayaan Daerah Kabupaten Jember Tahun Anggaran 2021
-Perkembangan APBD Kabupaten Jember Tahun Anggaran 2017 - 2021
+Perkembangan APBD Kabupaten Jember Tahun Anggaran 2017 - 2021 --}}
 
 

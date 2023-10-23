@@ -13,6 +13,9 @@ Auth::routes([
 Route::middleware(['auth'])
 ->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('program-unggulan', 'ProgramUnggulanController@index')->name('program-unggulan');
+
 });
 
 Route::middleware(['auth', 'authbidang'])

@@ -10,7 +10,7 @@
           <div class="d-md-flex align-items-center mb-30 mb-lg-0 w-p100">
             <img src="{{ asset('LKPJ/images/svg-icon/color-svg/custom-14.svg') }}" class="img-fluid max-w-150" alt="" />
             <div class="ms-30">
-              <h3 class="mb-10"><b>Bab. II Sub-Kegiatan</b></h3>
+              <h3 class="mb-10"><b>Bab. II Program Unggulan</b></h3>
             </div>
           </div>
         </div>							
