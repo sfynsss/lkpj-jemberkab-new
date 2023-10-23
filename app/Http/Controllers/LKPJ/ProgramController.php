@@ -17,6 +17,6 @@ class ProgramController extends Controller
     {
         $data = Program::where('skpd_id', $skpd_id)->get();
 
-        return view('lkpj-fix.pages.home.program', compact('data'));
+        return view('pages.home.program', compact('data'));
     }
 }

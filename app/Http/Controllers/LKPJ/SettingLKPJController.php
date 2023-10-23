@@ -11,7 +11,7 @@ class SettingLKPJController extends Controller
     public function verifBab3()
     {
         $data = StsUpdate::where('id', 3)->pluck('kode_sts')->first();
-        return view('lkpj-fix.pages.setting.verif_bab_3', compact('data'));
+        return view('pages.setting.verif_bab_3', compact('data'));
     }
 
     public function updateVerifBab3(Request $request)

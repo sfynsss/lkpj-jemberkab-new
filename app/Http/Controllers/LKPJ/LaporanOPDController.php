@@ -44,7 +44,7 @@ class LaporanOPDController extends Controller
         }
         $judul = $tipe;
         
-        return view('lkpj-fix.pages.laporan_opd.opd', compact('data', 'judul', 'sts'));
+        return view('pages.laporan_opd.opd', compact('data', 'judul', 'sts'));
     }
     
     public function kataPengantar($id)
@@ -57,7 +57,7 @@ class LaporanOPDController extends Controller
         } 
 
         $data = User::with('Skpd')->where('skpd_id', $tmp_id)->first();
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.kata_pengantar', compact('data'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('pages.laporan_opd.kata_pengantar', compact('data'));
         return $pdf->stream();
     }
     
@@ -80,7 +80,7 @@ class LaporanOPDController extends Controller
         $program_id = Kegiatan::whereIn('id', $kegiatan_id)->groupBy('program_id')->pluck('program_id');
         $program = Program::whereIn('id', $program_id)->get();
 
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.bab1', compact('data', 'data_urusan', 'indikator', 'program', 'kegiatan', 'sub_kegiatan'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('pages.laporan_opd.bab1', compact('data', 'data_urusan', 'indikator', 'program', 'kegiatan', 'sub_kegiatan'));
         return $pdf->stream();
     }
     
@@ -99,7 +99,7 @@ class LaporanOPDController extends Controller
         $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $data_urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         // print_r($data);
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2', compact('data', 'data_urusan'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('pages.laporan_opd.bab2', compact('data', 'data_urusan'));
         return $pdf->stream();
     }
 
@@ -111,7 +111,7 @@ class LaporanOPDController extends Controller
         // $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         // $data_urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         // print_r($data);
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('lkpj-fix.pages.laporan_opd.bab2_total_baru', compact('data'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'landscape')->loadview('pages.laporan_opd.bab2_total_baru', compact('data'));
         return $pdf->stream();
     }
 
@@ -135,7 +135,7 @@ class LaporanOPDController extends Controller
         $bidang = IndikatorUtamaDetail::select('bidang_urusan_id')->where('skpd_id', $tmp_id)->groupBy('bidang_urusan_id')->get();
         $indikator = IndikatorUtamaDetail::where('skpd_id', $tmp_id)->get();
 
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'potrait')->loadview('lkpj-fix.pages.laporan_opd.bab3', compact('urusan', 'data', 'indikator', 'bidang'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'potrait')->loadview('pages.laporan_opd.bab3', compact('urusan', 'data', 'indikator', 'bidang'));
         return $pdf->stream();
     }
     
@@ -151,7 +151,7 @@ class LaporanOPDController extends Controller
         $user = User::with('Skpd')->where('skpd_id', $tmp_id)->first();
         $data = PenutupOPD::where('skpd_id', $tmp_id)->first();
 
-        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('lkpj-fix.pages.laporan_opd.bab4', compact('data', 'user'));
+        $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')->loadview('pages.laporan_opd.bab4', compact('data', 'user'));
         return $pdf->stream();
     }
     
@@ -168,7 +168,7 @@ class LaporanOPDController extends Controller
 
         $pdf = PDF::setPaper(array(0,0,609.4488,935.433), 'portrait')
         ->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-        ->loadview('lkpj-fix.pages.laporan_opd.cover', compact('data'));
+        ->loadview('pages.laporan_opd.cover', compact('data'));
         return $pdf->stream();
     }
     

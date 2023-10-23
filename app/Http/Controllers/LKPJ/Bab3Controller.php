@@ -32,14 +32,14 @@ class Bab3Controller extends Controller
             $data = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         }
         
-        return view('lkpj-fix.pages.bab_3.opd_mastersub', compact('data'));
+        return view('pages.bab_3.opd_mastersub', compact('data'));
     }
     
     public function subUrusan($id)
     {
         $data = BidangUrusan::where('urusan_id', $id)->get();
         
-        return view('lkpj-fix.pages.bab_3.opd_suburusan', compact('data'));
+        return view('pages.bab_3.opd_suburusan', compact('data'));
     }
     
     public function opdIndikatorUtama()
@@ -52,7 +52,7 @@ class Bab3Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
         
-        return view('lkpj-fix.pages.bab_3.opd_indikatorutama', compact('data'));
+        return view('pages.bab_3.opd_indikatorutama', compact('data'));
     }
     
     public function opdCapaianUtama()
@@ -65,17 +65,17 @@ class Bab3Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
 
-        return view('lkpj-fix.pages.bab_3.opd_capaianutama', compact('data'));
+        return view('pages.bab_3.opd_capaianutama', compact('data'));
     }
     
     public function suburusanUtama()
     {
-        return view('lkpj-fix.pages.bab_3.sub_urusan_utama');
+        return view('pages.bab_3.sub_urusan_utama');
     }
     
     public function suburusanMaster()
     {
-        return view('lkpj-fix.pages.bab_3.sub_urusan_master');
+        return view('pages.bab_3.sub_urusan_master');
     }
     
     public function indexIndikatorUtama($id)
@@ -86,7 +86,7 @@ class Bab3Controller extends Controller
         $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
-        return view('lkpj-fix.pages.bab_3.index_indikatorutama', compact('data', 'urusan', 'nama_skpd'));
+        return view('pages.bab_3.index_indikatorutama', compact('data', 'urusan', 'nama_skpd'));
     }
 
     public function getBidangUrusan($urusan_id)
@@ -168,7 +168,7 @@ class Bab3Controller extends Controller
             $nama_skpd = Skpd::where('id', Auth::user()->skpd_id)->first();
         }
 
-        return view('lkpj-fix.pages.bab_3.index_capaianutama', compact('data', 'nama_skpd'));
+        return view('pages.bab_3.index_capaianutama', compact('data', 'nama_skpd'));
     }
 
     public function getDataIndikatorUtama($urusan_id, $skpd_id)
@@ -191,14 +191,14 @@ class Bab3Controller extends Controller
         $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
-        return view('lkpj-fix.pages.bab_3.create_capaianutama', compact('urusan', 'nama_skpd'));
+        return view('pages.bab_3.create_capaianutama', compact('urusan', 'nama_skpd'));
     }
     
     public function editCapaianUtama($id)
     {
         $data = IndikatorUtamaDetail::where('id', $id)->first();
 
-        return view('lkpj-fix.pages.bab_3.edit_capaianutama', compact('data'));
+        return view('pages.bab_3.edit_capaianutama', compact('data'));
     }
     
     public function updateCapaianUtama(Request $request)

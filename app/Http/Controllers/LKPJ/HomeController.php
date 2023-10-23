@@ -32,16 +32,16 @@ class HomeController extends Controller
     {
         if (Auth::user()->hak_akses == 'ADMIN') {
             $data = Skpd::all();
-            return view('lkpj-fix.pages.home.home', compact('data'));
+            return view('pages.home.home', compact('data'));
 
         } else if(Auth::user()->hak_akses == 'OPD') {
             $data = Program::where('skpd_id', Auth::user()->skpd_id)->get();
-            return view('lkpj-fix.pages.home', compact('data')); 
+            return view('pages.home', compact('data')); 
 
         } else if (Auth::user()->hak_akses == 'BIDANG') {
             // $data = Skpd::rightJoin('users', 'skpd.id', 'users.skpd_id')->where('skpd.id_bidang', Auth::user()->id)->get();
             $data = User::join('skpd', 'users.skpd_id', 'skpd.id')->where('skpd.id_bidang', Auth::user()->id)->get();
-            return view('lkpj-fix.pages.home.home', compact('data'));
+            return view('pages.home.home', compact('data'));
         }
     }
 
@@ -62,20 +62,20 @@ class HomeController extends Controller
     {
         $data = Program::where('skpd_id', $skpd_id)->get();
 
-        return view('lkpj-fix.pages.home.program', compact('data'));
+        return view('pages.home.program', compact('data'));
     }
 
     public function kegiatan($program_id)
     {
         $data = Kegiatan::where('program_id', $program_id)->get();
 
-        return view('lkpj-fix.pages.home.kegiatan', compact('data'));
+        return view('pages.home.kegiatan', compact('data'));
     }
 
     public function sub_kegiatan($kegiatan_id)
     {
         $data = SubKegiatan::where('kegiatan_id', $kegiatan_id)->get();
 
-        return view('lkpj-fix.pages.home.sub_kegiatan', compact('data'));
+        return view('pages.home.sub_kegiatan', compact('data'));
     }
 }

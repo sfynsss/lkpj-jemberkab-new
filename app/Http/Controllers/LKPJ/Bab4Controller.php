@@ -25,14 +25,14 @@ class Bab4Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
         
-        return view('lkpj-fix.pages.bab_4.penutup_opd', compact('data'));
+        return view('pages.bab_4.penutup_opd', compact('data'));
     }
 
     public function penutup($id)
     {
         $data = PenutupOPD::with('Skpd')->where('skpd_id', $id)->first();
         
-        return view('lkpj-fix.pages.bab_4.penutup', compact('data'));
+        return view('pages.bab_4.penutup', compact('data'));
     }
 
     public function updatePenutupOPD(Request $request)
@@ -47,7 +47,7 @@ class Bab4Controller extends Controller
     public function penutupAdmin()
     {
         $data = PenutupOPD::with('Skpd')->where('skpd_id', 999)->first();
-        return view('lkpj-fix.pages.bab_4.penutup_admin', compact('data'));
+        return view('pages.bab_4.penutup_admin', compact('data'));
     }
 
     public function updatePenutupAdmin(Request $request)

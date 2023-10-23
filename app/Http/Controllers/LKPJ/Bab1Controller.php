@@ -34,7 +34,7 @@ class Bab1Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
         
-        return view('lkpj-fix.pages.bab_1.opd_indikator', compact('data'));
+        return view('pages.bab_1.opd_indikator', compact('data'));
     }
     
     public function indexIndikator($skpd_id)
@@ -53,7 +53,7 @@ class Bab1Controller extends Controller
         $tmp_bidang_urusan = BidangUrusan::whereIn('id', $tmp_prog)->groupBy('urusan_id')->pluck('urusan_id');
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         
-        return view('lkpj-fix.pages.bab_1.index_indikator', compact('data', 'nama_skpd', 'urusan'));
+        return view('pages.bab_1.index_indikator', compact('data', 'nama_skpd', 'urusan'));
     }
     
     public function getKegiatan($id)
@@ -119,7 +119,7 @@ class Bab1Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
         
-        return view('lkpj-fix.pages.bab_1.opd_capaian', compact('data'));
+        return view('pages.bab_1.opd_capaian', compact('data'));
     }
     
     public function indexCapaian($id)
@@ -133,7 +133,7 @@ class Bab1Controller extends Controller
         $data = IndikatorDetail::where('skpd_id', $tmp_id)->get();
         $nama_skpd = Skpd::where('id', $tmp_id)->first();
         
-        return view('lkpj-fix.pages.bab_1.index_capaian', compact('data', 'nama_skpd'));
+        return view('pages.bab_1.index_capaian', compact('data', 'nama_skpd'));
     }
     
     public function getDataIndikator($urusan_id, $skpd_id)
@@ -162,7 +162,7 @@ class Bab1Controller extends Controller
         $urusan = Urusan::whereIn('id', $tmp_bidang_urusan)->get();
         $skpd_id = $tmp_id;
         
-        return view('lkpj-fix.pages.bab_1.create_capaian', compact('urusan', 'skpd_id'));
+        return view('pages.bab_1.create_capaian', compact('urusan', 'skpd_id'));
     }
     
     public function tambahIndikatorDetail(Request $request)
@@ -194,7 +194,7 @@ class Bab1Controller extends Controller
     {
         $data = IndikatorDetail::where('id', $id)->first();
         
-        return view('lkpj-fix.pages.bab_1.edit_capaian', compact('data'));
+        return view('pages.bab_1.edit_capaian', compact('data'));
     }
     
     public function editIndikatorDetail(Request $request)

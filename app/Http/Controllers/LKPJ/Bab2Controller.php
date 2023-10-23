@@ -30,7 +30,7 @@ class Bab2Controller extends Controller
             $data = Skpd::where('id_bidang', Auth::user()->id)->get();
         }
 
-        return view('lkpj-fix.pages.bab_2.opd_pks', compact('data'));
+        return view('pages.bab_2.opd_pks', compact('data'));
     }
 
     public function programPKS($id)
@@ -44,7 +44,7 @@ class Bab2Controller extends Controller
         $data = Program::where('skpd_id', $tmp_id)->get();
         $nama_skpd = Skpd::where('id', $tmp_id)->first();
 
-        return view('lkpj-fix.pages.bab_2.program', compact('data', 'nama_skpd'));
+        return view('pages.bab_2.program', compact('data', 'nama_skpd'));
     }
 
     public function updateProgram(Request $request)
@@ -65,7 +65,7 @@ class Bab2Controller extends Controller
         $data = Kegiatan::where('program_id', $id)->get();
         $nama_program = Program::where('id', $id)->first();
 
-        return view('lkpj-fix.pages.bab_2.kegiatan', compact('data', 'nama_program'));
+        return view('pages.bab_2.kegiatan', compact('data', 'nama_program'));
     }
 
     public function updateKegiatan(Request $request)
@@ -86,7 +86,7 @@ class Bab2Controller extends Controller
         $data = SubkegiatanInduk::where('kegiatan_id', $id)->get();
 
         if(count($data) > 0) {
-            return view('lkpj-fix.pages.bab_2.subkegiatan', compact('data'));
+            return view('pages.bab_2.subkegiatan', compact('data'));
         } else {
             return back()->with('error', 'Data Tidak Ditemukan');
         }
@@ -96,7 +96,7 @@ class Bab2Controller extends Controller
     {
         $data = SubKegiatanInduk::where('id', $id)->get();
 
-        return view('lkpj-fix.pages.bab_2.edit', compact('data'));
+        return view('pages.bab_2.edit', compact('data'));
     }
 
     public function update(Request $request)
