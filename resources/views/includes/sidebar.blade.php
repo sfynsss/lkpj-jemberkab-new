@@ -1,12 +1,10 @@
 <aside class="main-sidebar">
-   <!-- sidebar-->
    <section class="sidebar position-relative">
       <div class="multinav">
          <div class="multinav-scroll" style="height: 100%;">
-            <!-- sidebar menu-->
             <ul class="sidebar-menu" data-widget="tree">
                <li class="header">Menu</li>
-               <li><a href="{{ route('home-lkpj') }}"><i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
+               <li><a href="{{ route('home') }}"><i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
                <li class="header">Pengelolaan Laporan</li>
                <li class="treeview">
                   <a href="#">
@@ -49,6 +47,18 @@
                      <li><a href="{{ route('opd-capaianutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja Utama</a></li>
                   </ul>
                </li>
+               {{-- <li class="treeview">
+                  <a href="#">
+                  <i span class="fa fa-inbox"><span class="path1"></span><span class="path2"></span></i>
+                  <span>Data Statistik</span>
+                  <span class="pull-right-container"><i class="fa fa-angle-right pull-right"></i></span>
+                  </a>
+                  <ul class="treeview-menu">
+                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Indikator Kependudukan</a></li>
+                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Jumlah, Luas, Kepadatan Penduduk</a></li>
+                  </ul>
+               </li> --}}
+
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">
                   <a href="#">
@@ -104,3 +114,33 @@
       <a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
    </div>
 </aside>
+
+
+Data Statistik :
+Indikator Kependudukan Kabupaten Jember Tahun 2017-2021
+Jumlah Penduduk, Luas Wilayah dan Kepadatan Penduduk per Kecamatan di Kabupaten Jember Tahun 2021
+PDRB Menurut Lapangan Usaha Kabupaten Jember Atas Dasar Harga Konstan Tahun 2017-2021 (dalam Milliar Rupiah)
+PDRB Menurut Lapangan Usaha Kabupaten Jember Atas Dasar Harga Berlaku Tahun 2017-2021 (dalam Milliar Rupiah)
+Laju Pertumbuhan PDRB Atas Dasar PDHK 2010 Menurut Lapangan Usaha (persen) Tahun 2017 - 2021
+Perkembangan Indikator Makro Ekonomi Kabupaten Jember Tahun 2017 - 2021
+
+Penjabaran APBD :
+Anggaran dan Realisasi Pendapatan Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Belanja Daerah Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Pembiayaan Daerah Kabupaten Jember Tahun Anggaran 2021
+   Pajak Daerah
+   Retribusi Daerah
+   Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan
+   Lain-lain PAD yang Sah
+Anggaran dan Realisasi Pendapatan Transfer Pemerintah Pusat Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Pendapatan Dana Transfer Umum - Dana Bagi Hasil (DBH) Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Dana Alokasi Umum Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Dana Transfer Khusus - Dana Alokasi Khusus (DAK) Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Transfer Antar Daerah Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Pendapatan Bagi Hasil Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Lain-Lain Pendapatan Daerah yang Sah Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Belanja Daerah Kabupaten Jember Tahun Anggaran 2021
+Anggaran dan Realisasi Pembiayaan Daerah Kabupaten Jember Tahun Anggaran 2021
+Perkembangan APBD Kabupaten Jember Tahun Anggaran 2017 - 2021
+
+

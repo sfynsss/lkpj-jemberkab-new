@@ -4,7 +4,7 @@
       <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
       </a>	
       <!-- Logo -->
-      <a href="{{ route('home-lkpj') }}" class="logo">
+      <a href="{{ route('home') }}" class="logo">
          <!-- logo-->
          <div class="logo-lg">
             <span class="light-logo"><img src="{{ asset('LKPJ/images/logo-lkpj-2.png') }}" alt="logo"></span>

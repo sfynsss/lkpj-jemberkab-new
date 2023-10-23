@@ -21,9 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home-lkpj';
-    // public const BIDANG = '/dashboard-bidang';
-    // public const OPD = '/dashboard-opd';
+    public const HOME = '/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
