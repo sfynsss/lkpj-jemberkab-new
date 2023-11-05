@@ -27,7 +27,7 @@
                      <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
                    </a>
                </li>
-             <li class="btn-group nav-item d-none d-xl-inline-block">
+             {{-- <li class="btn-group nav-item d-none d-xl-inline-block">
                 <a href="#" class="waves-effect waves-light nav-link dropdown-toggle" data-bs-toggle="dropdown" title="User">
                 <i class="icon-Clipboard-check"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
                 Pilih Tahun Anggaran
@@ -39,7 +39,7 @@
                       <a class="dropdown-item" onclick="setCookieTahun('2023')"><i class="ti-calendar text-muted me-2"></i> 2023</a>
                    </li>
                 </ul>
-             </li>
+             </li> --}}
           </ul>
        </div>
        <div class="navbar-custom-menu r-side">

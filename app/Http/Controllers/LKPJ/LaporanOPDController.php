@@ -10,7 +10,9 @@ use App\Urusan;
 use App\BidangUrusan;
 use App\Program;
 use App\Kegiatan;
-use App\SubKegiatan;
+use App\SubKegiatanInduk;
+use App\SubKegiatanBulan;
+use App\SubKegiatanTahun;
 use App\User;
 use App\IndikatorDetail;
 use App\IndikatorUtamaDetail;
@@ -74,8 +76,8 @@ class LaporanOPDController extends Controller
         $data_urusan = IndikatorDetail::select('urusan_id')->where('skpd_id', $tmp_id)->groupBy('urusan_id')->get();
         $indikator = IndikatorDetail::where('skpd_id', $tmp_id)->get();
 
-        $sub_kegiatan = SubKegiatan::where('skpd_id', $tmp_id)->where('unggulan', 1)->get();
-        $kegiatan_id = SubKegiatan::where('skpd_id', $tmp_id)->where('unggulan', 1)->groupBy('kegiatan_id')->pluck('kegiatan_id');
+        $sub_kegiatan = SubKegiatanInduk::where('skpd_id', $tmp_id)->where('unggulan', 1)->get();
+        $kegiatan_id = SubKegiatanInduk::where('skpd_id', $tmp_id)->where('unggulan', 1)->groupBy('kegiatan_id')->pluck('kegiatan_id');
         $kegiatan = Kegiatan::whereIn('id', $kegiatan_id)->get();
         $program_id = Kegiatan::whereIn('id', $kegiatan_id)->groupBy('program_id')->pluck('program_id');
         $program = Program::whereIn('id', $program_id)->get();

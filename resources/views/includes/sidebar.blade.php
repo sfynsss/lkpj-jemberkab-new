@@ -9,49 +9,28 @@
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Lampiran. I</span>
+                  <span>Data Indikator</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li><a href="{{ route('opd-indikator') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Indikator Kinerja</a></li>
-                     <li><a href="{{ route('opd-capaian') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja</a></li>
+                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data IKD</a></li>
+                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data IKU</a></li>
                   </ul>
                </li>
-               <li class="treeview">
-                  <a href="#">
-                  <i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Lampiran. II</span>
-                  <span class="pull-right-container">
-                  <i class="fa fa-angle-right pull-right"></i>
-                  </span>
-                  </a>
-                  <ul class="treeview-menu">
-                     <li><a href="{{ route('program-unggulan') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
-                  </ul>
-               </li>
-               <li class="treeview">
-                  <a href="#">
-                  <i span class="fa fa-inbox"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Lampiran. III</span>
-                  <span class="pull-right-container">
-                  <i class="fa fa-angle-right pull-right"></i>
-                  </span>
-                  </a>
-                  <ul class="treeview-menu">
-                     @if (Auth::user()->hak_akses == 'ADMIN')
-                     <li><a href="{{ route('urusan') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Master Urusan</a></li>
-                     @endif
-                     <li><a href="{{ route('opd-indikatorutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Indikator Utama</a></li>
-                     <li><a href="{{ route('opd-capaianutama') }}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Capaian Kinerja Utama</a></li>
-                  </ul>
-               </li>
+               <li><a href="{{ route('program-unggulan') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
+               @if (Auth::user()->skpd_id == 36)
+               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Data Statistik</a></li>                   
+               @endif
+               @if (Auth::user()->skpd_id == 37)
+               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
+               @endif
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">
                   <a href="#">
                   <i span class="fa fa-pencil-square"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Lampiran. IV</span>
+                  <span>Penutup</span>
                   <span class="pull-right-container">
                   <i class="fa fa-angle-right pull-right"></i>
                   </span>
@@ -131,4 +110,64 @@ Anggaran dan Realisasi Belanja Daerah Kabupaten Jember Tahun Anggaran 2021
 Anggaran dan Realisasi Pembiayaan Daerah Kabupaten Jember Tahun Anggaran 2021
 Perkembangan APBD Kabupaten Jember Tahun Anggaran 2017 - 2021 --}}
 
+{{-- INSERT INTO `statistik_induk`(`kategori_id`, `kode_data`, `nama_data`, `urutan_data`) VALUES (
+
+
+
+1.1 PENDAPATAN ASLI DAERAH (PAD) 0
+1.1.1 Pajak Daerah 1
+1.1.1 Retribusi Daerah 1
+1.1.1 Hasil Pengelolaan Kekayaan Daerah 1
+
+2.1 BELANJA OPERASI 0
+2.1.1 Belanja Pegawai 1
+2.1.2 Belanja Barang dan Jasa 1
+2.1.5 Belanja Hibah 1
+2.1.6 Belanja Bantuan Sosial 1
+
+3.1 Penerimaan Pembayaran 0
+3.1.1 Sisa Lebih Perhitungan Anggaran Tahun Anggaran Sebelumnya (SILPA) 1
+3.1.1 Penerimaan Kembali Pemberian Pinjaman Pengembalian Pokok Dana Bergulir 1
+
+1 Pajak Daerah 1
+
+1 Retribusi Daerah 1
+
+1 Hasil Pengelolaan Kekayaan Darah yang Dipisahkan 1
+
+1 Lain-lain PAD yang Sah 1
+
+1 Dana Transfer Umum-Dana Bagi Hasil (DBH) 1
+
+1 DBH Pajak Bumi dan Bangunan 1
+2 DBH PPh Pasal 21 1
+3 DBH PPh Pasal 25 dan Pasal 29/WPOPDN 1
+4 DBH Cukai Hasil Tembakau (CHT) 1
+
+1 DAU 1
+2 Dana Alokasi Umum Tambahan Kelurahan - LRA 1
+
+1 Dana Transfer Khusus - Dana Alokasi Khusus (DAK) Fisik
+null DAK Fisik Bidang Jalan Reguler Jalan
+null DAK Fisik Bidang Irigasi Penugasan
+null DAK Fisik Bidang Kesehatan dan KB Penugasan Keluarga Berencana
+null DAK Fisik Bidang Perumahan dan Pemukiman Afirmasi Penyediaan Rumah Khusus
+
+1 Pendapatan Bagi Hasil
+2 Bantuan Keuangan
+
+1 Pendapatan Bagi Hasil Pajak Kendaraan Bermotor
+2 Pendapatan Bagi Hasil Bea Balik Nama Kendaraan Bermotor
+3 Pendapatan Bagi Hasil Pajak Bahan Bakar Kendaraan Bermotor
+4 Pendapatan Bagi Hasil Pajak Rokok
+5 Pendapatan Bagi Hasil Pajak Air Permukaan
+
+1 Pendapatan Hibah
+2 Lain-lain Pendapatan Sesuai dengan Ketentuan Peraturan Perundang-
+
+
+null Pendapatan 0
+null Pendapatan Asli Daerah 1
+null Pendapatan Transfer 1
+null Lain-Lain Pendapatan Daerah yang Sah 1 --}}
 
