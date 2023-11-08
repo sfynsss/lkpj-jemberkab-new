@@ -22,7 +22,7 @@ class Bab4Controller extends Controller
         } else if (Auth::user()->hak_akses == 'OPD') {
             $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
-            $data = Skpd::where('id_bidang', Auth::user()->id)->get();
+            $data = Skpd::where('bidang_id', Auth::user()->id)->get();
         }
         
         return view('pages.bab_4.penutup_opd', compact('data'));

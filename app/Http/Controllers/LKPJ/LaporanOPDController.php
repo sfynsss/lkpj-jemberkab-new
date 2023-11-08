@@ -42,7 +42,7 @@ class LaporanOPDController extends Controller
                 $sts = 0;
             }
         } else if(Auth::user()->hak_akses == 'BIDANG') {
-            $data = Skpd::where('id_bidang', Auth::user()->id)->get();
+            $data = Skpd::where('bidang_id', Auth::user()->id)->get();
         }
         $judul = $tipe;
         

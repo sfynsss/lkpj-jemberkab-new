@@ -31,7 +31,7 @@ class Bab1Controller extends Controller
         } else if (Auth::user()->hak_akses == 'OPD') {
             $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
-            $data = Skpd::where('id_bidang', Auth::user()->id)->get();
+            $data = Skpd::where('bidang_id', Auth::user()->id)->get();
         }
         
         return view('pages.bab_1.opd_indikator', compact('data'));
@@ -116,7 +116,7 @@ class Bab1Controller extends Controller
         } else if (Auth::user()->hak_akses == 'OPD') {
             $data = Skpd::where('id', Auth::user()->skpd_id)->get();
         } else if (Auth::user()->hak_akses == 'BIDANG') {
-            $data = Skpd::where('id_bidang', Auth::user()->id)->get();
+            $data = Skpd::where('bidang_id', Auth::user()->id)->get();
         }
         
         return view('pages.bab_1.opd_capaian', compact('data'));

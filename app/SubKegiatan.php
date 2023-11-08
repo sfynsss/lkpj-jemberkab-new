@@ -6,13 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubKegiatan extends Model
 {
-    protected $table = "sub_kegiatan";
+    protected $table = "sub_kegiatan_induk";
     protected $guarded = [];
-
-    public function DetSubKegiatan()
-    {
-    	return $this->hasMany('App\DetSubKegiatan', 'id_sub_keg', 'id');
-    }
 
     public function Kegiatan()
     {

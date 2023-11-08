@@ -19,6 +19,6 @@ class IndikatorUtama extends Model
 
     public function BidangUrusan()
     {
-    	return $this->belongsTo('App\BidangUrusan', 'id_bidang_urusan', 'id');
+    	return $this->belongsTo('App\BidangUrusan', 'bidang_urusan_id', 'id');
     }
 }

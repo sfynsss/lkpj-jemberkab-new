@@ -14,11 +14,11 @@ class IndikatorDetail extends Model
 
     public function Indikator()
     {
-    	return $this->belongsTo('App\Indikator', 'id_indikator', 'id');
+    	return $this->belongsTo('App\Indikator', 'indikator_id', 'id');
     }
 
     public function Urusan()
     {
-    	return $this->belongsTo('App\Urusan', 'id_urusan', 'id');
+    	return $this->belongsTo('App\Urusan', 'urusan_id', 'id');
     }
 }

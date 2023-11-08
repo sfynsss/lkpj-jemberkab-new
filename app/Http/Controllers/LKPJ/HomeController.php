@@ -39,8 +39,8 @@ class HomeController extends Controller
             return view('pages.home', compact('data')); 
 
         } else if (Auth::user()->hak_akses == 'BIDANG') {
-            // $data = Skpd::rightJoin('users', 'skpd.id', 'users.skpd_id')->where('skpd.id_bidang', Auth::user()->id)->get();
-            $data = User::join('skpd', 'users.skpd_id', 'skpd.id')->where('skpd.id_bidang', Auth::user()->id)->get();
+            // $data = Skpd::rightJoin('users', 'skpd.id', 'users.skpd_id')->where('skpd.bidang_id', Auth::user()->id)->get();
+            $data = User::join('skpd', 'users.skpd_id', 'skpd.id')->where('skpd.bidang_id', Auth::user()->id)->get();
             return view('pages.home.home', compact('data'));
         }
     }

@@ -19,6 +19,6 @@ class Indikator extends Model
 
     public function Urusan()
     {
-    	return $this->belongsTo('App\Urusan', 'id_urusan', 'id');
+    	return $this->belongsTo('App\Urusan', 'urusan_id', 'id');
     }
 }

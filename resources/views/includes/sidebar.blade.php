@@ -19,12 +19,16 @@
                      <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data IKU</a></li>
                   </ul>
                </li>
-               <li><a href="{{ route('program-unggulan') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
+               <li><a href="{{ route('program-unggulan') }}"><i span class="fa fa-thumbs-up"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
                @if (Auth::user()->skpd_id == 36)
-               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Data Statistik</a></li>                   
+               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>Data Statistik</a></li>                   
                @endif
+               <li><a href="{{ route('kebijakan-strategis') }}"><i span class="fa fa-star-half-o"><span class="path1"></span><span class="path2"></span></i>Kebijakan Strategis</a></li>
+               <li><a href="#"><i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>Rekomendasi DPRD</a></li>
+               <li><a href="#"><i span class="fa fa-universal-access"><span class="path1"></span><span class="path2"></span></i>Tugas Pembantuan</a></li>
+               <li><a href="#"><i span class="fa fa-support"><span class="path1"></span><span class="path2"></span></i>Kebencanaan</a></li>
                @if (Auth::user()->skpd_id == 37)
-               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-object-group"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
+               <li><a href="{{ route('kategori-statistik') }}"><i span class="fa fa-area-chart"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
                @endif
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">

@@ -14,16 +14,16 @@ class IndikatorUtamaDetail extends Model
 
     public function IndikatorUtama()
     {
-    	return $this->belongsTo('App\IndikatorUtama', 'id_indikator_utama', 'id');
+    	return $this->belongsTo('App\IndikatorUtama', 'indikator_utama_id', 'id');
     }
 
     public function Bidang()
     {
-    	return $this->belongsTo('App\BidangUrusan', 'id_bidang_urusan', 'id');
+    	return $this->belongsTo('App\BidangUrusan', 'bidang_urusan_id', 'id');
     }
 
     public function Urusan()
     {
-    	return $this->belongsTo('App\Urusan', 'id_urusan', 'id');
+    	return $this->belongsTo('App\Urusan', 'urusan_id', 'id');
     }
 }

@@ -12,6 +12,6 @@ class Urusan extends Model
 
     public function BidangUrusan()
     {
-    	return $this->hasMany('App\BidangUrusan', 'id_urusan', 'id');
+    	return $this->hasMany('App\BidangUrusan', 'urusan_id', 'id');
     }
 }

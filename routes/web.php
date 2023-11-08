@@ -125,6 +125,11 @@ Route::get('statistik-show/{id}', 'StatistikController@show')->name('statistik-s
 Route::get('setting-bab3', 'LKPJ\SettingLKPJController@verifBab3')->name('setting-bab3');
 Route::post('update-verif-bab3', 'LKPJ\SettingLKPJController@updateVerifBab3')->name('update-verif-bab3');
 
+Route::get('kebijakan-strategis', 'KebijakanStrategisController@index')->name('kebijakan-strategis');
+Route::post('kebijakan-strategis-store', 'KebijakanStrategisController@store')->name('kebijakan-strategis-store');
+Route::post('kebijakan-strategis-update', 'KebijakanStrategisController@update')->name('kebijakan-strategis-update');
+Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@delete')->name('kebijakan-strategis-delete');
+
 Route::get('clear', function()
 {
     \Artisan::call('optimize:clear');
