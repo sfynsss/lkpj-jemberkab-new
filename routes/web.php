@@ -119,9 +119,6 @@ Route::get('laporan/bab3/{id}', 'LKPJ\LaporanOPDController@bab3')->name('bab3');
 Route::get('laporan/bab4/{id}', 'LKPJ\LaporanOPDController@bab4')->name('bab4');
 Route::get('laporan/printcover/{id}', 'LKPJ\LaporanOPDController@printCover')->name('printcover');
 
-Route::get('kategori-statistik', 'StatistikController@index')->name('kategori-statistik');
-Route::get('statistik-show/{id}', 'StatistikController@show')->name('statistik-show');
-
 Route::get('setting-bab3', 'LKPJ\SettingLKPJController@verifBab3')->name('setting-bab3');
 Route::post('update-verif-bab3', 'LKPJ\SettingLKPJController@updateVerifBab3')->name('update-verif-bab3');
 
@@ -132,6 +129,12 @@ Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@dele
 
 Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
 Route::get('indikator-kependudukan', 'IndikatorKependudukanController@index')->name('indikator-kependudukan');
+Route::get('perkembangan-apbd', 'PerkembanganAPBDController@index')->name('perkembangan-apbd');
+
+Route::get('laporan-kategori', 'LaporanStatistikPenjabaranController@index')->name('laporan-kategori');
+Route::post('laporan-kategori-update', 'LaporanStatistikPenjabaranController@updateKategori')->name('laporan-kategori-update');
+Route::get('laporan-statistik-detail/{id}', 'LaporanStatistikPenjabaranController@statistikShow')->name('laporan-statistik-detail');
+Route::get('laporan-penjabaran-detail/{id}/{th}', 'LaporanStatistikPenjabaranController@penjabaranShow')->name('laporan-penjabaran-detail');
 
 Route::get('clear', function()
 {
