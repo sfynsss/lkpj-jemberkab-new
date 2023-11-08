@@ -4,3 +4,5 @@
 <!-- Style-->  
 <link rel="stylesheet" href="{{ asset('LKPJ/admin/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('LKPJ/admin/css/skin_color.css') }}">
+
+@livewireStyles

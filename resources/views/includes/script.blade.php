@@ -13,4 +13,6 @@
 <script src="{{ asset('LKPJ/assets/vendor_components/datatable/datatables.min.js') }}"></script>
 <script src="{{ asset('LKPJ/assets/vendor_components/jquery.peity/jquery.peity.js') }}"></script>
 
+@livewireScripts
+
 @yield('script')

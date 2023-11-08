@@ -130,6 +130,8 @@ Route::post('kebijakan-strategis-store', 'KebijakanStrategisController@store')->
 Route::post('kebijakan-strategis-update', 'KebijakanStrategisController@update')->name('kebijakan-strategis-update');
 Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@delete')->name('kebijakan-strategis-delete');
 
+Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
+
 Route::get('clear', function()
 {
     \Artisan::call('optimize:clear');
