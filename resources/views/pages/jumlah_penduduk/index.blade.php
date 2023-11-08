@@ -23,9 +23,16 @@
     <div class="col-12">
       <div class="box">
         <div class="box-header with-border">
-          <h4 class="box-title">Tahun : <b>{{ date('Y') }}</b></h4>
+          <h4 class="box-title">Data Tahun : <b>{{ date('Y') }}</b></h4>
           <ul class="box-controls pull-right d-md-flex d-none">
-            <button class="btn btn-primary btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-tambah-kebijakan">Filter Tahun</button>
+            <li class="dropdown">
+                <button class="dropdown-toggle btn btn-primary py-2 px-4" data-bs-toggle="dropdown" href="#">Filter Tahun</button>										  
+                <div class="dropdown-menu">
+                    @foreach ($tahun as $th)
+                        <a href="#" class="dropdown-item">{{ $th }}</a>
+                    @endforeach
+                </div>
+              </li>
           </ul>
         </div>
         <div class="box-body">
@@ -36,10 +43,10 @@
                   <thead class="bg-gradient-primary-dark text-white text-center">
                       <th>No</th>
                       <th>Kecamatan</th>
-                      <th>Jumlah Penduduk</th>
+                      <th>Jumlah <br> Penduduk</th>
                       <th>Persentase <br> Terhadap Total</th>
-                      <th>Luas</th>
-                      <th>Kepadatan Penduduk</th>
+                      <th>Luas <br> Wilayah</th>
+                      <th>Kepadatan <br> Penduduk</th>
                   </thead>
                   <tbody>
                     @foreach ($data as $dt)
@@ -56,22 +63,6 @@
                             @endforeach
                         </tr>
                     @endforeach
-                    {{-- @forelse ($data as $dt)
-                      <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $dt->nama_kebijakan }}</td>
-                        <td>{{ $dt->dasar_hukum }}</td>
-                        <td>{{ $dt->penyelesaian }}</td>
-                        <td class="text-center">
-                          <button class="waves-effect waves-warning btn btn-warning-light btn-circle" data-bs-toggle="modal" data-bs-target=".modal-ubah-kebijakan" onclick="insertTextKebijakan('{{ $dt->id }}', '{{ $dt->nama_kebijakan }}', '{{ $dt->dasar_hukum }}', '{{ $dt->penyelesaian }}');"><span class="fa fa-edit fs-18"></span></button>
-                          <a href="{{ route('kebijakan-strategis-delete', $dt->id) }}" class="waves-effect waves-light btn btn-danger-light btn-circle" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span></a>
-                        </td>
-                      </tr>
-                    @empty
-                      <tr>
-                        <td class="text-center" colspan="5"><i>Tidak ada data</i></td>
-                      </tr>
-                    @endforelse --}}
                   </tbody>
                 </table>
               </div>

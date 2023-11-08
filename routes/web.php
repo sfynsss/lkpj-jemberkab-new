@@ -131,6 +131,7 @@ Route::post('kebijakan-strategis-update', 'KebijakanStrategisController@update')
 Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@delete')->name('kebijakan-strategis-delete');
 
 Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
+Route::get('indikator-kependudukan', 'IndikatorKependudukanController@index')->name('indikator-kependudukan');
 
 Route::get('clear', function()
 {

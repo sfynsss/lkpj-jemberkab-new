@@ -11,6 +11,7 @@ class JumlahPendudukController extends Controller
     public function index()
     {
         $data = Kecamatan::with('JumlahPenduduk')->orderBy('kode_wilayah', 'ASC')->get();
-        return view('pages.jumlah_penduduk.index', compact('data'));
+        $tahun = ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
+        return view('pages.jumlah_penduduk.index', compact('data', 'tahun'));
     }
 }
