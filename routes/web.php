@@ -127,8 +127,12 @@ Route::post('kebijakan-strategis-store', 'KebijakanStrategisController@store')->
 Route::post('kebijakan-strategis-update', 'KebijakanStrategisController@update')->name('kebijakan-strategis-update');
 Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@delete')->name('kebijakan-strategis-delete');
 
-Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
 Route::get('indikator-kependudukan', 'IndikatorKependudukanController@index')->name('indikator-kependudukan');
+Route::post('indikator-kependudukan-update', 'IndikatorKependudukanController@update')->name('indikator-kependudukan-update');
+
+Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
+Route::post('jumlah-penduduk-update', 'JumlahPendudukController@update')->name('jumlah-penduduk-update');
+
 Route::get('perkembangan-apbd', 'PerkembanganAPBDController@index')->name('perkembangan-apbd');
 
 Route::get('laporan-kategori', 'LaporanStatistikPenjabaranController@index')->name('laporan-kategori');

@@ -47,6 +47,7 @@
                     <th>Persentase <br> Terhadap Total</th>
                     <th>Luas <br> Wilayah</th>
                     <th>Kepadatan <br> Penduduk</th>
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                   @foreach ($data as $dt)
@@ -59,6 +60,15 @@
                                   <td class="text-center">{{ $jml->prosentase }}</td>
                                   <td class="text-center">{{ $jml->luas }}</td>
                                   <td class="text-center">{{ $jml->kepadatan }}</td>
+                                  <td class="text-center">
+                                    <button class="waves-effect waves-warning btn btn-warning btn-sm" 
+                                            data-bs-toggle="modal" data-bs-target=".modal-ubah-penduduk" 
+                                            onclick="insertTextIndikator('{{ $jml->id }}', 'Kecamatan {{ $jml->Kecamatan->nama }} Tahun {{ $jml->tahun }}', 
+                                            '{{ $jml->jumlah }}', '{{ $jml->prosentase }}',
+                                            '{{ $jml->luas }}', '{{ $jml->kepadatan }}');">
+                                            <span class="fa fa-edit fs-18"></span>
+                                    </button>
+                                </td>
                               @endif
                           @endforeach
                       </tr>
@@ -72,5 +82,56 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade modal-ubah-penduduk" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <form class="modal-content" action="{{ route('indikator-kependudukan-update') }}" method="POST">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myLargeModalLabel">Form Ubah Data Statistik Kependudukan</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @csrf
+        <input type="number" id="id_data" name="id_data" required hidden>
+        <div class="form-group">
+          <label class="form-label">Nama Data</label>
+          <input type="text" class="form-control" id="nama_data" readonly>
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Jumlah Penduduk</label>
+          <input type="number" class="form-control" id="jumlah" name="jumlah" min="0" step=".01">
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Prosentase Terhadap Total</label>
+          <input type="number" class="form-control" id="prosentase" name="prosentase" min="0" max="100" step=".01">
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Luas</label>
+          <input type="number" class="form-control" id="luas" name="luas" min="0" step=".01">
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Kepadatan Penduduk</label>
+          <input type="number" class="form-control" id="kepadatan" name="kepadatan" min="0" step=".01">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning float-end">Ubah Data</button>
+        <button type="button" class="btn btn-light float-end" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function insertTextIndikator($a,$b,$c,$d,$e,$f)
+  {
+      document.getElementById('id_data').value = $a;
+      document.getElementById('nama_data').value = $b;
+      document.getElementById('jumlah').value = $c;
+      document.getElementById('prosentase').value = $d;
+      document.getElementById('luas').value = $e;
+      document.getElementById('kepadatan').value = $f;
+  }
+</script>
 
 @endsection
