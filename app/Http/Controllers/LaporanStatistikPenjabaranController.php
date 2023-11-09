@@ -35,6 +35,22 @@ class LaporanStatistikPenjabaranController extends Controller
         return view('pages.laporan.statistik.index', compact('data'));
     }
 
+    public function statistikUpdate(Request $request)
+    {
+        $data = LaporanStatistik::findOrFail($request->id_statistik);
+        $data->update([
+            'th_2017'   => $request->th_2017,
+            'th_2018'   => $request->th_2018,
+            'th_2019'   => $request->th_2019,
+            'th_2020'   => $request->th_2020,
+            'th_2021'   => $request->th_2021,
+            'th_2022'   => $request->th_2022,
+            'th_2023'   => $request->th_2023,
+        ]);
+        Alert::success('Berhasil', 'Data kategori laporan berhasil diubah');
+        return redirect()->route('laporan-statistik-detail', $data->kategori_id);
+    }
+
     public function penjabaranShow($id, $th)
     {
         $data = LaporanPenjabaran::where('kategori_id', $id)->where('tahun', $th)->orderBy('kode_data', 'ASC')->get();

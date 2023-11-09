@@ -138,6 +138,9 @@ Route::get('perkembangan-apbd', 'PerkembanganAPBDController@index')->name('perke
 Route::get('laporan-kategori', 'LaporanStatistikPenjabaranController@index')->name('laporan-kategori');
 Route::post('laporan-kategori-update', 'LaporanStatistikPenjabaranController@updateKategori')->name('laporan-kategori-update');
 Route::get('laporan-statistik-detail/{id}', 'LaporanStatistikPenjabaranController@statistikShow')->name('laporan-statistik-detail');
+Route::post('laporan-statistik-update', 'LaporanStatistikPenjabaranController@statistikUpdate')->name('laporan-statistik-update');
+
+
 Route::get('laporan-penjabaran-detail/{id}/{th}', 'LaporanStatistikPenjabaranController@penjabaranShow')->name('laporan-penjabaran-detail');
 
 Route::get('clear', function()
