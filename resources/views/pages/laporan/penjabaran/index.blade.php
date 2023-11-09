@@ -46,32 +46,30 @@
                       <th>Uraian</th>
                       <th>Anggaran</th>
                       <th>Realisasi</th>
-                      <th>%</th>
+                      <th>Prosentase</th>
                       <th>Sisa Lebih / Kurang</th>
+                      <th>Aksi</th>
                   </thead>
                   <tbody>
                     @foreach ($data as $dt)
                         <tr>
-                            <td class="text-center">{{ $dt->kode_data }}</td>
+                            <td class="text-left">{{ $dt->kode_data }}</td>
                             <td class="text-left">{{ $dt->nama_data }}</td>
-                            <td class="text-center">{{ $dt->anggaran }}</td>
-                            <td class="text-center">{{ $dt->realisasi }}</td>
-                            <td class="text-center">{{ $dt->prosentase }}</td>
-                            <td class="text-center">{{ $dt->sisa }}</td>
-                            {{-- <td class="text-center">
-                                @if ($dt->id == 1)
-                                    <a href="{{ route('indikator-kependudukan') }}" class="waves-effect waves-light btn btn-primary-light btn-circle"><span class="fa fa-file fs-18"></span></a>
-                                @elseif($dt->id == 2)
-                                    <a href="{{ route('jumlah-penduduk') }}" class="waves-effect waves-light btn btn-primary-light btn-circle"><span class="fa fa-file fs-18"></span></a>
-                                @else
-                                    @if (Auth::user()->skpd_id == 36)
-                                    <a href="{{ route('laporan-statistik-detail', $dt->id) }}" class="waves-effect waves-light btn btn-primary-light btn-circle"><span class="fa fa-file fs-18"></span></a>
-                                    @elseif (Auth::user()->skpd_id == 37)
-                                      <a href="{{ route('laporan-penjabaran-detail', $dt->id) }}" class="waves-effect waves-light btn btn-primary-light btn-circle"><span class="fa fa-file fs-18"></span></a>
-                                    @endif
-                                @endif
-                                <button class="waves-effect waves-warning btn btn-warning-light btn-circle" data-bs-toggle="modal" data-bs-target=".modal-ubah-kategori" onclick="insertTextKebijakan('{{ $dt->id }}', '{{ $dt->nama_kategori }}', '{{ $dt->tahun }}', '{{ $dt->keterangan }}');"><span class="fa fa-edit fs-18"></span></button>
-                            </td> --}}
+                            <td class="text-center">Rp. {{ number_format($dt->anggaran,0,',','.') }}</td>
+                            <td class="text-center">Rp. {{ number_format($dt->realisasi,0,',','.') }}</td>
+                            <td class="text-center">{{ $dt->prosentase }}%</td>
+                            <td class="text-center">Rp. {{ number_format($dt->sisa,0,',','.') }}</td>
+                            <td class="text-center">
+                              @if ($dt->urutan != 0)
+                              <button class="waves-effect waves-warning btn btn-warning btn-circle btn-sm" 
+                                data-bs-toggle="modal" data-bs-target=".modal-ubah-penjabaran" 
+                                onclick="insertTextPenjabaran('{{ $dt->id }}', '{{ $dt->nama_data }}', 
+                                '{{ $dt->anggaran }}', '{{ $dt->realisasi }}',
+                                '{{ $dt->prosentase }}', '{{ $dt->sisa }}');">
+                                <span class="fa fa-edit fs-18"></span>
+                              </button>
+                              @endif
+                            </td>
                         </tr>
                     @endforeach
                   </tbody>
@@ -83,5 +81,56 @@
       </div>
     </div>
 </div>
+
+<div class="modal fade modal-ubah-penjabaran" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <form class="modal-content" action="#" method="POST">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myLargeModalLabel">Form Ubah Data Penjabaran</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @csrf
+        <input type="number" id="id_data" name="id_data" required hidden>
+        <div class="form-group">
+          <label class="form-label">Nama Data</label>
+          <input type="text" class="form-control" id="nama_data" readonly>
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Anggaran</label>
+          <input type="number" class="form-control" id="anggaran" name="anggaran" min="0" step=".01">
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Realisasi</label>
+          <input type="number" class="form-control" id="realisasi" name="realisasi" min="0" max="100" step=".01">
+        </div>
+        <div class="form-group"">
+          <label class="form-label">%</label>
+          <input type="number" class="form-control" id="prosentase" name="prosentase" min="0" step=".01" readonly>
+        </div>
+        <div class="form-group"">
+          <label class="form-label">Sisa Lebih / Kurang</label>
+          <input type="number" class="form-control" id="sisa" name="sisa" min="0" step=".01" readonly>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning float-end">Ubah Data</button>
+        <button type="button" class="btn btn-light float-end" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function insertTextPenjabaran($a,$b,$c,$d,$e,$f)
+  {
+      document.getElementById('id_data').value = $a;
+      document.getElementById('nama_data').value = $b;
+      document.getElementById('anggaran').value = $c;
+      document.getElementById('realisasi').value = $d;
+      document.getElementById('prosentase').value = $e;
+      document.getElementById('sisa').value = $f;
+  }
+</script>
 
 @endsection

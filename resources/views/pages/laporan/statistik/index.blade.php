@@ -54,14 +54,14 @@
                             <td class="text-center">{{ $dt->th_2023 }}</td>
                             <td class="text-center">
                               <button class="waves-effect waves-warning btn btn-warning btn-circle btn-sm" 
-                              data-bs-toggle="modal" data-bs-target=".modal-ubah-statistik" 
-                              onclick="insertTextStatistik('{{ $dt->id }}', '{{ $dt->nama_data }}', 
-                              '{{ $dt->th_2017 }}', '{{ $dt->th_2018 }}',
-                              '{{ $dt->th_2019 }}', '{{ $dt->th_2020 }}',
-                              '{{ $dt->th_2021 }}', '{{ $dt->th_2022 }}',
-                              '{{ $dt->th_2023 }}');">
-                              <span class="fa fa-edit fs-18"></span>
-                      </button>
+                                data-bs-toggle="modal" data-bs-target=".modal-ubah-statistik" 
+                                onclick="insertTextStatistik('{{ $dt->id }}', '{{ $dt->nama_data }}', 
+                                '{{ $dt->th_2017 }}', '{{ $dt->th_2018 }}',
+                                '{{ $dt->th_2019 }}', '{{ $dt->th_2020 }}',
+                                '{{ $dt->th_2021 }}', '{{ $dt->th_2022 }}',
+                                '{{ $dt->th_2023 }}');">
+                                <span class="fa fa-edit fs-18"></span>
+                              </button>
                             </td>
                         </tr>
                     @endforeach
