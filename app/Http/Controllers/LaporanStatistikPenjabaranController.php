@@ -58,4 +58,25 @@ class LaporanStatistikPenjabaranController extends Controller
         return view('pages.laporan.penjabaran.index', compact('data', 'tahun'));
     }
 
+    public function penjabaranUpdate(Request $request)
+    {
+        $data = LaporanPenjabaran::findOrFail($request->id_data);
+
+        $anggaran   = $request->anggaran;
+        $realisasi  = $request->realisasi;
+
+        $anggaran == 0 ? $prosentase = 0 : $prosentase = round($realisasi/$anggaran * 100, 2);
+        $sisa = abs($anggaran - $realisasi);
+
+        $data->update([
+            'anggaran'   => $anggaran,
+            'realisasi'  => $realisasi,
+            'prosentase' => $prosentase,
+            'sisa'       => $sisa,
+        ]);
+
+        Alert::success('Berhasil', 'Data penjabaran berhasil diubah');
+        return redirect()->route('laporan-penjabaran-detail', [$data->kategori_id, date('Y')]);
+    }
+
 }

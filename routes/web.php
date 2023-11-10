@@ -140,8 +140,8 @@ Route::post('laporan-kategori-update', 'LaporanStatistikPenjabaranController@upd
 Route::get('laporan-statistik-detail/{id}', 'LaporanStatistikPenjabaranController@statistikShow')->name('laporan-statistik-detail');
 Route::post('laporan-statistik-update', 'LaporanStatistikPenjabaranController@statistikUpdate')->name('laporan-statistik-update');
 
-
 Route::get('laporan-penjabaran-detail/{id}/{th}', 'LaporanStatistikPenjabaranController@penjabaranShow')->name('laporan-penjabaran-detail');
+Route::post('laporan-penjabaran-update', 'LaporanStatistikPenjabaranController@penjabaranUpdate')->name('laporan-penjabaran-update');
 
 Route::get('clear', function()
 {

@@ -84,7 +84,7 @@
 
 <div class="modal fade modal-ubah-penjabaran" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog modal-lg modal-dialog-centered">
-    <form class="modal-content" action="#" method="POST">
+    <form class="modal-content" action="{{ route('laporan-penjabaran-update') }}" method="POST">
       <div class="modal-header">
         <h4 class="modal-title" id="myLargeModalLabel">Form Ubah Data Penjabaran</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -96,21 +96,23 @@
           <label class="form-label">Nama Data</label>
           <input type="text" class="form-control" id="nama_data" readonly>
         </div>
-        <div class="form-group"">
-          <label class="form-label">Anggaran</label>
-          <input type="number" class="form-control" id="anggaran" name="anggaran" min="0" step=".01">
-        </div>
-        <div class="form-group"">
-          <label class="form-label">Realisasi</label>
-          <input type="number" class="form-control" id="realisasi" name="realisasi" min="0" max="100" step=".01">
-        </div>
-        <div class="form-group"">
-          <label class="form-label">%</label>
-          <input type="number" class="form-control" id="prosentase" name="prosentase" min="0" step=".01" readonly>
-        </div>
-        <div class="form-group"">
-          <label class="form-label">Sisa Lebih / Kurang</label>
-          <input type="number" class="form-control" id="sisa" name="sisa" min="0" step=".01" readonly>
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Anggaran</label>
+            <input type="number" class="form-control" id="anggaran" name="anggaran" min="0" step=".01">
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Realisasi</label>
+            <input type="number" class="form-control" id="realisasi" name="realisasi" min="0" step=".01">
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Prosentase</label>
+            <input type="number" class="form-control" id="prosentase" name="prosentase" readonly>
+          </div>
+          <div class="col-md-6 mb-2">
+            <label class="form-label">Sisa Lebih / Kurang</label>
+            <input type="number" class="form-control" id="sisa" name="sisa" readonly>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
