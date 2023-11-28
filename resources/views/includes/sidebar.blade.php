@@ -4,30 +4,54 @@
          <div class="multinav-scroll" style="height: 100%;">
             <ul class="sidebar-menu" data-widget="tree">
                <li class="header">Menu</li>
-               <li><a href="{{ route('home') }}"><i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
-               <li class="header">Pengelolaan Laporan</li>
-               <li class="treeview">
-                  <a href="#">
-                  <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
-                  <span>Data Indikator</span>
-                  <span class="pull-right-container">
-                  <i class="fa fa-angle-right pull-right"></i>
-                  </span>
+               <li>
+                  <a href="{{ route('home') }}">
+                     <i class="fa fa-home"><span class="path1"></span><span class="path2"></span></i>
+                     Dashboard
                   </a>
-                  <ul class="treeview-menu">
-                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data IKD</a></li>
-                     <li><a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Data IKU</a></li>
-                  </ul>
                </li>
-               <li><a href="{{ route('program-unggulan') }}"><i span class="fa fa-thumbs-up"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li>
+
+               <li class="header">Data Pembangunan</li>
+               <li>
+                  <a href="#">
+                     <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
+                     Capaian IKD
+                  </a>
+               </li>
+               <li>
+                  <a href="#">
+                     <i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
+                     Capaian Pembangunan
+                  </a>
+               </li>
+
+               <li class="header">Penyelenggaraan Urusan</li>
+               <li>
+                  <a href="{{ route('program-unggulan') }}">
+                     <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
+                     Prog/Keg/SubKegiatan
+                  </a>
+               </li>
+               <li>
+                  <a href="{{ route('kebijakan-strategis') }}">
+                     <i span class="fa fa-star-half-o"><span class="path1"></span><span class="path2"></span></i>
+                     Kebijakan Strategis
+                  </a>
+               </li>
+               <li>
+                  <a href="#">
+                     <i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
+                     Rekomendasi DPRD
+                  </a>
+               </li>
+               <li class="header">Lainnya</li>
+               {{-- <li><a href="{{ route('program-unggulan') }}"><i span class="fa fa-thumbs-up"><span class="path1"></span><span class="path2"></span></i>Program Unggulan</a></li> --}}
                @if (Auth::user()->skpd_id == 36)
                <li><a href="{{ route('laporan-kategori') }}"><i span class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>Data Statistik</a></li>                   
                @endif
                @if (Auth::user()->skpd_id == 37)
                <li><a href="{{ route('laporan-kategori') }}"><i span class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
                @endif
-               <li><a href="{{ route('kebijakan-strategis') }}"><i span class="fa fa-star-half-o"><span class="path1"></span><span class="path2"></span></i>Kebijakan Strategis</a></li>
-               <li><a href="#"><i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>Rekomendasi DPRD</a></li>
                <li><a href="#"><i span class="fa fa-universal-access"><span class="path1"></span><span class="path2"></span></i>Tugas Pembantuan</a></li>
                <li><a href="#"><i span class="fa fa-support"><span class="path1"></span><span class="path2"></span></i>Kebencanaan</a></li>
 

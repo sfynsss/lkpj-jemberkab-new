@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
-      <title>LKPJ SIPPD Jember</title>
+      <title>e-LKPJ Jember</title>
       @include('includes.style')
    </head>
    <body class="hold-transition light-skin sidebar-mini theme-primary fixed">

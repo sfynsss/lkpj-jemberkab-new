@@ -59,7 +59,7 @@
                     <td>{{ $dt->kode_subkegiatan }}</td>
                     <td>{{ $dt->nama_subkegiatan }}</td>                      
                     <td class="text-center">
-                      <a href="{{ route('detail-pks', $dt->id) }}" class="btn btn-sm bg-gradient-primary">
+                      <a href="{{ route('program-unggulan-show', $dt->id) }}" class="btn btn-sm bg-gradient-primary">
                         <i class="fa fa-edit me-1"><span class="path1"></span><span class="path2"></span></i>
                         Edit
                       </a>

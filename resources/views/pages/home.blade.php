@@ -21,10 +21,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12">
+        <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Keterangan Menu Pelaporan</h4>
+                    <h4 class="box-title">Visi dan Misi, Tema Pembangunan, Strategi dan arah Kebijakan, Program unggulan Kepala Daerah</h4>
                 </div>
                 <div class="box-body p-0">
                   <div class="media-list media-list-hover">
@@ -32,39 +32,43 @@
                       <span class="avatar avatar-lg bg-primary-light rounded"><i class="fa fa-user"></i></span>
                       <div class="media-body fw-500">
                         <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Lampiran I. Capaian dan Indikator</strong></a>
+                            <p class="d-flex align-items-center justify-content-between"><strong>Visi :</strong></p>
                         </p>
-                        <p class="text-fade">Halaman untuk melihat data capaian dan indikator kinerja yang telah diinputkan di SIPPD</p>
+                        <p class="text-dark ms-3">Wes Wayahe Mbenahi Jember Dengan Berprinsip Pada Kolaborasi, Sinergi, Dan Akselerasi Dalam Membangun Jember</p>
                       </div>
                     </div>
 
                     <div class="media bar-0">
                         <span class="avatar avatar-lg bg-danger-light rounded"><i class="fa fa-money"></i></span>
                         <div class="media-body">
-                          <p class="d-flex align-items-center justify-content-between">
-                            <a class="hover-success" href="#"><strong> Lampiran II. Program/Kegiatan/SubKegiatan</strong></a>
+                          <p class="d-flex align-items-center justify-content-between"><strong>Misi :</strong></p>
+                          <p class="text-fade">
+                            <ol>
+                                <li>Meningkatkan pertumbuhan ekonomi dengan semangat sinergitas dan kolaborasi dengan semua elemen masyarakat yang berbasiskan potensi daerah.</li>
+                                <li>Membangun tata kelola pemerintahan yang kondusif antara eksekutif, legislatif, masyarakat dan komponen pembangunan daerah lainnya.</li>
+                                <li>Menuntaskan kemiskinan struktural dan kultural di semua wilayah.</li>
+                                <li>Meningkatkan  investasi  dengan  membangun  dan mengembangkan  sektor- sektor unggulan dengan berbasiskan kekayaan sumber daya alam, sumber daya manusia dan lingkungan yang lestari.</li>
+                                <li>Meningkatkan  pelayanan  dasar  berupa  kesehatan  dan pendidikan  dengan sistem yang terintegrasi.</li>
+                                <li>Meningkatkan kualitas dan ketersediaan infrastruktur publik yang merata di semua wilayah Jember.</li>
+                                <li>Pengembangan  potensi  pariwisata  dengan  mengedepankan kearifan  lokal serta pelestarian budaya.</li>
+                            </ol>
                           </p>
-                          <p class="text-fade">Halaman review data P/K/S di OPD masing-masing untuk pelaporan LKPJ</p>
                         </div>
                     </div>
 
                     <div class="media bar-0">
                      <span class="avatar avatar-lg bg-success-light rounded"><i class="fa fa-book"></i></span>
                       <div class="media-body">
-                        <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Lampiran. III Capaian Indikator Kinerja Utama</strong></a>
-                        </p>
-                        <p class="text-fade">Halaman data urusan dan penglolaan informasi indikator utama dan capaian kinerja utama</p>
+                        <p class="d-flex align-items-center justify-content-between"><strong>Strategi dan Arah Kebijakan :</strong></p>
+                        <p class="text-fade">-</p>
                       </div>
                     </div>
 
                     <div class="media bar-0">
                       <span class="avatar avatar-lg bg-info-light rounded"><i class="fa fa-graduation-cap"></i></span>
                       <div class="media-body">
-                        <p class="d-flex align-items-center justify-content-between">
-                          <a class="hover-success" href="#"><strong>Lampiran. IV</strong></a>
-                        </p>
-                        <p class="text-fade">Halaman pembuatan/perubahan paragraf kalimat penutup untuk laporan LKPJ</p>
+                        <p class="d-flex align-items-center justify-content-between"><strong>Misi :</strong></p>
+                        <p class="text-fade">-</p>
                       </div>
                     </div>
 
@@ -72,67 +76,6 @@
                 </div>
             </div>
           </div>
-        <div class="col-lg-8 col-md-12">
-            <div class="box mb-15">
-                <div class="box-header with-border">
-                    <h4 class="box-title">Navigasi Program/Kegiatan/Subkegiatan</h4>
-                </div>
-            </div>
-            <div class="box mb-15 pull-up">
-                <div class="box-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <div class="me-15 bg-primary h-50 w-50 l-h-60 rounded text-center">
-                                <span class="icon-Mail fs-24"></span>
-                            </div>
-                            <div class="d-flex flex-column fw-500">
-                                <a href="#" class="text-dark hover-primary mb-1 fs-16">Program</a>
-                                {{-- <span class="text-fade">Terdapat sebanyak (n) data program</span> --}}
-                            </div>
-                        </div>
-                        <a href="#">
-                            <span class="icon-Arrow-right fs-24"><span class="path1"></span><span class="path2"></span></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="box mb-15 pull-up">
-                <div class="box-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <div class="me-15 bg-danger h-50 w-50 l-h-60 rounded text-center">
-                                <span class="icon-Book-open fs-24"><span class="path1"></span><span class="path2"></span></span>
-                            </div>
-                            <div class="d-flex flex-column fw-500">
-                                <a href="#" class="text-dark hover-primary mb-1 fs-16">Kegiatan</a>
-                                {{-- <span class="text-fade">Terdapat sebanyak (n) data kegiatan</span> --}}
-                            </div>
-                        </div>
-                        <a href="#">
-                            <span class="icon-Arrow-right fs-24"><span class="path1"></span><span class="path2"></span></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="box mb-15 pull-up">
-                <div class="box-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <div class="me-15 bg-info h-50 w-50 l-h-60 rounded text-center">
-                                <span class="icon-Mail fs-24"></span>
-                            </div>
-                            <div class="d-flex flex-column fw-500">
-                                <a href="#" class="text-dark hover-info mb-1 fs-16">Sub Kegiatan</a>
-                                {{-- <span class="text-fade">Terdapat sebanyak (n) data sub-kegiatan</span> --}}
-                            </div>
-                        </div>
-                        <a href="#">
-                            <span class="icon-Arrow-right fs-24"><span class="path1"></span><span class="path2"></span></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>	
 
 @endsection

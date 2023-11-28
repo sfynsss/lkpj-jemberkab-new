@@ -14,5 +14,6 @@
 <script src="{{ asset('LKPJ/assets/vendor_components/jquery.peity/jquery.peity.js') }}"></script>
 
 @livewireScripts
+@stack('script')
 
-@yield('script')
+{{-- @yield('script') --}}

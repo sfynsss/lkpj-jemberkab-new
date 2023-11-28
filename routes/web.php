@@ -15,6 +15,8 @@ Route::middleware(['auth'])
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('program-unggulan', 'ProgramUnggulanController@index')->name('program-unggulan');
+    Route::get('program-unggulan-show/{id}', 'ProgramUnggulanController@show')->name('program-unggulan-show');
+    Route::post('program-unggulan-update', 'ProgramUnggulanController@update')->name('program-unggulan-update');
 
 });
 
