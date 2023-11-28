@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CapaianPelaksanaanExport;
 use App\SubkegiatanInduk;
 use App\SubkegiatanTahun;
 use App\SubkegiatanBulan;
-use App\Exports\CapaianPelaksanaanExport;
+use App\BidangUrusan;
+use App\Kegiatan;
+use App\Program;
+use App\Skpd;
+use App\Urusan;
 use Carbon\Carbon;
 use Alert;
+use Auth;
 
 class ProgramUnggulanController extends Controller
 {
@@ -42,13 +48,15 @@ class ProgramUnggulanController extends Controller
             'keterangan'    => $request->keterangan,
             'updated_at'    => Carbon::now(),
         ]);
-
         Alert::success('Berhasil', 'Data berhasil diperbaharui');
         return redirect()->route('program-unggulan');
     }
 
     public function export()
     {
-
+        $tahun = date('Y');
+        $opd = Skpd::findOrFail(Auth::user()->skpd_id);
+        $data = SubkegiatanInduk::where('skpd_id', Auth::user()->skpd_id)->get();
+        return Excel::download(new CapaianPelaksanaanExport($data, $tahun, $opd), time().'-LKPJ-Capaian-Pelaksanaan-'.$opd->singkatan_skpd.'.xlsx');
     }
 }

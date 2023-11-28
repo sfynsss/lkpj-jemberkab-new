@@ -15,7 +15,7 @@ class Kegiatan extends Model
 
     public function SubKegiatan()
     {
-    	return $this->hasMany('App\SubKegiatan', 'kegiatan_id', 'id');
+    	return $this->hasMany('App\SubKegiatanInduk', 'kegiatan_id', 'id');
     }
 
     public function Skpd()

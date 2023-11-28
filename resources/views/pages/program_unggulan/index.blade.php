@@ -28,10 +28,10 @@
           <h6 class="box-subtitle text-fade">{{ Auth::user()->SKPD->nama_skpd }}</h6>
         </h4>
         <ul class="box-controls text-end">
-          <button class="btn btn-success btn-sm fw-bold">
+          <a class="btn btn-success btn-sm fw-bold" href="{{ route('program-unggulan-export') }}">
             <i class="fa fa-print me-1"><span class="path1"></span><span class="path2"></span></i>
             Cetak Capaian Pelaksanaan
-          </button>
+          </a>
           <form class="me-2">
             <div class="input-group">
               <input type="search" id="myInput" class="form-control" placeholder="Cari nama sub ..." autocomplete="off" onkeyup="myFunction()">

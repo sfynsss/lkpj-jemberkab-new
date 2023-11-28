@@ -23,4 +23,9 @@ class SubkegiatanInduk extends Model
     {
         return $this->hasMany(SubkegiatanBulan::class, 'subkegiatan_id', 'id');
     }
+
+    public function SKPD()
+    {
+    	return $this->belongsTo('App\Skpd', 'skpd_id', 'id');
+    }
 }
