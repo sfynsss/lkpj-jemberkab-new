@@ -13,13 +13,13 @@
 
                <li class="header">Data Pembangunan</li>
                <li>
-                  <a href="#">
+                  <a href="{{ route('capaian-ikd') }}">
                      <i span class="fa fa-check-square-o"><span class="path1"></span><span class="path2"></span></i>
                      Capaian IKD
                   </a>
                </li>
                <li>
-                  <a href="#">
+                  <a href="{{ route('capaian-pembangunan') }}">
                      <i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
                      Capaian Pembangunan
                   </a>
@@ -39,7 +39,7 @@
                   </a>
                </li>
                <li>
-                  <a href="#">
+                  <a href="{{ route('rekomendasi-dprd') }}">
                      <i span class="fa fa-university"><span class="path1"></span><span class="path2"></span></i>
                      Rekomendasi DPRD
                   </a>
@@ -52,8 +52,10 @@
                @if (Auth::user()->skpd_id == 37)
                <li><a href="{{ route('laporan-kategori') }}"><i span class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
                @endif
-               <li><a href="#"><i span class="fa fa-universal-access"><span class="path1"></span><span class="path2"></span></i>Tugas Pembantuan</a></li>
+               <li><a href="{{ route('tugas-pembantuan') }}"><i span class="fa fa-universal-access"><span class="path1"></span><span class="path2"></span></i>Tugas Pembantuan</a></li>
+               @if (Auth::user()->skpd_id == 9)
                <li><a href="#"><i span class="fa fa-support"><span class="path1"></span><span class="path2"></span></i>Kebencanaan</a></li>
+               @endif
 
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">

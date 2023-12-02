@@ -67,7 +67,7 @@
                     <div class="media bar-0">
                       <span class="avatar avatar-lg bg-info-light rounded"><i class="fa fa-graduation-cap"></i></span>
                       <div class="media-body">
-                        <p class="d-flex align-items-center justify-content-between"><strong>Misi :</strong></p>
+                        <p class="d-flex align-items-center justify-content-between"><strong>Program Unggulan :</strong></p>
                         <p class="text-fade">-</p>
                       </div>
                     </div>

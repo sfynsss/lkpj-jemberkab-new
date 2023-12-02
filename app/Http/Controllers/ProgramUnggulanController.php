@@ -41,11 +41,17 @@ class ProgramUnggulanController extends Controller
 
     public function update(Request $request)
     {
+        $tahun = date('Y');
         $data = SubKegiatanInduk::findOrFail($request->id_subkegiatan);
         $data->update([
             'unggulan'      => $request->unggulan,
             'lokasi'        => $request->lokasi,
             'keterangan'    => $request->keterangan,
+            'updated_at'    => Carbon::now(),
+        ]);
+        $data_tahun = SubKegiatanTahun::where('subkegiatan_id', $data->id)->where('tahun', $tahun)->first();
+        $data_tahun->update([
+            'penyelesaian'  => $request->penyelesaian,
             'updated_at'    => Carbon::now(),
         ]);
         Alert::success('Berhasil', 'Data berhasil diperbaharui');

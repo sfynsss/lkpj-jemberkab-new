@@ -10,4 +10,8 @@ class KebijakanStrategis extends Model
     protected $guarded = [];
     public $timestamps = true;
 
+    public function Subkegiatan()
+    {
+        return $this->belongsTo(SubkegiatanInduk::class, 'subkegiatan_id', 'id');
+    }
 }

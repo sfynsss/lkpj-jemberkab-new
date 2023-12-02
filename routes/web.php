@@ -129,6 +129,24 @@ Route::get('kebijakan-strategis', 'KebijakanStrategisController@index')->name('k
 Route::post('kebijakan-strategis-store', 'KebijakanStrategisController@store')->name('kebijakan-strategis-store');
 Route::post('kebijakan-strategis-update', 'KebijakanStrategisController@update')->name('kebijakan-strategis-update');
 Route::get('kebijakan-strategis-delete/{id}', 'KebijakanStrategisController@delete')->name('kebijakan-strategis-delete');
+Route::get('kebijakan-strategis-export', 'KebijakanStrategisController@export')->name('kebijakan-strategis-export');
+
+Route::get('rekomendasi-dprd', 'RekomendasiDPRDController@index')->name('rekomendasi-dprd');
+
+Route::get('capaian-ikd', 'CapaianIKDController@index')->name('capaian-ikd');
+Route::get('capaian-ikd-export', 'CapaianIKDController@export')->name('capaian-ikd-export');
+
+Route::get('tugas-pembantuan', 'TugasPembantuanController@index')->name('tugas-pembantuan');
+
+Route::get('capaian-pembangunan', 'CapaianPembangunanController@index')->name('capaian-pembangunan');
+Route::get('capaian-pembangunan-show/{id}', 'CapaianPembangunanController@show')->name('capaian-pembangunan-show');
+Route::post('capaian-pembangunan-kategori-store', 'CapaianPembangunanController@storeKategori')->name('capaian-pembangunan-kategori-store');
+Route::post('capaian-pembangunan-kategori-update', 'CapaianPembangunanController@updateKategori')->name('capaian-pembangunan-kategori-update');
+Route::get('capaian-pembangunan-kategori-delete/{id}', 'CapaianPembangunanController@deleteKategori')->name('capaian-pembangunan-kategori-delete');
+Route::post('capaian-pembangunan-data-store', 'CapaianPembangunanController@storeData')->name('capaian-pembangunan-data-store');
+Route::post('capaian-pembangunan-data-update', 'CapaianPembangunanController@updateData')->name('capaian-pembangunan-data-update');
+Route::get('capaian-pembangunan-data-delete/{id}', 'CapaianPembangunanController@deleteData')->name('capaian-pembangunan-data-delete');
+Route::get('capaian-pembangunan-export', 'CapaianPembangunanController@export')->name('capaian-pembangunan-export');
 
 Route::get('indikator-kependudukan', 'IndikatorKependudukanController@index')->name('indikator-kependudukan');
 Route::post('indikator-kependudukan-update', 'IndikatorKependudukanController@update')->name('indikator-kependudukan-update');

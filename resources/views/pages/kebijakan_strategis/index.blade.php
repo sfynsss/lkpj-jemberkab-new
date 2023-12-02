@@ -26,18 +26,20 @@
         <h4 class="box-title">SKPD : <b>{{ Auth::user()->skpd->nama_skpd }}</b></h4>
         <ul class="box-controls pull-right d-md-flex d-none">
           <button class="btn btn-primary btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-tambah-kebijakan">Tambah Data</button>
+          <a href="{{ route('kebijakan-strategis-export') }}" class="btn btn-success btn-sm px-4 py-2 me-2"><i class="fa fas fa-print"></i> Cetak Excel</a>
         </ul>
       </div>
       <div class="box-body">
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <table id="zero_config" class="table table-striped table-bordered no-wrap">
+              <table class="table table-striped table-bordered no-wrap">
                 <thead class="bg-gradient-primary-dark text-white text-center">
                     <th>No</th>
                     <th>Kebijakan Strategis (Peraturan / Keputusan Bupati)</th>
                     <th>Dasar Hukum</th>
                     <th>Tujuan / Masalah yang Diselesaikan</th>
+                    <th>Sub Kegiatan</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -47,6 +49,7 @@
                       <td>{{ $dt->nama_kebijakan }}</td>
                       <td>{{ $dt->dasar_hukum }}</td>
                       <td>{{ $dt->penyelesaian }}</td>
+                      <td>{{ $dt->Subkegiatan->nama_subkegiatan }}</td>
                       <td class="text-center">
                         <button class="waves-effect waves-warning btn btn-warning-light btn-circle" data-bs-toggle="modal" data-bs-target=".modal-ubah-kebijakan" onclick="insertTextKebijakan('{{ $dt->id }}', '{{ $dt->nama_kebijakan }}', '{{ $dt->dasar_hukum }}', '{{ $dt->penyelesaian }}');"><span class="fa fa-edit fs-18"></span></button>
                         <a href="{{ route('kebijakan-strategis-delete', $dt->id) }}" class="waves-effect waves-light btn btn-danger-light btn-circle" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span></a>
@@ -78,15 +81,23 @@
         @csrf
         <div class="form-group">
           <label class="form-label">Kebijakan Strategis (Peraturan / Keputusan Bupati)</label>
-          <textarea name="nama_kebijakan" rows="3" class="form-control" required placeholder="Tuliskan kebijakan strategis ..."></textarea>
+          <textarea name="nama_kebijakan" rows="3" class="form-control" required placeholder="Isi dengan Perda/Perbup/kebijakan daerah yang dilaksanakan OPD terkait"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Dasar Hukum</label>
-          <textarea name="dasar_hukum" rows="3" class="form-control" required placeholder="Tuliskan dasar hukum ..."></textarea>
+          <textarea name="dasar_hukum" rows="3" class="form-control" required placeholder="Isi dengan Dasar Hukum (diatas Perda/Perbup ) yang mendasari pelaksanaan kebijakan strategis"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Tujuan / Masalah yang Diselesaikan</label>
-          <textarea name="penyelesaian" rows="3" class="form-control" required placeholder="Tuliskan tujuan atau masalah yang diselesaikan ..."></textarea>
+          <textarea name="penyelesaian" rows="3" class="form-control" required placeholder="Isi dengan Tujuan/Masalah yang dapat diselesaikan dari pelaksanaan kebijakan strategis"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Sub Kegiatan</label>
+          <select name="id_subkegiatan" id="id_subkegiatan" class="form-select" required>
+            @foreach ($subkegiatan as $sb)  
+              <option value="{{ $sb->id }}">{{ $sb->nama_subkegiatan }}</option>
+            @endforeach
+          </select>
         </div>
       </div>
 		  <div class="modal-footer">
@@ -109,15 +120,15 @@
         <div class="form-group">
           <label class="form-label">Kebijakan Strategis (Peraturan / Keputusan Bupati)</label>
           <input type="number" id="id_kebijakan" name="id_kebijakan" required hidden>
-          <textarea name="nama_kebijakan" id="nama_kebijakan" rows="3" class="form-control" required placeholder="Tuliskan kebijakan strategis ..."></textarea>
+          <textarea name="nama_kebijakan" id="nama_kebijakan" rows="3" class="form-control" required placeholder="Isi dengan Perda/Perbup/kebijakan daerah yang dilaksanakan OPD terkait"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Dasar Hukum</label>
-          <textarea name="dasar_hukum" id="dasar_hukum" rows="3" class="form-control" required placeholder="Tuliskan dasar hukum ..."></textarea>
+          <textarea name="dasar_hukum" id="dasar_hukum" rows="3" class="form-control" required placeholder="Isi dengan Dasar Hukum (diatas Perda/Perbup ) yang mendasari pelaksanaan kebijakan strategis"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Tujuan / Masalah yang Diselesaikan</label>
-          <textarea name="penyelesaian" id="penyelesaian" rows="3" class="form-control" required placeholder="Tuliskan tujuan atau masalah yang diselesaikan ..."></textarea>
+          <textarea name="penyelesaian" id="penyelesaian" rows="3" class="form-control" required placeholder="Isi dengan Tujuan/Masalah yang dapat diselesaikan dari pelaksanaan kebijakan strategis"></textarea>
         </div>
       </div>
 		  <div class="modal-footer">

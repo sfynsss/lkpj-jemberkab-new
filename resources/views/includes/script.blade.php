@@ -4,7 +4,7 @@
 <script src="{{ asset('LKPJ/admin/js/template.js') }}"></script>
 <script src="{{ asset('LKPJ/admin/js/pages/dashboard.js') }}"></script>
 <script src="{{ asset('LKPJ/admin/js/pages/calendar.js') }}"></script>
-<script src="{{ asset('LKPJ/admin/js/pages/data-table.js') }}"></script>
+{{-- <script src="{{ asset('LKPJ/admin/js/pages/data-table.js') }}"></script> --}}
 <script src="{{ asset('LKPJ/admin/js/pages/editor.js') }}"></script>
 <script src="{{ asset('LKPJ/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
 <script src="{{ asset('LKPJ/assets/vendor_components/ckeditor/ckeditor.js') }}"></script>

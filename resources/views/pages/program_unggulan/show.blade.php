@@ -142,6 +142,22 @@
                      </div>
                   </div>
                </div>
+               <hr class="my-15">
+               <div class="box">
+                  <div class="box-header with-border">
+                     <h4 class="box-title">Tindaklanjut Rekomendasi DPRD</h4>
+                  </div>
+                  <div class="box-body">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <label class="form-label">Tujuan/Masalah yang diselesaikan</label>
+                              <textarea class="form-control" name="penyelesaian" placeholder="Tuliskan tujuan/masalah yang diselesaikan ...">{{ $data_tahun->penyelesaian }}</textarea>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
