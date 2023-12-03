@@ -154,6 +154,14 @@ Route::post('indikator-kependudukan-update', 'IndikatorKependudukanController@up
 Route::get('jumlah-penduduk', 'JumlahPendudukController@index')->name('jumlah-penduduk');
 Route::post('jumlah-penduduk-update', 'JumlahPendudukController@update')->name('jumlah-penduduk-update');
 
+Route::get('tugas-pembantuan', 'TugasPembantuanController@index')->name('tugas-pembantuan');
+Route::get('tugas-pembantuan-create', 'TugasPembantuanController@create')->name('tugas-pembantuan-create');
+Route::get('tugas-pembantuan-edit/{id}', 'TugasPembantuanController@edit')->name('tugas-pembantuan-edit');
+Route::post('tugas-pembantuan-store', 'TugasPembantuanController@store')->name('tugas-pembantuan-store');
+Route::post('tugas-pembantuan-update', 'TugasPembantuanController@update')->name('tugas-pembantuan-update');
+Route::get('tugas-pembantuan-delete/{id}', 'TugasPembantuanController@delete')->name('tugas-pembantuan-delete');
+Route::get('tugas-pembantuan-export', 'TugasPembantuanController@export')->name('tugas-pembantuan-export');
+
 Route::get('perkembangan-apbd', 'PerkembanganAPBDController@index')->name('perkembangan-apbd');
 
 Route::get('laporan-kategori', 'LaporanStatistikPenjabaranController@index')->name('laporan-kategori');

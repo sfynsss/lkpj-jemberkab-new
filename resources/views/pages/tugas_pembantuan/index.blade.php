@@ -24,34 +24,90 @@
       <div class="box">
         <div class="box-header with-border">
           <h4 class="box-title">SKPD : <b>{{ Auth::user()->skpd->nama_skpd }}</b></h4>
-          {{-- <ul class="box-controls pull-right d-md-flex d-none">
-            <button class="btn btn-primary btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-tambah-kebijakan">Tambah Data</button>
-            <a href="{{ route('kebijakan-strategis-export') }}" class="btn btn-success btn-sm px-4 py-2 me-2"><i class="fa fas fa-print"></i> Cetak Excel</a>
-          </ul> --}}
+          <ul class="box-controls pull-right d-md-flex d-none">
+            <a href="{{ route('tugas-pembantuan-create') }}" class="btn btn-primary btn-sm px-4 py-2 me-2"><i class="fa fas fa-plus-circle"></i> Tambah Data</a>
+            <a href="{{ route('tugas-pembantuan-export') }}" target="_blank" class="btn btn-danger btn-sm px-4 py-2 me-2"><i class="fa fas fa-file"></i> Export PDF</a>
+          </ul>
         </div>
         <div class="box-body">
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
-                <table class="table table-striped table-bordered no-wrap">
+                <table class="table table-striped table-bordered">
                   <thead class="bg-gradient-primary-dark text-white text-center">
-                      <th>Dasar Hukum</th>
-                      <th>Instansi Pemberi <br> Tugas Pembantuan</th>
-                      <th>Instansi Penerima <br> Tugas Pembantuan</th>
-                      <th>Fungsi</th>
-                      <th>Sub Fungsi</th>
-                      <th>Sub Kegiatan</th>
-                      <th>Pagu</th>
-                      <th>Realisasi</th>
-                      <th>Jangka Waktu Pelaksanaan</th>
-                      <th>Permasalahan</th>
-                      <th>Solusi</th>
-                      <th>Keterangan</th>
+                    <tr>
+                      <th rowspan="2">Dasar Hukum</th>
+                      <th rowspan="2">Instansi Pemberi <br> Tugas Pembantuan</th>
+                      <th rowspan="2">Instansi Penerima <br> Tugas Pembantuan</th>
+                      <th colspan="2">Fungsi</th>
+                      <th colspan="2">Sub Fungsi</th>
+                      <th colspan="2">Sub Kegiatan</th>
+                      <th rowspan="2">Pagu</th>
+                      <th rowspan="2">Realisasi</th>
+                      <th rowspan="2">Jangka Waktu Pelaksanaan</th>
+                      <th rowspan="2">No SIP DPA</th>
+                      <th rowspan="2">Permasalahan</th>
+                      <th rowspan="2">Solusi</th>
+                      <th rowspan="2">Keterangan</th>
+                      <th rowspan="2">Aksi</th>
+                    </tr>
+                    <tr>
+                      <th>Kode</th>
+                      <th>Nama</th>
+                      <th>Kode</th>
+                      <th>Nama</th>
+                      <th>Kode</th>
+                      <th>Nama</th>
+                    </tr>
+                    <tr>
+                      <th>1</th>
+                      <th>2</th>
+                      <th>3</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th>4</th>
+                      <th></th>
+                      <th>5</th>
+                      <th>6</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th>7</th>
+                      <th>8</th>
+                      <th>9</th>
+                      <th></th>
+                    </tr>
                   </thead>
                   <tbody>
+                    @forelse ($data as $dt)
                     <tr>
-                      <td class="text-center" colspan="12"><i>Data tidak tersedia</i></td>
+                      <td>{{ $dt->dasar_hukum }}</td>
+                      <td>{{ $dt->pemberi_tugas }}</td>
+                      <td>{{ $dt->penerima_tugas }}</td>
+                      <td>{{ $dt->kode_fungsi }}</td>
+                      <td>{{ $dt->nama_fungsi }}</td>
+                      <td>{{ $dt->kode_subfungsi }}</td>
+                      <td>{{ $dt->nama_subfungsi }}</td>
+                      <td>{{ $dt->Subkegiatan->kode_subkegiatan }}</td>
+                      <td>{{ $dt->Subkegiatan->nama_subkegiatan }}</td>
+                      <td>{{ App\SubkegiatanTahun::where('subkegiatan_id', $dt->subkegiatan_id)->where('tahun', date('Y'))->pluck('pagu_indikatif')->first() }}</td>
+                      <td>{{ App\SubkegiatanTahun::where('subkegiatan_id', $dt->subkegiatan_id)->where('tahun', date('Y'))->pluck('realisasi_anggaran')->first() }}</td>
+                      <td>{{ $dt->waktu_pelaksanaan }}</td>
+                      <td>{{ $dt->no_sp_dipa }}</td>
+                      <td>{{ $dt->permasalahan }}</td>
+                      <td>{{ $dt->solusi }}</td>
+                      <td>{{ $dt->keterangan }}</td>
+                      <td>
+                        <a href="{{ route('tugas-pembantuan-edit', $dt->id) }}" class="btn btn-warning btn-sm btn-circle"><i class="fas fa fa-edit"></i></a>
+                        <a href="{{ route('tugas-pembantuan-delete', $dt->id) }}" class="btn btn-danger btn-sm btn-circle" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span></a>
+                      </td>
                     </tr>
+                    @empty                        
+                    <tr>
+                      <td class="text-center" colspan="16"><i>Data tidak tersedia</i></td>
+                    </tr>
+                    @endforelse
                   </tbody>
                 </table>
               </div>
