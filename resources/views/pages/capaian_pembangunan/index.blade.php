@@ -23,9 +23,11 @@
     <div class="col-12">
       <div class="box">
         <div class="box-header with-border">
-          <h4 class="box-title">SKPD : <b>{{ Auth::user()->skpd->nama_skpd }}</b></h4>
+          <h4 class="box-title">SKPD : <b>{{ $skpd->nama_skpd }}</b></h4>
           <ul class="box-controls pull-right d-md-flex d-none">
-            <button class="btn btn-primary btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-tambah-kategori"><i class="fa fas fa-plus-circle"></i> Tambah Kategori</button>
+            @if (Auth::user()->hak_akses != 'BIDANG')
+              <button class="btn btn-primary btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-tambah-kategori"><i class="fa fas fa-plus-circle"></i> Tambah Kategori</button>
+            @endif
             <a href="{{ route('capaian-pembangunan-export') }}" target="_blank" class="btn btn-danger btn-sm px-4 py-2 me-2"><i class="fa fas fa-file"></i> Export PDF</a>
           </ul>
         </div>
@@ -47,7 +49,7 @@
                       <td class="text-center">
                         <a href="{{ route('capaian-pembangunan-show', $dt->id) }}" class="btn btn-primary btn-sm"><i class="fas fa fa-plus-circle me-2"></i>Isi Data</a>
                         <button class="btn btn-warning btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-ubah-kategori" onclick="insertText('{{ $dt->id }}', '{{ $dt->nama_kategori }}');"><i class="fa fas fa-edit"></i> Ubah</button>
-                        <a href="{{ route('capaian-pembangunan-kategori-delete', $dt->id) }}" class="btn btn-danger-light btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
+                        <a href="{{ route('capaian-pembangunan-kategori-delete', $dt->id) }}" class="btn btn-danger btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
                       </td>
                     </tr>
                     @empty                        
@@ -76,6 +78,7 @@
         @csrf
         <div class="form-group">
           <label class="form-label">Nama Kategori</label>
+          <input type="number" class="form-control" id="skpd_id" name="skpd_id" value="{{ $skpd->id }}" required hidden>
           <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Tuliksan nama kategori ..." required>
         </div>
       </div>

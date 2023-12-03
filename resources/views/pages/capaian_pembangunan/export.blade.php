@@ -134,7 +134,8 @@
             </tbody>
         </table>
         {{-- <table class="table-footer"> --}}
-        <table style="font-size: 10px; margin-top: 18px; text-align: center; page-break-inside:avoid; page-break-after:auto">
+        @if (Auth::user()->hak_akses == 'OPD')
+          <table style="font-size: 10px; margin-top: 18px; text-align: center; page-break-inside:avoid; page-break-after:auto">
             <tr>
                 <td style="width: 50%;"></td>
                 <td style="width: 50%;">
@@ -170,7 +171,8 @@
                     NIP. {{ Auth::user()->nip }}
                 </td>
             </tr>
-        </table>
+          </table>
+        @endif
     </div>
 
 </body>

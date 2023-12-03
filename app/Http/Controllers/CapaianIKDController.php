@@ -7,14 +7,28 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\IKDExport;
 use App\IKD;
+use App\Skpd;
 use PDF;
 
 class CapaianIKDController extends Controller
 {
     public function index()
     {
-        $data = IKD::where('skpd_id', Auth::user()->skpd_id)->get();
-        return view('pages.capaian_ikd.index', compact('data'));
+        if (Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
+            if (Auth::user()->hak_akses == 'BIDANG') {
+                $data = Skpd::where('bidang_id', Auth::user()->id)->get();
+            } else {
+                $data = Skpd::all();
+            }
+            $link = 'capaian-ikd-admin';
+            $judul = 'Capaian IKD';
+            $link_export = 'capaian-ikd-export';
+            return view('pages.skpd.index', compact('data', 'link', 'judul', 'link_export'));
+        } else {
+            $skpd = Auth::user()->skpd_id;
+            $data = IKD::where('skpd_id', $skpd)->get();
+            return view('pages.capaian_ikd.index', compact('data', 'skpd'));
+        }
     }
 
     public function export()
@@ -140,5 +154,12 @@ class CapaianIKDController extends Controller
 
         $pdf = PDF::setPaper('A4', 'landscape')->loadview('pages.capaian_ikd.export', compact('data'));
         return $pdf->stream();
+    }
+
+    public function indexAdmin($skpd)
+    {
+        $skpd = Skpd::findOrFail($skpd);
+        $data = IKD::where('skpd_id', $skpd->id)->get();
+        return view('pages.capaian_ikd.index', compact('data', 'skpd'));
     }
 }

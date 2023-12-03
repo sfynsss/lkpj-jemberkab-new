@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\CapemKategori;
 use App\CapemData;
 use PDF;
+use App\Skpd;
 use Alert;
 use Carbon\Carbon;
 
@@ -14,21 +15,34 @@ class CapaianPembangunanController extends Controller
 {
     public function index()
     {
-        $data = CapemKategori::where('skpd_id', Auth::user()->skpd_id)->orderBy('id', 'DESC')->get();
-        return view('pages.capaian_pembangunan.index', compact('data'));
+        if (Auth::user()->hak_akses == 'ADMIN' || Auth::user()->hak_akses == 'BIDANG') {
+            if (Auth::user()->hak_akses == 'BIDANG') {
+                $data = Skpd::where('bidang_id', Auth::user()->id)->get();
+            } else {
+                $data = Skpd::all();
+            }
+            $link = 'capaian-pembangunan-admin';
+            $judul = 'Capaian Pembangunan';
+            $link_export = 'capaian-pembangunan-export';
+            return view('pages.skpd.index', compact('data', 'link', 'judul', 'link_export'));
+        } else {
+            $skpd = Auth::user()->skpd_id;
+            $data = CapemKategori::where('skpd_id', $skpd->id)->orderBy('id', 'DESC')->get();
+            return view('pages.capaian_pembangunan.index', compact('data', 'skpd'));
+        }
     }
 
     public function show($id)
     {
         $kategori = CapemKategori::findOrFail($id);
-        $data = CapemData::where('skpd_id', Auth::user()->skpd_id)->where('kategori_id', $kategori->id)->orderBy('id', 'DESC')->get();
+        $data = CapemData::where('skpd_id', $kategori->skpd_id)->where('kategori_id', $kategori->id)->orderBy('id', 'DESC')->get();
         return view('pages.capaian_pembangunan.show', compact('data', 'kategori'));
     }
 
     public function storeKategori(Request $request)
     {
         $data = CapemKategori::insert([
-            'skpd_id'   => Auth::user()->skpd_id,
+            'skpd_id'       => $request->skpd_id,
             'nama_kategori' => $request->nama_kategori,
             'created_at'    => Carbon::now(),
             'updated_at'    => Carbon::now(),
@@ -53,7 +67,7 @@ class CapaianPembangunanController extends Controller
         $data = CapemKategori::findOrFail($id);
         $cek = CapemData::where('kategori_id', $data->id)->count();
 
-        if ($data->skpd_id != Auth::user()->skpd_id) {
+        if (Auth::user()->hak_akses == 'OPD' && $data->skpd_id != Auth::user()->skpd_id) {
             Alert::error('Gagal', 'Akses tidak dikenal');
             return redirect()->route('capaian-pembangunan');
         } elseif($cek > 0) {
@@ -69,7 +83,7 @@ class CapaianPembangunanController extends Controller
     public function storeData(Request $request)
     {
         $data = CapemData::insert([
-            'skpd_id'       => Auth::user()->skpd_id,
+            'skpd_id'       => $request->skpd_id,
             'kategori_id'   => $request->id_kategori,
             'nama_data'     => $request->nama_data,
             'keterangan'    => $request->keterangan,
@@ -112,7 +126,7 @@ class CapaianPembangunanController extends Controller
     public function deleteData($id)
     {
         $data = CapemData::findOrFail($id);
-        if ($data->skpd_id != Auth::user()->skpd_id) {
+        if (Auth::user()->hak_akses == 'OPD' && $data->skpd_id != Auth::user()->skpd_id) {
             Alert::error('Gagal', 'Akses tidak dikenal');
             return redirect()->route('capaian-pembangunan-show', $data->kategori_id);
         } else {
@@ -124,8 +138,19 @@ class CapaianPembangunanController extends Controller
 
     public function export()
     {
-        $data = CapemKategori::with('Data')->where('skpd_id', Auth::user()->skpd_id)->orderBy('id', 'DESC')->get();
+        if (Auth::user()->hak_akses == 'OPD') {
+            $data = CapemKategori::with('Data')->where('skpd_id', Auth::user()->skpd_id)->orderBy('id', 'DESC')->get();
+        } else {
+            $data = CapemKategori::with('Data')->orderBy('id', 'DESC')->get();
+        }
         $pdf = PDF::setPaper('A4', 'landscape')->loadview('pages.capaian_pembangunan.export', compact('data'));
         return $pdf->stream();
+    }
+
+    public function indexAdmin($skpd)
+    {
+        $skpd = Skpd::findOrFail($skpd);
+        $data = CapemKategori::where('skpd_id', $skpd->id)->orderBy('id', 'DESC')->get();
+        return view('pages.capaian_pembangunan.index', compact('data', 'skpd'));
     }
 }

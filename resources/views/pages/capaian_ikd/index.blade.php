@@ -23,9 +23,11 @@
   <div class="col-12">
     <div class="box">
       <div class="box-header with-border">
-        <h4 class="box-title">SKPD : <b>{{ Auth::user()->skpd->nama_skpd }}</b></h4>
+        <h4 class="box-title">SKPD : <b>{{ $skpd->nama_skpd }}</b></h4>
         <ul class="box-controls pull-right d-md-flex d-none">
-          <a href="{{ route('capaian-ikd-export') }}" target="_blank" class="btn btn-danger btn-sm px-4 py-2 me-2"><i class="fa fas fa-file"></i> Export PDF</a>
+          @if (Auth::user()->hak_akses == 'OPD')  
+            <a href="{{ route('capaian-ikd-export') }}" target="_blank" class="btn btn-danger btn-sm px-4 py-2 me-2"><i class="fa fas fa-file"></i> Export PDF</a>
+          @endif
         </ul>
     </div>
     <div class="box-body">

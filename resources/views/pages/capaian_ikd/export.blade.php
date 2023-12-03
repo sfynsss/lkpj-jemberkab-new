@@ -179,6 +179,7 @@
             </tbody>
         </table>
         {{-- <table class="table-footer"> --}}
+        @if (Auth::user()->hak_akses == 'OPD')
         <table style="font-size: 10px; margin-top: 18px; text-align: center; page-break-inside:avoid; page-break-after:auto">
             <tr>
                 <td style="width: 50%;"></td>
@@ -216,6 +217,7 @@
                 </td>
             </tr>
         </table>
+        @endif
     </div>
 
 </body>

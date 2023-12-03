@@ -56,8 +56,10 @@
                       <td class="text-center">{{ $dt->th_2023 }}</td>
                       <td>{{ $dt->keterangan }}</td>
                       <td class="text-center">
-                        <button class="btn btn-warning btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-ubah-data" onclick="insertText('{{ $dt->id }}', '{{ $dt->nama_data }}', '{{ $dt->th_2019 }}', '{{ $dt->th_2020 }}', '{{ $dt->th_2021 }}', '{{ $dt->th_2022 }}', '{{ $dt->th_2023 }}', '{{ $dt->keterangan }}');"><i class="fa fas fa-edit"></i> Ubah</button>
-                        <a href="{{ route('capaian-pembangunan-data-delete', $dt->id) }}" class="btn btn-danger-light btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
+                        @if (Auth::user()->hak_akses != 'BIDANG')  
+                          <button class="btn btn-warning btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-ubah-data" onclick="insertText('{{ $dt->id }}', '{{ $dt->nama_data }}', '{{ $dt->th_2019 }}', '{{ $dt->th_2020 }}', '{{ $dt->th_2021 }}', '{{ $dt->th_2022 }}', '{{ $dt->th_2023 }}', '{{ $dt->keterangan }}');"><i class="fa fas fa-edit"></i> Ubah</button>
+                          <a href="{{ route('capaian-pembangunan-data-delete', $dt->id) }}" class="btn btn-danger btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
+                        @endif
                       </td>
                     </tr>
                     @empty                        
@@ -88,6 +90,7 @@
           <label class="form-label">Nama Data</label>
           <input type="text" class="form-control" id="nama_data" name="nama_data" placeholder="Tuliksan nama data ..." required>
           <input type="text" class="form-control" id="id_kategori" name="id_kategori" value="{{ $kategori->id }}" hidden required>
+          <input type="text" class="form-control" id="skpd_id" name="skpd_id" value="{{ $kategori->skpd_id }}" hidden required>
         </div>
         <div class="row form-group">
           <div class="col-md-4">

@@ -55,7 +55,7 @@
                       <td class="text-center">{{ $dt->th_2022 }}</td>
                       <td class="text-center">
                         <button class="btn btn-warning btn-sm px-4 py-2" data-bs-toggle="modal" data-bs-target=".modal-ubah-data" onclick="insertText('{{ $dt->id }}', '{{ $dt->nama_kategori }}','{{ $dt->th_2018 }}', '{{ $dt->th_2019 }}', '{{ $dt->th_2020 }}', '{{ $dt->th_2021 }}', '{{ $dt->th_2022 }}');"><i class="fa fas fa-edit"></i> Ubah</button>
-                        <a href="{{ route('laporan-kebencanaan-delete', $dt->id) }}" class="btn btn-danger-light btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
+                        <a href="{{ route('laporan-kebencanaan-delete', $dt->id) }}" class="btn btn-danger btn-sm" title="Hapus" onclick="if (confirm('Apakah Anda yakin untuk menghapus?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><span class="fa fa-trash fs-18"></span> Hapus</a>
                       </td>
                     </tr>
                     @empty                        
