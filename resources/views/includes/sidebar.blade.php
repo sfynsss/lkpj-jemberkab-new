@@ -53,9 +53,9 @@
                <li><a href="{{ route('laporan-kategori') }}"><i span class="fa fa-bar-chart"><span class="path1"></span><span class="path2"></span></i>Data Penjabaran</a></li>                   
                @endif
                <li><a href="{{ route('tugas-pembantuan') }}"><i span class="fa fa-universal-access"><span class="path1"></span><span class="path2"></span></i>Tugas Pembantuan</a></li>
-               @if (Auth::user()->skpd_id == 9)
-               <li><a href="#"><i span class="fa fa-support"><span class="path1"></span><span class="path2"></span></i>Kebencanaan</a></li>
-               @endif
+               {{-- @if (Auth::user()->skpd_id == 9) --}}
+               <li><a href="{{ route('laporan-kebencanaan') }}"><i span class="fa fa-support"><span class="path1"></span><span class="path2"></span></i>Kebencanaan</a></li>
+               {{-- @endif --}}
 
                @if(Auth::user()->hak_akses == "ADMIN")
                <li class="treeview">

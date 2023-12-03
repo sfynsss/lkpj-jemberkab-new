@@ -172,6 +172,11 @@ Route::post('laporan-statistik-update', 'LaporanStatistikPenjabaranController@st
 Route::get('laporan-penjabaran-detail/{id}/{th}', 'LaporanStatistikPenjabaranController@penjabaranShow')->name('laporan-penjabaran-detail');
 Route::post('laporan-penjabaran-update', 'LaporanStatistikPenjabaranController@penjabaranUpdate')->name('laporan-penjabaran-update');
 
+Route::get('laporan-kebencanaan', 'LaporanKebencanaanController@index')->name('laporan-kebencanaan');
+Route::post('laporan-kebencanaan-store', 'LaporanKebencanaanController@store')->name('laporan-kebencanaan-store');
+Route::post('laporan-kebencanaan-update', 'LaporanKebencanaanController@update')->name('laporan-kebencanaan-update');
+Route::get('laporan-kebencanaan-delete/{id}', 'LaporanKebencanaanController@delete')->name('laporan-kebencanaan-delete');
+
 Route::get('clear', function()
 {
     \Artisan::call('optimize:clear');
