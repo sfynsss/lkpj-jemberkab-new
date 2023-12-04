@@ -25,7 +25,7 @@ class CapaianIKDController extends Controller
             $link_export = 'capaian-ikd-export';
             return view('pages.skpd.index', compact('data', 'link', 'judul', 'link_export'));
         } else {
-            $skpd = Auth::user()->skpd_id;
+            $skpd = Skpd::findOrFail(Auth::user()->skpd_id);
             $data = IKD::where('skpd_id', $skpd)->get();
             return view('pages.capaian_ikd.index', compact('data', 'skpd'));
         }

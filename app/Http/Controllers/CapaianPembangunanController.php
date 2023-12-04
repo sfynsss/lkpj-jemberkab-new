@@ -26,7 +26,7 @@ class CapaianPembangunanController extends Controller
             $link_export = 'capaian-pembangunan-export';
             return view('pages.skpd.index', compact('data', 'link', 'judul', 'link_export'));
         } else {
-            $skpd = Auth::user()->skpd_id;
+            $skpd = Skpd::findOrFail(Auth::user()->skpd_id);
             $data = CapemKategori::where('skpd_id', $skpd->id)->orderBy('id', 'DESC')->get();
             return view('pages.capaian_pembangunan.index', compact('data', 'skpd'));
         }
